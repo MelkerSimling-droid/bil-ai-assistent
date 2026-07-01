@@ -1,0 +1,117 @@
+{
+  "id": "toyota-gr-supra-yga43j",
+  "modell": "Toyota GR Supra",
+  "version": "3,0L Twin-Scroll Turbo Lightweight Evo",
+  "pris": 853800,
+  "pris_exkl_moms": 683040,
+  "miltal": 27,
+  "arsmodell": 2026,
+  "tillverkningsar": 2025,
+  "lagerstatus": "I lager",
+  "drivmedel": "Bensin",
+  "vaxellada": "Manuell",
+  "antal_vaxlar": 6,
+  "drivning": "Bakhjulsdrift",
+  "farg": "Grå",
+  "kaross": "Coupé",
+  "segment": "Sportbil",
+  "antal_dorrar": 2,
+  "antal_saten": 2,
+  "registreringsnummer": "YGA43J",
+  "vin": "YBCDB45060W075674",
+
+  "prestanda": {
+    "acceleration_0_100": "4.3 s",
+    "topphastighet_kmh": 250,
+    "hastkrafter": 340,
+    "motorvridmoment_nm": 500,
+    "motorvolym_cc": 2998,
+    "motorcylindrar": "6 Cyl. (Radmotor)"
+  },
+
+  "bransle": {
+    "forbrukning_kombinerad_wltp": "8.8 l/100km",
+    "forbrukning_kombinerad_nedc": "7.5 l/100km",
+    "forbrukning_stad": "9.1 l/100km",
+    "forbrukning_motorvag": "6.5 l/100km",
+    "co2_utslapp": "170 g/km",
+    "tankkapacitet_liter": 52,
+    "utslappsstandard": "Euro 6"
+  },
+
+  "skatt": {
+    "arlig_fordonsskatt": "2 384 kr/år",
+    "malus": "16 006 kr/år"
+  },
+
+  "matt_och_vikt": {
+    "totalvikt_kg": 1815,
+    "tjanstevikt_kg": 1570,
+    "max_lastkapacitet_kg": 245,
+    "total_langd_cm": 438,
+    "total_bredd_cm": 185,
+    "total_hojd_cm": 130,
+    "hjulbas_cm": 247,
+    "markfrigang_cm": 12
+  },
+
+  "bagageutrymme": {
+    "volym_liter": 290,
+    "djup_mm": 780,
+    "bredd_mm": 850
+  },
+
+  "utrustning": [
+    "340 hk",
+    "6-växlad manuell låda (iMT)",
+    "Fälgar 19\" lättmetall",
+    "Strålkastare LED",
+    "Adaptiva automatiska helljus",
+    "Dimljus, adaptiva kurvljus",
+    "Kolfiber ducktail bakspoiler",
+    "Hjulhusspoiler",
+    "Apple CarPlay",
+    "Head-up display (HUD)",
+    "JBL ljudsystem (10 högtalare)",
+    "Sätesklädsel i Alcantara",
+    "Nyckelfri access och start",
+    "Trådlös laddning",
+    "Adaptiv farthållare",
+    "Filhållningsassistent (LKA)",
+    "Döda vinkel-övervakning (BLIS)",
+    "Parkeringssensorer fram och bak",
+    "Trafikskyltskanning"
+  ],
+
+  "sakerhet": [
+    "Krockkudde förare och passagerare",
+    "Krockkudde knä",
+    "Krockkudde sido-bröst",
+    "Krockkudde gardin",
+    "Autonom nödbromsning (AEB)",
+    "Stabilitetskontrollsystem (TCS)",
+    "Nödsamtal (eCall)"
+  ],
+
+  "beskrivning": "Toyota GR Supra är en renodlad sportbil med bakhjulsdrift, manuell 6-växlad låda och en kraftfull radsexa på 340 hk. 0-100 km/h på endast 4,3 sekunder.",
+
+  "bilder": [
+    "https://cdn.wayke.se/cfit/v3/40a6613ad7da4c3bbdb1769bb338f734/1da5c1c4bd9444c79ea73de1ef300f79?format=jpeg&w=840",
+    "https://cdn.wayke.se/cfit/v3/7bf2b7de94634395a45df605c0b0267f/2e83f3b0ed3c4666aaaf8af1fc8f1b10?format=jpeg&w=840",
+    "https://cdn.wayke.se/cfit/v3/c94ef9e18d4f4511afa6fd9282e47f7f/55a6659be7d545fdb49e7770f45837d6?format=jpeg&w=840",
+    "https://cdn.wayke.se/cfit/v3/58b895c7c3dd4d10a0d678db4752d8c9/31eee5624120467893ee11ad9af1f806?format=jpeg&w=840",
+    "https://cdn.wayke.se/cfit/v3/4cd2c0f3b00b4e12b356cddd4b2e0a78/42a2a4c69c6e45f9982554ca4d6e9cd6?format=jpeg&w=840"
+  ],
+
+  "saljare": {
+    "namn": "Simling Bil",
+    "ort": "Strängnäs",
+    "adress": "Harvstigen 2, Strängnäs",
+    "oppettider": {
+      "mandag_torsdag": "09:00 - 18:00",
+      "fredag": "09:00 - 17:00",
+      "lordag": "10:00 - 14:00",
+      "sondag": "Stängt"
+    }
+  }
+}
