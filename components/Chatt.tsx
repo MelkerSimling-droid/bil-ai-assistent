@@ -55,7 +55,16 @@ export default function Chatt() {
             {m.text}
           </div>
         ))}
-        {laddar && <p className="text-gray-400 text-sm">AI:n skriver...</p>}
+        {laddar && (
+          <div className="flex items-center gap-2 text-gray-400 text-sm">
+            <img
+              src="/buster.jpg"
+              alt="Buster tänker..."
+              className="w-16 h-16 rounded-lg object-cover animate-pulse"
+            />
+            <span>Buster funderar...</span>
+          </div>
+        )}
       </div>
 
       <div className="flex gap-2">
