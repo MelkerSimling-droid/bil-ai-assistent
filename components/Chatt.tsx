@@ -34,8 +34,10 @@ export default function Chatt() {
   }
 
   return (
-    <div className="border border-gray-200 rounded-md p-6 mb-10 bg-white">
-      <h2 className="text-xl font-bold mb-4 text-gray-900">Fråga om bilen</h2>
+    <div className="border border-gray-200 rounded-lg shadow-sm p-6 mb-10 bg-white">
+      <h2 className="text-xl font-bold mb-4 text-gray-900 border-l-4 border-red-600 pl-3">
+        Fråga om bilen
+      </h2>
 
       <div className="space-y-3 mb-4 max-h-96 overflow-y-auto">
         {meddelanden.length === 0 && (
@@ -46,13 +48,17 @@ export default function Chatt() {
         {meddelanden.map((m, i) => (
           <div
             key={i}
-            className={`p-3 rounded-md text-gray-900 max-w-[85%] ${
-              m.roll === "kund"
-                ? "bg-gray-100 ml-auto text-right"
-                : "bg-white border border-gray-200 mr-auto text-left"
-            }`}
+            className={`flex ${m.roll === "kund" ? "justify-end" : "justify-start"}`}
           >
-            {m.text}
+            <div
+              className={`p-3 rounded-2xl text-sm leading-relaxed max-w-[85%] shadow-sm ${
+                m.roll === "kund"
+                  ? "bg-red-600 text-white rounded-br-sm"
+                  : "bg-gray-100 text-gray-900 rounded-bl-sm"
+              }`}
+            >
+              {m.text}
+            </div>
           </div>
         ))}
         {laddar && (
@@ -74,13 +80,17 @@ export default function Chatt() {
           onChange={(e) => setFraga(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && skickaFraga()}
           placeholder="Skriv din fråga om bilen..."
-          className="flex-1 border border-gray-300 rounded-md px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-600"
+          className="flex-1 border border-gray-300 rounded-md px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-shadow"
         />
         <button
           onClick={skickaFraga}
-          className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-md font-medium transition-colors"
+          aria-label="Skicka fråga"
+          className="bg-red-600 hover:bg-red-700 active:bg-red-800 text-white px-5 py-2 rounded-md font-medium transition-all hover:shadow-md flex items-center gap-2"
         >
-          Skicka
+          <span className="hidden sm:inline">Skicka</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+            <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+          </svg>
         </button>
       </div>
     </div>
