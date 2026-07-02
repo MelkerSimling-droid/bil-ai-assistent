@@ -7,7 +7,7 @@ type Meddelande = {
   text: string;
 };
 
-export default function Chatt() {
+export default function Chatt({ bilId }: { bilId: string }) {
   const [fraga, setFraga] = useState("");
   const [meddelanden, setMeddelanden] = useState<Meddelande[]>([]);
   const [laddar, setLaddar] = useState(false);
@@ -23,7 +23,7 @@ export default function Chatt() {
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fraga }),
+      body: JSON.stringify({ fraga, bilId }),
     });
 
     const data = await response.json();

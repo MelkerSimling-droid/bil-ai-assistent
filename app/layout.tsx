@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Toyota GR Supra | Simling Bil",
-  description: "Toyota GR Supra hos Simling Bil i Strängnäs – se bilder, specifikationer och ställ frågor direkt till Buster, vår AI-assistent.",
+  title: "Begagnade bilar | Simling Bil",
+  description: "Begagnade bilar till salu hos Simling Bil i Strängnäs – se bilder, specifikationer och ställ frågor direkt till Buster, vår AI-assistent.",
 };
 
 export default function RootLayout({

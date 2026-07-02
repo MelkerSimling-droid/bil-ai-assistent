@@ -1,8 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import bil from "@/data/bil.json";
+import { hittaBil } from "@/lib/bilar";
 
 export async function POST(req: NextRequest) {
-  const { fraga } = await req.json();
+  const { fraga, bilId } = await req.json();
+
+  const bil = hittaBil(bilId);
+  if (!bil) {
+    return NextResponse.json({ svar: "Kunde inte hitta bilen." }, { status: 404 });
+  }
 
   const systemPrompt = `
 Du är en hjälpsam bilsäljarassistent. Du svarar ENDAST på frågor om denna specifika bil.

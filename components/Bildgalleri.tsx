@@ -13,6 +13,14 @@ export default function Bildgalleri({ bilder, alt }: { bilder: string[]; alt: st
     setAktivIndex((i) => (i + 1) % bilder.length);
   }
 
+  if (bilder.length === 0) {
+    return (
+      <div className="mb-10 rounded-lg overflow-hidden shadow-md aspect-[16/10] bg-gray-100 flex items-center justify-center text-gray-400">
+        Ingen bild tillgänglig
+      </div>
+    );
+  }
+
   return (
     <div className="mb-10">
       <div className="relative group rounded-lg overflow-hidden shadow-md">
