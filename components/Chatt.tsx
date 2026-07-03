@@ -1,21 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import type { ChattMeddelande } from "@/lib/types";
 
-type Meddelande = {
-  roll: "kund" | "ai";
-  text: string;
-};
-
-export default function Chatt({ bilId }: { bilId: string }) {
+export default function Chatt({
+  bilId,
+  onMeddelandenChange,
+}: {
+  bilId: string;
+  onMeddelandenChange?: (meddelanden: ChattMeddelande[]) => void;
+}) {
   const [fraga, setFraga] = useState("");
-  const [meddelanden, setMeddelanden] = useState<Meddelande[]>([]);
+  const [meddelanden, setMeddelanden] = useState<ChattMeddelande[]>([]);
   const [laddar, setLaddar] = useState(false);
+
+  useEffect(() => {
+    onMeddelandenChange?.(meddelanden);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [meddelanden]);
 
   async function skickaFraga() {
     if (!fraga.trim()) return;
 
-    const nyKundFraga: Meddelande = { roll: "kund", text: fraga };
+    const nyKundFraga: ChattMeddelande = { roll: "kund", text: fraga };
     setMeddelanden((tidigare) => [...tidigare, nyKundFraga]);
     setFraga("");
     setLaddar(true);
@@ -28,16 +35,20 @@ export default function Chatt({ bilId }: { bilId: string }) {
 
     const data = await response.json();
 
-    const aiSvar: Meddelande = { roll: "ai", text: data.svar };
+    const aiSvar: ChattMeddelande = { roll: "ai", text: data.svar };
     setMeddelanden((tidigare) => [...tidigare, aiSvar]);
     setLaddar(false);
   }
 
   return (
-    <div className="border border-gray-200 rounded-lg shadow-sm p-6 mb-10 bg-white">
-      <h2 className="text-xl font-bold mb-4 text-gray-900 border-l-4 border-red-600 pl-3">
-        Fråga om bilen
-      </h2>
+    <div className="border border-gray-200 rounded-lg shadow-sm p-6 mb-6 bg-white">
+      <div className="flex items-center gap-3 mb-4">
+        <img src="/buster.jpg" alt="Buster" className="w-10 h-10 rounded-full object-cover" />
+        <div>
+          <h2 className="text-xl font-bold text-gray-900">Fråga Buster om bilen</h2>
+          <p className="text-xs text-gray-400">AI-assistent för Simling Bil · svarar bara utifrån bilens data</p>
+        </div>
+      </div>
 
       <div className="space-y-3 mb-4 max-h-96 overflow-y-auto">
         {meddelanden.length === 0 && (

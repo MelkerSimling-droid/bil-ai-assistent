@@ -1,0 +1,905 @@
+{
+  "Toyota Corolla Hybrid": {
+    "korupplevelse": "Mjuk, avslappnad och lättkörd hybrid med steglös e-CVT-låda. Fjädringen är mjuk vilket gör vardagskörning behaglig, men bilen bjuder inte på sportig körglädje - den är satt för komfort, inte äventyr.",
+    "vem_den_passar": "Passar dig som vill ha en pålitlig, prisvärd och driftsäker vardagsbil utan krångel - pendlare och familjer som prioriterar låg förbrukning och Toyotas kvalitetsrykte framför körglädje.",
+    "styrkor": [
+      "Mycket låg bränsleförbrukning i verklig körning",
+      "Funktionell, välbyggd interiör",
+      "Mjuk och skön fjädring i stadskörning",
+      "Starkt kvalitets- och tillförlitlighetsrykte"
+    ],
+    "att_tanka_pa": [
+      "Motorljudet kan höras tydligt vid kraftig acceleration",
+      "Motorväg upplevs mindre förfinat än stadskörning enligt Vi Bilägare"
+    ],
+    "kallor": [
+      {
+        "titel": "Tidningen Motor provkör Toyota Corolla Hybrid",
+        "utgivare": "M Sverige",
+        "url": "https://msverige.se/allt-om-bilen/motor-provkor/toyota-corolla-hybrid/"
+      },
+      {
+        "titel": "\"Avslappnande i stan – men plågad på motorvägen\"",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/langtest/avslappnande-i-stan-men-plagad-pa-motorvagen"
+      }
+    ]
+  },
+  "Toyota Corolla Touring Sports Hybrid": {
+    "korupplevelse": "Combi-versionen av Corolla Hybrid: neat, pålitlig och satt för komfort snarare än körglädje. What Car? beskriver den som \"en förnuftig hybridkombi med en kamels bränsleförmåga\" - inte en bil som lockar en omväg, men helt oklanderlig i vardagen.",
+    "vem_den_passar": "Familjer och pendlare som vill ha extra lastutrymme jämfört med vanliga Corolla utan att offra bränsleekonomi eller pålitlighet.",
+    "styrkor": [
+      "Utsedd till What Car?s bästa värdekombi 2025 och Årets Kombi 2024",
+      "Betydligt mer bagageutrymme (596/581 liter) än t.ex. Ford Focus",
+      "Över 60 mpg (ca 0,4 l/mil) i WLTP och nära det i verklig körning enligt testare"
+    ],
+    "att_tanka_pa": [
+      "Kör \"neat och pålitligt\" snarare än engagerande - sätt upp förväntningarna på komfort, inte sportighet"
+    ],
+    "kallor": [
+      {
+        "titel": "Toyota Corolla Touring Sports Review 2026",
+        "utgivare": "What Car?",
+        "url": "https://www.whatcar.com/toyota/corolla/estate/review/n19141"
+      },
+      {
+        "titel": "Toyota Corolla Touring Sports review",
+        "utgivare": "Auto Express",
+        "url": "https://www.autoexpress.co.uk/toyota/corolla/touring-sports"
+      }
+    ]
+  },
+  "Toyota Corolla Cross Hybrid AWD-i": {
+    "korupplevelse": "En något större, SUV-liknande Corolla med bekväm, avslappnad körstil. Fart och kraftöverföring upplevs mjuk och odramatisk - bra körkomfort för vardagsbruk snarare än sportighet.",
+    "vem_den_passar": "De som vill ha lite mer markfrigång och SUV-känsla än vanliga Corolla, men samma pålitliga hybridteknik och låga driftskostnad - familjer som kör mycket stad/landsväg.",
+    "styrkor": [
+      "Kombinerar Corollas pålitliga hybridteknik med SUV-praktikalitet",
+      "God körkomfort i stadskörning enligt Vildmarken",
+      "Hybridversionen betydligt piggare och mer bränslesnål än bensinvarianten"
+    ],
+    "att_tanka_pa": [
+      "Förarsätet kan enligt amerikanska Edmunds tappa stöd på längre resor, och vissa armstöd upplevs understoppade"
+    ],
+    "kallor": [
+      {
+        "titel": "Vildmarken testar: Toyota Corolla Cross Hybrid AWD-i",
+        "utgivare": "Vildmarken",
+        "url": "https://vildmarken.se/reportage/vildmarken-testar-toyota-corolla-cross-hybrid-awd-en-liten-suv-som-levererar-stort/"
+      },
+      {
+        "titel": "Tidningen Motor provkör Toyota Corolla Cross Hybrid",
+        "utgivare": "M Sverige",
+        "url": "https://msverige.se/allt-om-bilen/motor-provkor/corolla-cross-hybrid/"
+      }
+    ]
+  },
+  "Toyota Yaris Hybrid 115": {
+    "korupplevelse": "Smidig och avslappnad småbil som trivs allra bäst i stan, där elassistansen gör bilen mjuk från stillastående och automatlådan gör körningen enkel. Chassit är väl avstämt och sätena bekväma.",
+    "vem_den_passar": "Stadsbor och pendlare som vill ha en enkel, snål och lättkörd småbil utan krångel - en trygg förstabil eller andrabil.",
+    "styrkor": [
+      "Mycket låg bränsleförbrukning, särskilt i stadskörning",
+      "Enkel och avslappnad att köra",
+      "God komfort för baksätespassagerare eftersom batteriet inte tar plats där",
+      "Toyotas välkända hybridteknik och pålitlighet"
+    ],
+    "att_tanka_pa": [
+      "Ingen bil för den som söker körglädje eller sportighet"
+    ],
+    "kallor": [
+      {
+        "titel": "Provkörning: Toyota Yaris 1,5 Hybrid (2020)",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/biltester/provkorning/provkorning-toyota-yaris-15-hybrid-2020"
+      },
+      {
+        "titel": "Test: Toyota Yaris Hybrid",
+        "utgivare": "Högsta Växeln",
+        "url": "https://hogstavaxeln.se/2021/07/17/test-toyota-yaris-hybrid/"
+      }
+    ]
+  },
+  "Toyota Yaris Hybrid 130": {
+    "korupplevelse": "Samma avslappnade, stadsanpassade körkaraktär som Yaris Hybrid 115 men med starkare hybridsystem (130 hk) som ger piggare gaspådrag, exempelvis vid omkörning.",
+    "vem_den_passar": "De som gillar Yaris grundkoncept men vill ha lite mer kraft i reserv för landsväg och omkörningar.",
+    "styrkor": [
+      "Piggare acceleration än 115-versionen",
+      "Bibehåller Yaris låga förbrukning och lättkörda karaktär",
+      "Digital förarmiljö gör det enkelt att anpassa körningen"
+    ],
+    "att_tanka_pa": [
+      "Fortfarande en komfortinriktad, inte sportig, bil"
+    ],
+    "kallor": [
+      {
+        "titel": "Toyota Yaris Hybrid recension 2026: snål småbil som blivit dyr",
+        "utgivare": "Hurbra.se",
+        "url": "https://hurbra.se/toyota-yaris-hybrid-recension-2026/"
+      },
+      {
+        "titel": "Provkörning: Toyota Yaris Hybrid (2017)",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/biltester/provkorning/provkorning-toyota-yaris-hybrid-2017"
+      }
+    ]
+  },
+  "Toyota Yaris Cross Hybrid": {
+    "korupplevelse": "Stabil och behaglig körupplevelse - trots att den är större än en vanlig småbil känns Yaris Cross \"snärtig och lättkörd\". Bekväm fjädring med tydlig suv-känsla jämfört med systerbilen Yaris.",
+    "vem_den_passar": "De som vill ha lite mer markfrigång, sikt och suv-känsla än Yaris men samma lättkörda, snåla hybridkaraktär - bra för familjer i stad och på landsväg.",
+    "styrkor": [
+      "Lägst förbrukning och bekvämast fjädring i jämförelse med konkurrenter enligt Tidningen Motor",
+      "Helt digital förarmiljö",
+      "Bekväm och stabil körning trots högre kaross"
+    ],
+    "att_tanka_pa": [
+      "Något dyrare än vanliga Yaris"
+    ],
+    "kallor": [
+      {
+        "titel": "Bästa lilla crossover, Hyundai Bayon, Yaris eller...",
+        "utgivare": "M Sverige",
+        "url": "https://msverige.se/allt-om-bilen/motor-testar/bilar/basta-lilla-crossover-hyundai-bayon-yaris-eller-volkswagen-taigo/"
+      },
+      {
+        "titel": "PROV: Toyota Yaris Cross 1,5 Hybrid AWD",
+        "utgivare": "AutoMotorSport",
+        "url": "https://www.automotorsport.se/provkorningar/toyota-yaris-cross-15-hybrid-awd-korsfararen/"
+      }
+    ]
+  },
+  "Toyota Yaris Cross Hybrid 115": {
+    "korupplevelse": "Samma stabila, behagliga körupplevelse som övriga Yaris Cross-familjen, med den ursprungliga 116-hästars hybridmotorn (numer ersatt av en starkare 130 hk-variant i nyare bilar).",
+    "vem_den_passar": "Den som vill ha Yaris Cross praktiska SUV-format och låga förbrukning utan att betala för den starkaste motorvarianten.",
+    "styrkor": [
+      "Snål förbrukning",
+      "Lättkörd och smidig trots suv-formatet",
+      "Toyotas hybridpålitlighet"
+    ],
+    "att_tanka_pa": [
+      "Något svagare acceleration än 130-hästarsversionen"
+    ],
+    "kallor": [
+      {
+        "titel": "Toyota Yaris Cross uppdateras: ny hybrid, teknik och komfort - test",
+        "utgivare": "Carjoy",
+        "url": "https://carjoy.se/toyota-yaris-cross-test/"
+      }
+    ]
+  },
+  "Toyota GR Yaris": {
+    "korupplevelse": "En av de mest engagerande körupplevelserna i klassen: extremt responsiv och precis styrning där även små rattrörelser gör stor skillnad, och bilen kommunicerar tydligt hur mycket grepp som finns. Stel men ändå komfortabel fjädring fungerar lika bra i stan som på bankörning.",
+    "vem_den_passar": "Entusiaster och den som vill ha en riktig sportbilskänsla i en liten, vardagsanvändbar kaross - inte en bil för den som bara vill ha bekväm transport.",
+    "styrkor": [
+      "0-100 km/h på 5,5 sekunder",
+      "Världens mest effektfulla trecylindriga produktionsmotor (261 hk, 1,6-liters turbo)",
+      "Utmärkt vintergrepp och köregenskaper enligt flera svenska tester"
+    ],
+    "att_tanka_pa": [
+      "Fjädringen är stel jämfört med vanliga Yaris - komfortprioritering är sekundärt till körglädje"
+    ],
+    "kallor": [
+      {
+        "titel": "Provkörning Toyota GR Yaris",
+        "utgivare": "Eric's Eleven",
+        "url": "https://ericseleven.se/home/testdrive-toyota-gr-yaris"
+      },
+      {
+        "titel": "Test: Toyota GR Yaris – kan den bemästra Nürburgring?",
+        "utgivare": "AutoMotorSport / Mest Motor",
+        "url": "https://www.mestmotor.se/automotorsport/artiklar/biltester/20210531/test-toyota-gr-yaris/"
+      }
+    ]
+  },
+  "Toyota C-HR Hybrid": {
+    "korupplevelse": "Lätt och exakt styrning som svarar väl på förarens rörelser. Trivs allra bäst i stadsmiljö - pigg och lättkörd i lägre hastigheter med en skön, komfortabel tyngd i styrningen snarare än sportighet.",
+    "vem_den_passar": "Stadsbor som vill ha en stilren, lättkörd suv-coupé med Toyotas hybridpålitlighet - passar bäst för den som kör mest i stan.",
+    "styrkor": [
+      "Innovativ, uppmärksammad exteriördesign",
+      "Bekväma framsäten",
+      "Skön och lätt styrning",
+      "Låg förbrukning (0,33-0,38 l/mil)"
+    ],
+    "att_tanka_pa": [
+      "Styrningen är komfortabel snarare än sportig - inte en bil för körglädjesökande"
+    ],
+    "kallor": [
+      {
+        "titel": "Toyota C-HR hybrid: En suv som trivs bäst i stan",
+        "utgivare": "M3",
+        "url": "https://www.m3.se/article/1846332/toyota-c-hr-hybrid.html"
+      },
+      {
+        "titel": "Test av tre kompakta hybrider: Toyota C-HR, Nissan Juke och Hyundai Kona",
+        "utgivare": "M Sverige",
+        "url": "https://msverige.se/allt-om-bilen/motor-testar/bilar/tre-kompakta-hybrider-toyota-c-hr-nissan-juke-och-hyundai-kona/"
+      }
+    ]
+  },
+  "Toyota C-HR Hybrid AWD-i": {
+    "korupplevelse": "Samma lättkörda, stadsanpassade karaktär som C-HR Hybrid, men med Toyotas AWD-i-system som ger extra grepp och trygghet på hala vägar och i vinterväglag utan att tynga körupplevelsen i vardagen.",
+    "vem_den_passar": "De som gillar C-HR:s stil och lättkörda karaktär men vill ha fyrhjulsdriftens extra trygghet, t.ex. på landet eller i vintermiljö.",
+    "styrkor": [
+      "Extra grepp och vintertrygghet tack vare AWD-i",
+      "Behåller C-HR:s låga förbrukning och pålitliga hybridteknik",
+      "Innovativ design och bekväma framsäten"
+    ],
+    "att_tanka_pa": [
+      "AWD-i är ett stödsystem för extra grepp, inte en prestandalösning - fortsatt komfortkaraktär snarare än sportig"
+    ],
+    "kallor": [
+      {
+        "titel": "Toyota C-HR hybrid: En suv som trivs bäst i stan",
+        "utgivare": "M3",
+        "url": "https://www.m3.se/article/1846332/toyota-c-hr-hybrid.html"
+      }
+    ]
+  },
+  "Toyota C-HR+": {
+    "korupplevelse": "Toyotas nya, helt elektriska C-HR - en annan bil än hybrid-C-HR. Kom nära Skoda Elroq i jämförande test, med Euro NCAP:s högsta femstjärniga säkerhetsbetyg (85% vuxenskydd, 86% barnskydd).",
+    "vem_den_passar": "De som vill ha C-HR:s stiliga design men i helt eldriven form - pendlare med tillgång till hemmaladdning som prioriterar räckvidd (upp till ca 608 km WLTP med största batteriet) och säkerhet.",
+    "styrkor": [
+      "Full femstjärnig Euro NCAP-säkerhet 2025",
+      "Väljbart batteri: 57,7 kWh (upp till ca 455 km) eller 72 kWh (upp till ca 608 km)",
+      "Konkurrenskraftig i jämförelse med Skoda Elroq"
+    ],
+    "att_tanka_pa": [
+      "Mindre bagageutrymme än flera konkurrenter enligt What Car?"
+    ],
+    "kallor": [
+      {
+        "titel": "Toyota C-HR+ review: a little short on space, but excels almost everywhere else",
+        "utgivare": "What Car?",
+        "url": "https://www.whatcar.com/toyota/c-hr-plus/estate/review/n28276"
+      },
+      {
+        "titel": "Toyota C-HR+ Review 2026",
+        "utgivare": "Top Gear",
+        "url": "https://www.topgear.com/car-reviews/toyota/c-hr-0"
+      }
+    ]
+  },
+  "Toyota RAV4": {
+    "korupplevelse": "Driftsäkerheten är RAV4:s starkaste kort snarare än körglädje. Stabila och spänstiga köregenskaper, men avsaknaden av tydlig styrkänsla som fanns i tidigare generationer märks fortfarande i tester.",
+    "vem_den_passar": "Köpare som prioriterar pålitlighet, praktiskt utrymme och andrahandsvärde framför körupplevelse - en trygg, robust familje-suv, populär på den svenska begagnatmarknaden.",
+    "styrkor": [
+      "Mycket hög tillförlitlighet - toppar flera kvalitetsmätningar",
+      "Praktisk och rymlig kaross",
+      "Stor och stabil på svenska vägar"
+    ],
+    "att_tanka_pa": [
+      "Körglädjen är inte i topp, och äldre generationer har omoderna reglage och en del hårdplast i kupén"
+    ],
+    "kallor": [
+      {
+        "titel": "Begtest: Toyota RAV4",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/begbil/begtest-toyota-rav4-12553"
+      },
+      {
+        "titel": "Toyota RAV4 recension: Så bra är SUV-ikonen i test 2026",
+        "utgivare": "Hurbra.se",
+        "url": "https://hurbra.se/toyota-rav4/"
+      }
+    ]
+  },
+  "Toyota RAV4 Hybrid": {
+    "korupplevelse": "Inte sportig på något sätt, men bekväm, säker och lättkörd. Styrning och chassi är avstämda för trygghet snarare än körglädje - en bil byggd för att fungera lika bra på en femminuters som en femtimmars körning.",
+    "vem_den_passar": "Familjer som vill ha en rymlig, pålitlig och bränslesnål suv för vardag och längre resor, utan krav på sportig körkänsla.",
+    "styrkor": [
+      "Mycket stark bränsleekonomi för klassen (ca 0,52 l/mil blandat)",
+      "Genomtänkt, funktionell kupé för daglig användning",
+      "Toyotas hybridpålitlighet"
+    ],
+    "att_tanka_pa": [
+      "Körupplevelsen prioriterar komfort och trygghet, inte engagemang"
+    ],
+    "kallor": [
+      {
+        "titel": "Toyota Rav4 HEV: Prisvärd, praktisk och rymlig hybrid",
+        "utgivare": "M3",
+        "url": "https://www.m3.se/article/3135786/toyota-rav4-hev-test.html"
+      },
+      {
+        "titel": "Toyota Rav4 elhybrid ger dig mycket suv för pengarna",
+        "utgivare": "M3",
+        "url": "https://www.m3.se/article/1858810/toyota-rav4.html"
+      }
+    ]
+  },
+  "Toyota RAV4 Hybrid AWD-i": {
+    "korupplevelse": "Mätt körning snarare än sportig är RAV4:s styrka - harmonisk körupplevelse med robust känsla och låg förbrukning. AWD-i-systemet (separat 40 kW-elmotor på bakaxeln) ger extra trygghet och grepp i vinterväglag och slask.",
+    "vem_den_passar": "Familjer och de som ofta kör i vinterväglag eller på landet och vill ha fyrhjulsdriftens trygghet i en pålitlig, bekväm hybrid-suv för långa dagar bakom ratten.",
+    "styrkor": [
+      "Energieffektivt AWD-i-system ger extra grepp utan att tynga bränsleekonomin nämnvärt",
+      "Bekväm nog för långa resor utan att bli tröttande",
+      "Responsiv och jämn kraftleverans"
+    ],
+    "att_tanka_pa": [
+      "Fokus ligger på komfort och säkerhet, inte sportig körkänsla"
+    ],
+    "kallor": [
+      {
+        "titel": "Toyota RAV4 laddhybrid test",
+        "utgivare": "Carjoy",
+        "url": "https://carjoy.se/toyota-rav4-laddhybrid-test/"
+      },
+      {
+        "titel": "Test: Toyota RAV4 provkörd",
+        "utgivare": "Högsta Växeln",
+        "url": "https://hogstavaxeln.se/biltester/test-toyota-rav4-provkord-darfor-ar-den-varldens-mest-salda-bil/"
+      }
+    ]
+  },
+  "Toyota Aygo X": {
+    "korupplevelse": "Lättkörd och rolig i låga farter tack vare den låga vikten - i tätort upplevs den nästan löjligt lättkörd med fjäderlätt styrning och snäv svängradie. Hybridversionen går ofta på ren el i låg fart vilket gör upplevelsen mjukare och lugnare.",
+    "vem_den_passar": "Förstabilsköpare och stadsbor som vill ha en liten, smidig och lättparkerad bil med lite mini-suv-känsla utåt - inte för dem som regelbundet behöver ta med två vuxna i baksätet.",
+    "styrkor": [
+      "Extremt lättkörd och smidig i stadstrafik",
+      "Snäv svängradie underlättar parkering",
+      "Tuff, suv-liknande design trots litet format"
+    ],
+    "att_tanka_pa": [
+      "Begränsat benutrymme i baksätet - inte realistiskt för två vuxna",
+      "Topputrustade versioner kryper upp i pris"
+    ],
+    "kallor": [
+      {
+        "titel": "Test: Toyota Aygo X Hybrid – liten men naggande god stadsbil",
+        "utgivare": "M3",
+        "url": "https://www.m3.se/article/3079119/toyota-aygo-x-hybrid.html"
+      },
+      {
+        "titel": "Toyota Aygo X Hybrid Envy recension: Hur bra är den?",
+        "utgivare": "Hurbra.se",
+        "url": "https://hurbra.se/toyota-aygo-x/"
+      }
+    ]
+  },
+  "Toyota Auris Hybrid": {
+    "korupplevelse": "Smidig och lättkörd bil med en nästan perfekt fungerande hybridteknik - körningen upplevs mjuk, bekväm och avslappnad. Inte känd för körglädje, men pålitlig och enkel att ta sig fram i.",
+    "vem_den_passar": "Den praktiskt lagde begagnatköparen som vill ha en trygg, driftsäker och bränslesnål vardagsbil utan krav på spänning bakom ratten.",
+    "styrkor": [
+      "Mjuk och bekväm åkupplevelse",
+      "Enkel och lättkörd hybridteknik",
+      "Tyst i kupén vid låga hastigheter"
+    ],
+    "att_tanka_pa": [
+      "Vägbuller ökar märkbart vid högre hastighet och på ojämnt underlag",
+      "Ingen bil för den som söker körglädje"
+    ],
+    "kallor": [
+      {
+        "titel": "Långtestrapport: Toyota Auris",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/langtest/langtestrapport-toyota-auris"
+      },
+      {
+        "titel": "Test av Toyota Auris Touring Sports 1,8 HSD, en billig hybridbil!",
+        "utgivare": "Bytabil.net",
+        "url": "https://www.bytabil.net/test-av-toyota-auris-touring-sports-en-billig-hybridbil/"
+      }
+    ]
+  },
+  "Toyota Auris Touring Sports Hybrid": {
+    "korupplevelse": "Samma smidiga, avslappnade hybridkaraktär som Auris Hybrid, i kombiform med mer lastutrymme. Beskrivs i test som lättkörd tack vare den välfungerande hybridtekniken.",
+    "vem_den_passar": "Begagnatköpare som vill ha extra bagageutrymme jämfört med vanliga Auris, till ett förmånligt pris, utan att ge avkall på Toyotas pålitlighet.",
+    "styrkor": [
+      "Mer lastutrymme än femdörrars Auris",
+      "Bränslesnål och lättkörd hybridteknik",
+      "Prisvärt begagnatalternativ"
+    ],
+    "att_tanka_pa": [
+      "Vägbuller ökar vid högre fart",
+      "Ingen sportig körkaraktär"
+    ],
+    "kallor": [
+      {
+        "titel": "Test av Toyota Auris Touring Sports 1,8 HSD, en billig hybridbil!",
+        "utgivare": "Bytabil.net",
+        "url": "https://www.bytabil.net/test-av-toyota-auris-touring-sports-en-billig-hybridbil/"
+      },
+      {
+        "titel": "Provkörning: Toyota Auris Touring Sports Hybrid (2013)",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/biltester/provkorning/provkorning-toyota-auris-touring-sports-hybrid"
+      }
+    ]
+  },
+  "Toyota GR Supra": {
+    "korupplevelse": "Grand Turismo-känsla: hårt fjädrad men ändå bekväm att köra i vardagen, med samarbetsvillig drivlina även i lägre hastigheter. På torrt underlag är det en fröjd att kasta in den i kurvor - fin balans och snabb men aldrig nervös styrning.",
+    "vem_den_passar": "Sportbilsentusiaster som vill ha en renodlad, bakhjulsdriven känsla med rejäl motorkraft (340 hk radsexa) - inte en praktisk familjebil utan en ren körglädjesbil.",
+    "styrkor": [
+      "Kraftfull och responsiv B58-radsexa (delad med BMW) på 340 hk",
+      "Fin balans och exakt styrning i kurvtagning",
+      "Tillräcklig markfrigång för att klara farthinder trots sportig inställning"
+    ],
+    "att_tanka_pa": [
+      "Kupén upplevs trång och mörk med begränsad sikt framåt enligt flera testare",
+      "Delar mycket med systerbilen BMW Z4, vilket vissa recensenter påpekat"
+    ],
+    "kallor": [
+      {
+        "titel": "Nya Toyota Supra provkörd – med teknik från BMW",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/biltester/provkorning/provkorning-toyota-supra-2019"
+      },
+      {
+        "titel": "Toyota Supra (A90). Första körningen med nya Supra",
+        "utgivare": "Eric Lund",
+        "url": "https://ericlund.se/artiklar/toyota-supra-a90-forsta-korningen-med-nya-supra"
+      }
+    ]
+  },
+  "Toyota bZ4X": {
+    "korupplevelse": "Bjuder på körglädje med förtroendeingivande stabilitet och mjuka köregenskaper tack vare låg tyngdpunkt och fyrhjulsdrift. Svenska Högsta Växeln gav Touring-versionen 4,5 av 5 och berömde styrning, prestanda och praktiska egenskaper.",
+    "vem_den_passar": "Familjer som vill byta till elbil och vill ha en rymlig, stabil och praktisk kombi-elbil - jämförs ofta med Volvo EX60/EX30 och Skoda/VW:s elbilar.",
+    "styrkor": [
+      "Stabil och trygg körkänsla tack vare låg tyngdpunkt",
+      "Mycket lastutrymme - jämförs positivt med Volvo på pris och utrymme",
+      "Gott terränguppträdande enligt svenska tester"
+    ],
+    "att_tanka_pa": [
+      "Kupén har enligt Högsta Växeln vissa brister och kan upplevas bullrig",
+      "Framhjulsdrivna versionen har låg dragvikt enligt samma test"
+    ],
+    "kallor": [
+      {
+        "titel": "Tidningen Motor provkör Toyota BZ4X AWD",
+        "utgivare": "M Sverige",
+        "url": "https://msverige.se/allt-om-bilen/motor-provkor/toyota-bz4x-awd/"
+      },
+      {
+        "titel": "Prov: Toyota bz4x Touring – den nya Sverige-kombin som kör över Volvo",
+        "utgivare": "Elbilen.se",
+        "url": "https://elbilen.se/tester/prov-toyota-bz4x-touring-den-nya-sverige-kombin-som-kor-over-volvo/"
+      }
+    ]
+  },
+  "Toyota Proace": {
+    "korupplevelse": "Enkel att manövrera och skön att köra trots sin storlek, tack vare följsam fjädring, korrekt styrning och smal kaross. Ligger enligt testare nära personbilskomfort i körkänsla trots att det är en skåpbil.",
+    "vem_den_passar": "Hantverkare och företag som behöver en skåpbil/buss som körs nästan som en vanlig personbil, med god sikt och komfort under långa arbetsdagar.",
+    "styrkor": [
+      "Nära personbilskomfort trots skåpbilsformat",
+      "Hög förarposition med stor vindruta ger bra sikt",
+      "Höga betyg i internationella säkerhetstester - ovanligt för klassen",
+      "Smarta förvaringsutrymmen"
+    ],
+    "att_tanka_pa": [
+      "Fortfarande en skåpbil i grunden - storleken märks vid trånga manövrar"
+    ],
+    "kallor": [
+      {
+        "titel": "DMH provkör Toyota Proace",
+        "utgivare": "Den Moderna Hantverkaren",
+        "url": "https://dmh.nu/dmh-provkor-toyota-proace"
+      },
+      {
+        "titel": "Provkörning: Toyota Proace Verso (2019)",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/biltester/provkorning/provkorning-toyota-proace-verso-2019"
+      }
+    ]
+  },
+  "Toyota ProAce City Electric": {
+    "korupplevelse": "Kraftfull och direkt gaspådrag gör det enkelt att smita ut i trafiken eller starta med full last. Följer sina Stellantis-syskon som några av de bästa små eldrivna skåpbilarna att köra, med prydlig hantering och snäv svängradie (11,8 m).",
+    "vem_den_passar": "Företag och hantverkare med kortare dagliga körsträckor (verklig räckvidd ca 190-260 km) som vill elektrifiera sin transportflotta och samtidigt få Toyotas långa 10-åriga garanti.",
+    "styrkor": [
+      "Pigg och direkt acceleration trots eldrift",
+      "Snäv svängradie underlättar i trånga stadsmiljöer",
+      "Snabbladdning 10-80% på ca 30 minuter (100 kW)",
+      "10 års fabriksgaranti vid service hos Toyota-återförsäljare"
+    ],
+    "att_tanka_pa": [
+      "Verklig räckvidd (ca 190-260 km enligt brittiska tester) betydligt lägre än WLTP-siffran"
+    ],
+    "kallor": [
+      {
+        "titel": "Toyota Proace City Electric van Review 2026",
+        "utgivare": "What Car?",
+        "url": "https://www.whatcar.com/toyota/proace-city-electric/van/review/n23710"
+      },
+      {
+        "titel": "Toyota Proace City Electric review",
+        "utgivare": "DrivingElectric",
+        "url": "https://www.drivingelectric.com/toyota/proace/proace-city"
+      }
+    ]
+  },
+  "BMW 320d xDrive Touring": {
+    "korupplevelse": "Chassit beskrivs som balanserat till perfektion - trots fyrhjulsdriften känns bilen bakhjulsdriven tills xDrive-systemet verkligen behövs. Sömlös automatlåda och direkt gaspådrag både vid låga och höga varvtal.",
+    "vem_den_passar": "Den som vill ha en riktig \"drivers car\"-känsla i en praktisk kombi med fyrhjulsdriftens trygghet i svenskt vinterväglag.",
+    "styrkor": [
+      "Ett av segmentets bästa chassin enligt svensk press",
+      "xDrive ger utmärkt grepp i snö och halka",
+      "Tyst, påkostad kupé",
+      "Sömlös automatlåda med direkt respons"
+    ],
+    "att_tanka_pa": [
+      "Inget annat segment där bilen är marknadsledande förutom just körupplevelsen, enligt Tjänstebilen"
+    ],
+    "kallor": [
+      {
+        "titel": "REPOST: MotorApa provkör BMW 320d XDrive Touring",
+        "utgivare": "MotorApa",
+        "url": "http://www.motorapa.se/provkorningar-och-reportage/motorapa-provkor-bmw-320d-xdrive-touring/"
+      },
+      {
+        "titel": "Test BMW 320d xDrive Touring",
+        "utgivare": "Tjänstebilen",
+        "url": "https://tjanstebilen.se/Biltester/33232_Test_BMW_320d_xDrive_Touring"
+      }
+    ]
+  },
+  "Citroën Berlingo": {
+    "korupplevelse": "Körkänslan liknar en skåpbils med hög förarposition och bra sikt, men styrkänslan är inget att hurra för och understyrning märks vid mer aktiv körning i kurvor. I gengäld är komforten - särskilt i toppmotoriserade dieselversioner med automatlåda - mycket god.",
+    "vem_den_passar": "Barnfamiljer och de som prioriterar maximalt utrymme och flexibilitet (upp till sju säten) framför körglädje - en förnuftig, praktisk vardagsbil.",
+    "styrkor": [
+      "Mycket rymlig kupé - känns luftigare än de flesta konkurrenter",
+      "Flexibel lastyta, kan konfigureras med upp till sju säten",
+      "Bra sikt tack vare hög sittposition och smala stolpar"
+    ],
+    "att_tanka_pa": [
+      "Märkbar understyrning vid aktiv körning i kurvor",
+      "Styrkänslan är inget att skriva hem om"
+    ],
+    "kallor": [
+      {
+        "titel": "Provkörning: Citroën Berlingo (2018)",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/biltester/provkorning/provkorning-citroen-berlingo-2018"
+      },
+      {
+        "titel": "Biltest: Citroën Berlingo, Fiat Dobló",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/biltester/nybil/biltest-citron-berlingo-fiat-dobl-12172"
+      }
+    ]
+  },
+  "Kia Rio": {
+    "korupplevelse": "Ordet \"lätt\" beskriver körupplevelsen väl - lätt styrning, lätta pedaler och lätta växlingar. Lagom fast fjädring och ett väl kalibrerat antisladdsystem ger rappa och säkra köregenskaper, men trivs allra bäst i lägre stadshastigheter.",
+    "vem_den_passar": "Förstabilsköpare och stadsbor som vill ha en lättkörd, rymlig-för-sin-storlek småbil för i huvudsak stadskörning och det mindre vägnätet.",
+    "styrkor": [
+      "Ovanligt rymlig kupé för klassen, även på bredden",
+      "Lättkörd och smidig i stadstrafik med lätt styrning",
+      "Bra förarmiljö med tydliga instrument"
+    ],
+    "att_tanka_pa": [
+      "Trivs bäst i måttliga hastigheter - inte gjord för motorväg",
+      "Vissa motorvarianter upplevs omoderna av testare"
+    ],
+    "kallor": [
+      {
+        "titel": "Kulturbloggen testar Kia Rio – en liten bil som känns stor",
+        "utgivare": "Kulturbloggen",
+        "url": "https://kulturbloggen.com/?p=49934"
+      },
+      {
+        "titel": "Test Kia Rio 2017 – Vardagsbil som ger mycket för pengarna!",
+        "utgivare": "Bytabil.net",
+        "url": "https://www.bytabil.net/test-kia-rio-2017-vardagsbil-som-ger-mycket-for-pengarna/"
+      }
+    ]
+  },
+  "Kia Sportage": {
+    "korupplevelse": "Avslappnad körupplevelse - mjuk och lättkörd men inte direkt sportig trots rejält med hästkrafter (230 hk i elhybridutförande). Experter gillar rymligheten och säkerheten men lyfter fram att körupplevelsen lämnar en del att önska.",
+    "vem_den_passar": "Familjer som prioriterar rymlighet, hög säkerhetsutrustning som standard och ett tydligt formspråk framför sportig körkänsla.",
+    "styrkor": [
+      "Rymlig kupé",
+      "Många säkerhetssystem som standard, bland annat filhållningsassistens och autobroms med fotgängarskydd",
+      "Uppskattad dödavinkel-kamera som visas vid blinkers"
+    ],
+    "att_tanka_pa": [
+      "Körglädjen är enligt svenska tester inte i topp jämfört med konkurrenter"
+    ],
+    "kallor": [
+      {
+        "titel": "Tidningen Motor provkör Kia Sportage Hybrid AWD GT Line",
+        "utgivare": "M Sverige",
+        "url": "https://msverige.se/allt-om-bilen/motor-provkor/kia-sportage-hybrid/"
+      },
+      {
+        "titel": "Test: Kia Sportage – ny Volvo XC40-dödare",
+        "utgivare": "Dagens PS",
+        "url": "https://www.dagensps.se/motor/test-kia-sportage-ny-volvo-xc40-dodare/"
+      }
+    ]
+  },
+  "Lexus NX 450h+": {
+    "korupplevelse": "Bekväm laddhybrid där fjädringskomforten är den stora behållningen - sköna säten och en väl fungerande kombination av adaptiv farthållare och aktiv körfältsassistans. Nyare Overtrail-version har enligt tester åtgärdat tidigare tekniska barnsjukdomar.",
+    "vem_den_passar": "Den som vill ha en tyst, komfortabel och relativt räckviddsstark laddhybrid-suv (upp till ca 98 km eldrift i stad, WLTP) med Lexus lyxnivå, snarare än sportig körning.",
+    "styrkor": [
+      "Stark systemeffekt: 309 hk",
+      "God eldriven räckvidd för klassen (upp till 98 km stadskörning WLTP)",
+      "Låga CO2-utsläpp (20-26 g/km blandat)",
+      "Mycket bekväm fjädringskomfort"
+    ],
+    "att_tanka_pa": [
+      "Tidiga versioner hade enligt M3 en del tekniska problem och MMI-detaljer som stör - kontrollera att eventuella uppdateringar är gjorda"
+    ],
+    "kallor": [
+      {
+        "titel": "Test: Lexus NX 450h+ – läcker laddhybrid med tekniska brister",
+        "utgivare": "M3",
+        "url": "https://www.m3.se/article/1844926/test-lexus-nx-450h.html"
+      },
+      {
+        "titel": "Test: Lexus NX 450h+ Overtrail – laddhybrid med offroad-ambitioner",
+        "utgivare": "M3",
+        "url": "https://www.m3.se/article/2932261/lexus-nx-450h-overtrail-laddhybrid.html"
+      }
+    ]
+  },
+  "Lexus RX 450h+": {
+    "korupplevelse": "Riktigt skön att köra och färdas i på långresor - komfortabel fjädring, välisolerad kupé och tyst drivlina gör den enligt Högsta Växeln \"fantastisk\" som långdistansvagn. Ny plattform med längre axelavstånd och lägre tyngdpunkt ger fina köregenskaper när det går undan.",
+    "vem_den_passar": "Långväga pendlare och familjer som prioriterar lyxig komfort, tystnad och utrustningsnivå på längre resor framför det senaste inom laddhybridteknik.",
+    "styrkor": [
+      "Utmärkt komfort på långresor - lite vind- och vägljud",
+      "Tajta köregenskaper trots storlek och vikt",
+      "Påkostad utrustningsnivå, bland annat Mark Levinson-ljud"
+    ],
+    "att_tanka_pa": [
+      "Drivlinan upplevs enligt M3 som något omodern och den eldrivna räckvidden hade kunnat vara längre"
+    ],
+    "kallor": [
+      {
+        "titel": "Test: Lexus laddbara RX450h+ trivs bäst på motorvägen",
+        "utgivare": "M3",
+        "url": "https://www.m3.se/article/2473678/lexus-laddbara-rx450h-recension.html"
+      },
+      {
+        "titel": "Test: Lexus RX 450h på långtur till Åre",
+        "utgivare": "Högsta Växeln",
+        "url": "https://hogstavaxeln.se/2020/04/11/lexus-rx450h-pa-langtur-till-are/"
+      }
+    ]
+  },
+  "Mercedes-Benz CLA 220 d Shooting Brake": {
+    "korupplevelse": "Utmärkt väghållning som kan justeras via olika körlägen - rullar tyst och bekvämt, nästan som en större bil. Snabb och direkt styrning i kombination med sköna, formsydda säten ger direktkontakt med bilen.",
+    "vem_den_passar": "Den som vill ha en stilren, sportigt formgiven kombi med premiumkänsla och bra köregenskaper - mindre lämplig för dem som ofta behöver gott om utrymme i baksätet.",
+    "styrkor": [
+      "Snabb och direkt styrning",
+      "Bekväm och tyst vid normal körning, sportig när det behövs",
+      "Distinkt, uppmärksammad design"
+    ],
+    "att_tanka_pa": [
+      "Baksätesutrymmet är begränsat på grund av den kupéliknande designen - drar ner helhetsintrycket enligt flera tester"
+    ],
+    "kallor": [
+      {
+        "titel": "Test: Mercedes CLA 220d Shooting Brake: Underhållande och modern",
+        "utgivare": "M3",
+        "url": "https://www.m3.se/article/1850715/test-mercedes-cla-220-d-shooting-brake.html"
+      },
+      {
+        "titel": "PROV: Mercedes CLA Shooting Brake – den perfekta kompromissen?",
+        "utgivare": "AutoMotorSport",
+        "url": "https://www.automotorsport.se/provkorningar/prov-mercedes-cla-shooting-brake-den-perfekta-kompromissen/"
+      }
+    ]
+  },
+  "Nissan Qashqai": {
+    "korupplevelse": "Mjuk fjädring och bekväma säten även på längre resor - bilen kompenserar automatiskt för gupp och ojämnheter. Dynamiska egenskaper är inte prioriterade, vilket ger en \"båtkänsla\" vid mer äventyrlig körning, men det är helt i linje med förväntningarna på modellen.",
+    "vem_den_passar": "Familjer och pendlare som vill ha en bekväm, stressfri och lättkörd mellanstor suv - inte för den som vill ha sportig körkänsla.",
+    "styrkor": [
+      "Mjuk, komfortabel fjädring även på längre resor",
+      "Välfungerande autobroms som reagerar på fotgängare",
+      "e-Power-versionen ger en körkänsla som påminner om en ren elbil"
+    ],
+    "att_tanka_pa": [
+      "Mjuk fjädring ger en \"båtkänsla\" vid mer aktiv körning",
+      "Uppmuntrar inte till sportig körning"
+    ],
+    "kallor": [
+      {
+        "titel": "Test: Nissan Qashqai",
+        "utgivare": "Högsta Växeln",
+        "url": "https://hogstavaxeln.se/biltester/test-nissan-qashqai/"
+      },
+      {
+        "titel": "Test: Nissan Qashqai E-power (2024) – snål bensinare med elbilskänsla",
+        "utgivare": "M3",
+        "url": "https://www.m3.se/article/2476953/nissan-qashqai-e-power-test.html"
+      }
+    ]
+  },
+  "Peugeot 2008": {
+    "korupplevelse": "En behaglig och avkopplande bil att köra enligt motorjournalister, men flera tester lyfter fram att styrning och växellåda kan kännas något tyngre och stelare - den är inte gjord för att vara \"rolig\" att köra.",
+    "vem_den_passar": "Den lilla familjen eller stadsbon som vill ha en bekymmersfri, komfortabel liten suv med lyxig, säregen interiör (i-Cockpit) framför körglädje.",
+    "styrkor": [
+      "Lyxig och unik interiör (i-Cockpit)",
+      "God bränsleekonomi",
+      "Trygga säkerhetssystem",
+      "Bekväm och tyst i eldriven form (e-2008)"
+    ],
+    "att_tanka_pa": [
+      "Styrning och växellåda upplevs av flera testare som tyngre och stelare än konkurrenter - inte en \"rolig\" bil att köra"
+    ],
+    "kallor": [
+      {
+        "titel": "Peugeot 2008: Plus och minus",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/video/peugeot-2008-plus-och-minus"
+      },
+      {
+        "titel": "Peugeot e-2008 provkörd: Liten suv för små familjer",
+        "utgivare": "Dagens PS",
+        "url": "https://www.dagensps.se/motor/peugeot-e-2008-provkord-liten-suv-for-sma-familjer/"
+      }
+    ]
+  },
+  "Peugeot 308 SW": {
+    "korupplevelse": "Underhållande och bekväm körning - stabil och trygg på slingriga vägar trots att SW är längre än standard-308. I sportläge ger den enligt Högsta Växeln \"gott om körglädje\" med fin väghållning på mindre landsvägar.",
+    "vem_den_passar": "Familjer som vill ha en trendig, rymlig kombi med mer körglädje än genomsnittet i klassen - hela 1 736 liter last möjligt med nedfällda säten.",
+    "styrkor": [
+      "Ovanligt rymlig för klassen - mer baksätesutrymme än bland annat Volvo V60 enligt Nyteknik",
+      "Lastutrymme från 573 upp till 1 736 liter",
+      "Underhållande köregenskaper i sportläge",
+      "Ljus, luftig kupékänsla tack vare stor glasyta"
+    ],
+    "att_tanka_pa": [
+      "Inget särskilt utpekat - genomgående positiva omdömen i de svenska källorna"
+    ],
+    "kallor": [
+      {
+        "titel": "Provkörning: Peugeot e-308 SW",
+        "utgivare": "Högsta Växeln",
+        "url": "https://hogstavaxeln.se/biltester/peugeot-e-308-sw-provkord-kombin-alla-har-vantat-pa/"
+      },
+      {
+        "titel": "ANALYS: Peugeot 308 SW är speciell",
+        "utgivare": "Nyteknik",
+        "url": "https://www.nyteknik.se/fordon/analys-peugeot-308-sw-ar-speciell-utan-att-ge-det-dar-lilla-extra/674298"
+      }
+    ]
+  },
+  "Peugeot 508 SW": {
+    "korupplevelse": "Smidig i styret och bekväm att åka i även på sämre vägar, med fin balans. Köregenskaperna beskrivs av testare som lättplacerade, tajta och smidiga \"som en liten GTI\" - men Högsta Växeln tycker körupplevelsen är lite \"mesig\", som kaffe med mjölk.",
+    "vem_den_passar": "De som prioriterar design och stilren interiörkänsla i en stor kombi, och som uppskattar goda köregenskaper - men inte behöver maximalt bagageutrymme (endast 530 liter, litet för klassen).",
+    "styrkor": [
+      "Fin balans och smidig, lättplacerad hantering",
+      "Bra fjädrings- och ljudkomfort på slät väg",
+      "Uppseendeväckande exteriördesign"
+    ],
+    "att_tanka_pa": [
+      "Bara 530 liter bagageutrymme - snålt för en stor kombi",
+      "Interiörens funktion beskrivs som tvetydig trots snygg design",
+      "En källa upplever själva körupplevelsen som lite tam"
+    ],
+    "kallor": [
+      {
+        "titel": "Test: Peugeot 508 SW PHEV",
+        "utgivare": "Högsta Växeln",
+        "url": "https://hogstavaxeln.se/2020/09/12/test-peugeot-508-sw-phev/"
+      },
+      {
+        "titel": "Provkörning: Peugeot 508 SW",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/biltester/provkorning/provkorning-peugeot-508-sw"
+      }
+    ]
+  },
+  "Renault Clio": {
+    "korupplevelse": "Snabb liten bil med responsiv styrning som svarar väl på svenska landsvägar - beskrivs likna en 1990-talets GTI-känsla som uppmuntrar till pigg körning med den livliga 130-hästarsmotorn. Mjuk, modererad fjädring ger en bekväm färd utan att bli guppig.",
+    "vem_den_passar": "Den som vill ha en småbil med lite extra körglädje och en förvånansvärt lyxig kupékänsla - passar både stad och landsväg.",
+    "styrkor": [
+      "Responsiv styrning och pigg motor (130 hk)",
+      "Bekväm fjädring utan att kompromissa med köregenskaper",
+      "Tyst kupé, jämförbar med bilar i högre prisklass",
+      "Rymlig och säker för sin storlek"
+    ],
+    "att_tanka_pa": [
+      "Automatlådan är enligt tester varken särskilt snabb, mjuk eller responsiv - manuell växellåda rekommenderas"
+    ],
+    "kallor": [
+      {
+        "titel": "TEST: Europas mest sålda bilmodell - så klarar sig Renault Clio i Sverige",
+        "utgivare": "Carup.se",
+        "url": "https://carup.se/test-europas-mest-salda-bilmodell-sa-klarar-sig-renault-clio-i-sverige/"
+      },
+      {
+        "titel": "Småbilen Renault Clio imponerar på 500 mils långresa",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/langtest/smabilen-renault-clio-imponerar-pa-500-mils-langresa"
+      }
+    ]
+  },
+  "Renault Clio E-TECH": {
+    "korupplevelse": "Rymlig, säker, snål och trevlig att köra enligt Tidningen Motor. Bilen kör en stor andel av tiden på ren el vid stadskörning, är mjuk över ojämnheter och känns större och mer stabil vid högre hastigheter än vad formatet antyder.",
+    "vem_den_passar": "Den som vill ha en riktig, fullvärdig hybridlösning (inte bara mildhybrid) i en liten bil - bra för mycket stadskörning med enstaka landsvägsetapper.",
+    "styrkor": [
+      "Fullvärdig hybridteknik, inte bara mildhybrid, vilket ger riktigt låg förbrukning",
+      "Går en stor del av tiden på ren el i stadskörning",
+      "Mjuk och stabil känsla vid högre fart",
+      "Genuint rolig att köra enligt Tidningen Motor"
+    ],
+    "att_tanka_pa": [
+      "Automatlådans växlingar kan enligt nyare tester (160 hk-versionen) kännas något sena eftersom en elmotor synkroniserar växlingarna"
+    ],
+    "kallor": [
+      {
+        "titel": "Tidningen Motor provkör Renault Clio E-tech Fullhybrid",
+        "utgivare": "M Sverige",
+        "url": "https://msverige.se/allt-om-bilen/motor-provkor/renault-clio-e-tech-fullhybrid/"
+      },
+      {
+        "titel": "Renault Clio E-Tech 160 recension - hur bra är den?",
+        "utgivare": "Hurbra.se",
+        "url": "https://hurbra.se/renault-clio/"
+      }
+    ]
+  },
+  "Subaru XV": {
+    "korupplevelse": "Får bra betyg för styrning och väggrepp och upplevs skön och enkel att köra, även i terräng med X-Mode aktiverat. Motorn får dock enligt tester kämpa hårt vid acceleration oavsett underlag.",
+    "vem_den_passar": "Köpare som specifikt vill ha en Subaru för märkets karaktäristiska fyrhjulsdrift och terrängegenskaper - typiskt de som bor på landsbygden eller kör mycket i vinterväglag/på grusvägar.",
+    "styrkor": [
+      "Bra väggrepp och styrkänsla, även i terräng (X-Mode)",
+      "Bekväma säten genomgående i bilen",
+      "Robust fyrhjulsdrift som är Subarus signum"
+    ],
+    "att_tanka_pa": [
+      "Motorn kämpar enligt tester relativt hårt vid acceleration",
+      "Begränsat huvud- och benutrymme för långa personer, särskilt i baksätet"
+    ],
+    "kallor": [
+      {
+        "titel": "Test: Subaru XV e-Boxer",
+        "utgivare": "Högsta Växeln",
+        "url": "https://hogstavaxeln.se/2020/05/04/test-subaru-xv-e-boxer/"
+      },
+      {
+        "titel": "Test: Subaru XV 2.0i",
+        "utgivare": "Högsta Växeln",
+        "url": "https://hogstavaxeln.se/2018/08/05/subaru-xv-2/"
+      }
+    ]
+  },
+  "Volkswagen T-Cross": {
+    "korupplevelse": "Lätt och direkt styrning gör den enkel att köra i tät stadstrafik - stabil, trygg och förvånansvärt tyst på motorväg med en rolig körkänsla, men med tendens till understyrning när den framhjulsdrivna bilen pressas nära sina gränser i kurvor.",
+    "vem_den_passar": "Sveriges mest populära suv i sin klass (över 12 000 sålda) - passar den som vill ha en pigg, lättkörd och stadsanpassad liten suv för svenska förhållanden.",
+    "styrkor": [
+      "Sveriges mest sålda suv i klassen",
+      "Lätt och direkt styrning, lättkörd i stadstrafik",
+      "Stabil och överraskande tyst på motorväg",
+      "Väl lämpad för svenska väg- och väderförhållanden"
+    ],
+    "att_tanka_pa": [
+      "Fjädringen är stramare än många konkurrenter och bilen kränger märkbart i kurvor vid högre fart"
+    ],
+    "kallor": [
+      {
+        "titel": "Biltest: VW T-Cross – en självklar formel",
+        "utgivare": "Dagens PS",
+        "url": "https://www.dagensps.se/motor/biltest-vw-t-cross-lika-sjalvklar-som-einsteins-formel/"
+      },
+      {
+        "titel": "Provkörning: Volkswagen T-Cross (2019)",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/biltester/provkorning/provkorning-volkswagen-t-cross-2019"
+      }
+    ]
+  },
+  "Škoda Superb Kombi": {
+    "korupplevelse": "Glider över asfalten med en vaggande, mycket bekväm känsla - trygg, förutsägbar och lättkörd både på slingriga landsvägar och motorväg. Väl avvägd fjädring gör den enligt Högsta Växeln så bekväm att en resa från Lissabon till Stockholm skulle vara helt problemfri komfortmässigt.",
+    "vem_den_passar": "Familjer och långväga pendlare som vill ha maximal komfort, tystnad och utrymme i en klassisk, praktisk storkombi.",
+    "styrkor": [
+      "Mycket bekväm, väl avvägd fjädring för långa resor",
+      "Tyst kupé oavsett drivlina",
+      "Rymlig och praktisk - länge en favorit bland familjebilar",
+      "Trygg och förutsägbar på både landsväg och motorväg"
+    ],
+    "att_tanka_pa": [
+      "Prioriterar komfort framför sportig körkänsla"
+    ],
+    "kallor": [
+      {
+        "titel": "Test: Škoda Superb provkörd: Vad mer kan man önska?",
+        "utgivare": "Högsta Växeln",
+        "url": "https://hogstavaxeln.se/2024/03/17/test-skoda-superb-provkord-vad-mer-kan-man-onska/"
+      },
+      {
+        "titel": "Test: Superb, det smartaste kombivalet?",
+        "utgivare": "Nyteknik",
+        "url": "https://www.nyteknik.se/elbilar/test-superb-det-smartaste-kombivalet/548430"
+      }
+    ]
+  }
+}
