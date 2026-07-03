@@ -65,8 +65,8 @@ export default function LeadRad({ lead: initialLead }: { lead: Lead }) {
       </div>
 
       <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-600 mb-3">
-        {lead.telefon && <span>📞 {lead.telefon}</span>}
-        {lead.epost && <span>✉️ {lead.epost}</span>}
+        {lead.telefon && <span>Tel: {lead.telefon}</span>}
+        {lead.epost && <span>E-post: {lead.epost}</span>}
         {lead.onskatKontaktSatt && <span>Önskar: {lead.onskatKontaktSatt}</span>}
       </div>
 

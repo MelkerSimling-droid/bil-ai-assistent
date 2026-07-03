@@ -1,8 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
-const NAV_LANKAR = ["Bilar", "Service & verkstad", "Finansiering", "Kontakt"];
+const NAV_LANKAR = [
+  { text: "Bilar", href: "/", extern: false },
+  { text: "Finansiering", href: "https://toyota.simlingbil.se/finansiering/privatkund/toyota-billan/", extern: true },
+  { text: "Kontakt", href: "https://toyota.simlingbil.se/kontakt/strangnas/", extern: true },
+];
 
 export default function Header() {
   const [menyOppen, setMenyOppen] = useState(false);
@@ -25,18 +30,21 @@ export default function Header() {
       <div className="border-t-4 border-red-600" />
 
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <img src="/toyota-logo.jpg" alt="Toyota Simling Bil" className="h-10 w-auto" />
-        </div>
+        </Link>
 
         <nav className="hidden md:flex gap-8 text-sm text-gray-700 font-medium">
           {NAV_LANKAR.map((lank) => (
-            <span
-              key={lank}
+            <Link
+              key={lank.text}
+              href={lank.href}
+              target={lank.extern ? "_blank" : undefined}
+              rel={lank.extern ? "noopener noreferrer" : undefined}
               className="relative cursor-pointer py-1 transition-colors hover:text-red-600 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-red-600 after:transition-all after:duration-200 hover:after:w-full"
             >
-              {lank}
-            </span>
+              {lank.text}
+            </Link>
           ))}
         </nav>
 
@@ -61,9 +69,16 @@ export default function Header() {
       {menyOppen && (
         <nav className="md:hidden border-t border-gray-200 bg-white px-6 py-4 flex flex-col gap-4 text-sm font-medium text-gray-700">
           {NAV_LANKAR.map((lank) => (
-            <span key={lank} className="hover:text-red-600 transition-colors">
-              {lank}
-            </span>
+            <Link
+              key={lank.text}
+              href={lank.href}
+              target={lank.extern ? "_blank" : undefined}
+              rel={lank.extern ? "noopener noreferrer" : undefined}
+              onClick={() => setMenyOppen(false)}
+              className="hover:text-red-600 transition-colors"
+            >
+              {lank.text}
+            </Link>
           ))}
         </nav>
       )}

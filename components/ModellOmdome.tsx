@@ -15,34 +15,19 @@ export default function ModellOmdome({ modellinfo }: { modellinfo: ModellInfo })
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        {modellinfo.styrkor.length > 0 && (
-          <div>
-            <h3 className="text-sm font-semibold text-gray-500 mb-1.5">Styrkor enligt testare</h3>
-            <ul className="space-y-1.5">
-              {modellinfo.styrkor.map((s) => (
-                <li key={s} className="text-gray-700 text-sm flex gap-2">
-                  <span className="text-green-600 shrink-0">+</span>
-                  {s}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-        {modellinfo.att_tanka_pa.length > 0 && (
-          <div>
-            <h3 className="text-sm font-semibold text-gray-500 mb-1.5">Värt att tänka på</h3>
-            <ul className="space-y-1.5">
-              {modellinfo.att_tanka_pa.map((s) => (
-                <li key={s} className="text-gray-700 text-sm flex gap-2">
-                  <span className="text-gray-400 shrink-0">–</span>
-                  {s}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
+      {modellinfo.styrkor.length > 0 && (
+        <div className="mb-6">
+          <h3 className="text-sm font-semibold text-gray-500 mb-1.5">Styrkor enligt testare</h3>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1.5">
+            {modellinfo.styrkor.map((s) => (
+              <li key={s} className="text-gray-700 text-sm flex gap-2">
+                <span className="text-green-600 shrink-0">+</span>
+                {s}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {modellinfo.kallor.length > 0 && (
         <div className="border-t border-gray-100 pt-4">

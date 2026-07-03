@@ -1,10 +1,10 @@
 import type { LeadIntresse } from "@/lib/types";
 
-const KNAPPAR: { intresse: LeadIntresse; text: string; ikon: string }[] = [
-  { intresse: "provkorning", text: "Boka provkörning", ikon: "🚗" },
-  { intresse: "offert", text: "Begär offert", ikon: "📄" },
-  { intresse: "finansiering", text: "Räkna på finansiering", ikon: "💳" },
-  { intresse: "inbyte", text: "Fråga om inbyte", ikon: "🔄" },
+const KNAPPAR: { intresse: LeadIntresse; text: string }[] = [
+  { intresse: "provkorning", text: "Boka provkörning" },
+  { intresse: "offert", text: "Begär offert" },
+  { intresse: "finansiering", text: "Räkna på finansiering" },
+  { intresse: "inbyte", text: "Fråga om inbyte" },
 ];
 
 export default function CTASection({
@@ -18,9 +18,8 @@ export default function CTASection({
         <button
           key={knapp.intresse}
           onClick={() => onValjIntresse(knapp.intresse)}
-          className="flex flex-col items-center gap-1.5 text-center border border-gray-200 hover:border-red-300 hover:bg-red-50 rounded-lg px-3 py-4 transition-colors"
+          className="text-center border border-gray-200 hover:border-red-300 hover:bg-red-50 rounded-lg px-3 py-3.5 transition-colors"
         >
-          <span className="text-xl">{knapp.ikon}</span>
           <span className="text-sm font-medium text-gray-800">{knapp.text}</span>
         </button>
       ))}
