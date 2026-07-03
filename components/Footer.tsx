@@ -1,3 +1,11 @@
+import Link from "next/link";
+
+const SNABBLANKAR = [
+  { text: "Bilar", href: "/", extern: false },
+  { text: "Finansiering", href: "https://toyota.simlingbil.se/finansiering/privatkund/toyota-billan/", extern: true },
+  { text: "Kontakt", href: "https://toyota.simlingbil.se/kontakt/strangnas/", extern: true },
+];
+
 const SALJARE = {
   namn: "Simling Bil",
   adress: "Harvstigen 2, Strängnäs",
@@ -35,10 +43,17 @@ export default function Footer() {
           <div>
             <p className="font-semibold text-white mb-2">Snabblänkar</p>
             <div className="text-sm space-y-1">
-              <p className="hover:text-red-500 cursor-pointer transition-colors w-fit">Bilar</p>
-              <p className="hover:text-red-500 cursor-pointer transition-colors w-fit">Service & verkstad</p>
-              <p className="hover:text-red-500 cursor-pointer transition-colors w-fit">Finansiering</p>
-              <p className="hover:text-red-500 cursor-pointer transition-colors w-fit">Kontakt</p>
+              {SNABBLANKAR.map((lank) => (
+                <Link
+                  key={lank.text}
+                  href={lank.href}
+                  target={lank.extern ? "_blank" : undefined}
+                  rel={lank.extern ? "noopener noreferrer" : undefined}
+                  className="block hover:text-red-500 transition-colors w-fit"
+                >
+                  {lank.text}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
