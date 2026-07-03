@@ -15,14 +15,16 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-20 bg-white shadow-sm">
       <div className="bg-black text-gray-300 text-xs">
-        <div className="max-w-6xl mx-auto px-6 py-2 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <span className="hidden sm:inline">Harvstigen 2, Strängnäs</span>
-            <span className="hidden sm:inline text-gray-600">|</span>
+        <div className="max-w-6xl mx-auto px-6 py-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <span className="hidden lg:inline">Harvstigen 2, Strängnäs</span>
+            <span className="hidden lg:inline text-gray-600">|</span>
             <span>Mån–Tors 09:00–18:00</span>
+            <span className="whitespace-nowrap"><span className="text-gray-600">| </span>Fre 09:00–17:00</span>
+            <span className="whitespace-nowrap"><span className="text-gray-600">| </span>Lör 10:00–14:00</span>
           </div>
-          <a href="tel:+46000000000" className="font-medium text-white hover:text-red-500 transition-colors">
-            Ring oss
+          <a href="tel:+4615222300" className="font-medium text-white hover:text-red-500 transition-colors">
+            Ring oss: 0152-223 00
           </a>
         </div>
       </div>
