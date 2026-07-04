@@ -1,7 +1,51 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import type { ChattMeddelande } from "@/lib/types";
+
+// Enkel formatering av Busters svar: **fetstil** och "- punktlistor"
+// renderas på riktigt istället för att visas som råa asterisker/streck.
+function parseInline(text: string, keyPrefix: string): ReactNode[] {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((del, i) =>
+    del.startsWith("**") && del.endsWith("**") ? (
+      <strong key={`${keyPrefix}-${i}`}>{del.slice(2, -2)}</strong>
+    ) : (
+      <span key={`${keyPrefix}-${i}`}>{del}</span>
+    )
+  );
+}
+
+function Meddelandetext({ text }: { text: string }) {
+  const block: ReactNode[] = [];
+  let listrader: string[] = [];
+
+  function tommListan(key: string) {
+    if (listrader.length === 0) return;
+    block.push(
+      <ul key={key} className="list-disc list-inside space-y-0.5">
+        {listrader.map((rad, i) => (
+          <li key={i}>{parseInline(rad.replace(/^[-*]\s*/, ""), `${key}-${i}`)}</li>
+        ))}
+      </ul>
+    );
+    listrader = [];
+  }
+
+  text.split("\n").forEach((rad, i) => {
+    const trimmad = rad.trim();
+    if (trimmad.startsWith("- ") || trimmad.startsWith("* ")) {
+      listrader.push(trimmad);
+    } else {
+      tommListan(`lista-${i}`);
+      if (trimmad !== "") {
+        block.push(<p key={`p-${i}`}>{parseInline(rad, `p-${i}`)}</p>);
+      }
+    }
+  });
+  tommListan("lista-slut");
+
+  return <div className="space-y-1.5">{block}</div>;
+}
 
 export default function Chatt({
   bilId,
@@ -68,7 +112,7 @@ export default function Chatt({
                   : "bg-gray-100 text-gray-900 rounded-bl-sm"
               }`}
             >
-              {m.text}
+              {m.roll === "ai" ? <Meddelandetext text={m.text} /> : m.text}
             </div>
           </div>
         ))}
