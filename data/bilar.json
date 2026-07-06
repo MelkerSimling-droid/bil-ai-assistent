@@ -1,5 +1,124 @@
 [
   {
+    "id": "audi-a4-allroad-quattro-wlc465",
+    "modell": "Audi A4 allroad quattro",
+    "version": "2.0 TDI S Tronic Proline",
+    "pris": 184900,
+    "miltal": 19512,
+    "arsmodell": 2018,
+    "tillverkningsar": 2017,
+    "lagerstatus": "I lager",
+    "drivmedel": "Diesel",
+    "vaxellada": "Automat",
+    "drivning": "Fyrhjulsdrift",
+    "farg": "Grå",
+    "kaross": "CUV",
+    "segment": "Mellanstor premiumbil",
+    "registreringsnummer": "WLC465",
+    "antal_dorrar": 5,
+    "antal_saten": 5,
+    "vin": "WAUZZZF43JA047639",
+    "prestanda": {
+      "acceleration_0_100": "7.8 s",
+      "topphastighet_kmh": 220,
+      "hastkrafter": 190,
+      "motorvridmoment_nm": 400,
+      "motorvolym_cc": 1968,
+      "motorcylindrar": "4 Cyl. (Radmotor)"
+    },
+    "bransle": {
+      "forbrukning_kombinerad_nedc": "4.9 l/100km",
+      "forbrukning_stad": "5.5 l/100km",
+      "forbrukning_motorvag": "4.6 l/100km",
+      "co2_utslapp": "128 g/km",
+      "tankkapacitet_liter": 58,
+      "utslappsstandard": "Euro 6"
+    },
+    "skatt": {
+      "arlig_fordonsskatt": "1 989 kr/år"
+    },
+    "matt_och_vikt": {
+      "totalvikt_kg": 2245,
+      "tjanstevikt_kg": 1715,
+      "max_lastkapacitet_kg": 530,
+      "total_langd_cm": 476,
+      "total_bredd_cm": 185,
+      "total_hojd_cm": 149,
+      "hjulbas_cm": 282,
+      "markfrigang_cm": 17
+    },
+    "bagageutrymme": {
+      "volym_liter": 505,
+      "djup_mm": 1050,
+      "bredd_mm": 1000
+    },
+    "utrustning": [
+      "ABS-bromsar",
+      "ACC",
+      "Airbag förare",
+      "Airbag passagerare fram",
+      "Antisladd",
+      "Autobroms",
+      "AUX-ingång",
+      "Avstängningsbar airbag passagerare",
+      "Backstartshjälp",
+      "Barnlås",
+      "Bluetooth (handsfree)",
+      "Broms-assistans",
+      "CD-Stereo",
+      "Centrallås (fjärrstyrt)",
+      "Delbart baksäte",
+      "Dragkrok",
+      "Elhissar (fram och bak)",
+      "Elinfällbara sidospeglar"
+    ],
+    "sakerhet": [
+      "Låsningsfritt bromssystem (ABS)",
+      "Autonom nödbromsning (AEB)",
+      "Krockkudde avstängningsbrytare",
+      "Krockkudde front förare",
+      "Krockkudde front",
+      "Krockkudde sido-huvud",
+      "Krockkudde front passagerare",
+      "Krockkudde sido-bröst",
+      "Larm antistöld",
+      "Elektronisk bromsassistans",
+      "Centrallåsning",
+      "Barnsäkerhetslås",
+      "Barnstol ISOFIX bak",
+      "Krockkudde gardin",
+      "Nödsamtal (eCall)",
+      "Filhållningsassistent (LKA)",
+      "Regnsensorer",
+      "Stabilitetskontrollsystem (TCS)",
+      "Euro NCAP: 5 stjärnor (2015)"
+    ],
+    "beskrivning": "Audi A4 allroad quattro är en mellanstor premiumbil med fyrhjulsdrift och automat växellåda. Motorn lämnar 190 hk och tar bilen från 0-100 km/h på 7.8 s.",
+    "bilder": [
+      "https://cdn.wayke.se/cfit/v3/9bce0933876c4650bf44033e8964a976/cde371b5cdec48f69a57e248d7dfb2e2?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/8a5f0b897bfc4f398e192cead771ead3/a33bd87c018c4626ab3b57e7a950a935?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/837d458adcbc4c3aad54eb2781d92ad7/e0ef9dc3e17e4a92bbc5d507d16667d5?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/f889cbfc32914daa99de8162233aa940/35fcb1b97a1f457ab1b908b58648a00e?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/b5e4be790d0846e0a4bf027deaa50cdc/99baf5d162dc4879a327b0fee9949e29?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/2f14944789c54dba9057b1dd0d6b907b/e853f61db9c044ad93ae219c3fe4a5c2?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/910bc21bb89f41f2b6de8463e26110f4/03e21cd914fb4029889788b3bf9e8cf1?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/4b458baf00544cb8bb7411aa13e99966/da2fbbcc91f14c6ebefa289271725ca2?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/23c58d3baa154aafbce20b51b359e32e/0ac6a026a1c04e50b6dbf0c2a263a3d4?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/8c91821612af46889ebc91bbc5f3b41f/5c996e415b10462b8a6bffa0f6988bb9?format=jpeg&w=840"
+    ],
+    "saljare": {
+      "namn": "Simling Bil",
+      "ort": "Strängnäs",
+      "adress": "Harvstigen 2, Strängnäs",
+      "oppettider": {
+        "mandag_torsdag": "09:00 - 18:00",
+        "fredag": "09:00 - 17:00",
+        "lordag": "10:00 - 14:00",
+        "sondag": "Stängt"
+      }
+    }
+  },
+  {
     "id": "bmw-320d-xdrive-touring-ejw429",
     "modell": "BMW 320d xDrive Touring",
     "version": "Auto Sport line / V-hjul / Dragkrok",
@@ -2245,6 +2364,124 @@
     }
   },
   {
+    "id": "toyota-c-hr-phev-cxd03d",
+    "modell": "Toyota C-HR PHEV",
+    "version": "2,0 LADDHYBRID FWD STYLE TEKNIKPAKET BITONE",
+    "pris": 399900,
+    "miltal": 1034,
+    "arsmodell": 2025,
+    "tillverkningsar": 2025,
+    "lagerstatus": "I lager",
+    "drivmedel": "Bensin+El",
+    "vaxellada": "Automat",
+    "drivning": "Framhjulsdrift",
+    "farg": "Silver",
+    "kaross": "SUV",
+    "segment": "Liten SUV",
+    "registreringsnummer": "CXD03D",
+    "antal_dorrar": 5,
+    "antal_saten": 5,
+    "vin": "JTPABACA40R053856",
+    "prestanda": {
+      "acceleration_0_100": "7.4 s",
+      "topphastighet_kmh": 180,
+      "hastkrafter": 223,
+      "motorvridmoment_nm": 190,
+      "motorvolym_cc": 1987,
+      "motorcylindrar": "4 Cyl. (Radmotor)"
+    },
+    "bransle": {
+      "forbrukning_kombinerad_wltp": "4.9 l/100km",
+      "tankkapacitet_liter": 43,
+      "utslappsstandard": "Euro 6"
+    },
+    "skatt": {
+      "arlig_fordonsskatt": "360 kr/år"
+    },
+    "matt_och_vikt": {
+      "totalvikt_kg": 2130,
+      "tjanstevikt_kg": 1660,
+      "max_lastkapacitet_kg": 470,
+      "total_langd_cm": 436,
+      "total_bredd_cm": 183,
+      "total_hojd_cm": 156,
+      "hjulbas_cm": 264,
+      "markfrigang_cm": 15
+    },
+    "bagageutrymme": {
+      "volym_liter": 310,
+      "djup_mm": 765,
+      "bredd_mm": 1300
+    },
+    "utrustning": [
+      "Plug-in Hybrid",
+      "66 km el-drift",
+      "LM-fälgar 18\"",
+      "LED Strålkastare",
+      "Bakljus LED",
+      "Varselljus LED",
+      "Automatiskt helljus (AHB)",
+      "Dimljus LED",
+      "Strålkastarrengörare",
+      "Skymningsrelä",
+      "Vindruta uppvärmningsbar (de-icer)",
+      "Regnsensor",
+      "Fönsterhissar elmanövrerade",
+      "Mörktonade rutor",
+      "Smart digital nyckel",
+      "Centrallås fjärrstyrt",
+      "Nyckelfritt lås/tändningssystem",
+      "Elektriskt baklucka"
+    ],
+    "sakerhet": [
+      "Låsningsfritt bromssystem (ABS)",
+      "Autonom nödbromsning (AEB)",
+      "Krockkudde avstängningsbrytare",
+      "Krockkudde front förare",
+      "Krockkudde front",
+      "Krockkudde sido-huvud",
+      "Krockkudde knä",
+      "Krockkudde front passagerare",
+      "Krockkudde sido-bröst",
+      "Krockkudde sido-bäcken",
+      "Döda vinkel-övervakning (BLIS)",
+      "Elektronisk bromsassistans",
+      "Centrallåsning",
+      "Barnsäkerhetslås",
+      "Barnstol ISOFIX bak",
+      "Nödsamtal (eCall)",
+      "Filhållningsassistent (LKA)",
+      "Regnsensorer",
+      "Trafikskyltskanning",
+      "Stabilitetskontrollsystem (TCS)",
+      "Euro NCAP: 5 stjärnor (2024)"
+    ],
+    "beskrivning": "Toyota C-HR PHEV är en liten suv med framhjulsdrift och automat växellåda. Motorn lämnar 223 hk och tar bilen från 0-100 km/h på 7.4 s.",
+    "bilder": [
+      "https://cdn.wayke.se/cfit/v3/3e39ad47c35c478196fa0ff1afa8bfe0/32e866d377724e29898fa85cd1aebaf1?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/0768f20d55f0486cbf21f8eaa0435e81/99b864aca31b49d08a4f3de1a5a080f2?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/f5dcbb3b0f1740bfaf168126a64864ca/2b280e47d62349fca7aaff01653c28d1?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/2403fd6853b7406f9f82bef02e55ad9b/c949314c50f64212a329ab780c2a7795?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/73ca7b0f77104cd5bef61fb09507c574/c9d168125a6a400bae1ce3500a425cad?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/944fb05cadb34be7b813e6c494420898/443e6ae35f1f487497bbca13a857ffce?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/f2f64bcc01b74edbab79b774df647dce/0b17d1d219ce4f4da770a4bfa7d6c94d?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/86a20e6b20e248a2a15c4b646ba63dab/76a149acb8334b4288afef657d4db5fe?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/2cb21cc00e6041718485a8145f4aca68/2018298d54374931ac90986eb844c724?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/1d98e3d7566d4147bed42a0baae0682c/04c85d2d08374aad9a644933fdb3bcd6?format=jpeg&w=840"
+    ],
+    "saljare": {
+      "namn": "Simling Bil",
+      "ort": "Strängnäs",
+      "adress": "Harvstigen 2, Strängnäs",
+      "oppettider": {
+        "mandag_torsdag": "09:00 - 18:00",
+        "fredag": "09:00 - 17:00",
+        "lordag": "10:00 - 14:00",
+        "sondag": "Stängt"
+      }
+    }
+  },
+  {
     "id": "toyota-c-hr-kpd10u",
     "modell": "Toyota C-HR+",
     "version": "77 kWh AWD Executive Panorama JBL",
@@ -3525,6 +3762,96 @@
     }
   },
   {
+    "id": "toyota-proace-max-van-35-gcd29c",
+    "modell": "Toyota ProAce Max Van 35",
+    "version": "L3H2 180 hk Automat Professional / Värmare / Vinterhjul",
+    "pris": 479900,
+    "miltal": 1877,
+    "arsmodell": 2024,
+    "tillverkningsar": 2024,
+    "lagerstatus": "I lager",
+    "drivmedel": "Diesel",
+    "vaxellada": "8-stegad Automat",
+    "drivning": "Framhjulsdrift",
+    "farg": "Vit",
+    "kaross": "Skåpbil",
+    "segment": null,
+    "registreringsnummer": "GCD29C",
+    "pris_exkl_moms": 383920,
+    "antal_dorrar": 4,
+    "antal_saten": 3,
+    "vin": "YARTCG8FXRMA63102",
+    "prestanda": {
+      "topphastighet_kmh": 161,
+      "hastkrafter": 180,
+      "motorvridmoment_nm": 450,
+      "motorvolym_cc": 2184,
+      "motorcylindrar": "4 Cyl. (Radmotor)"
+    },
+    "bransle": {
+      "forbrukning_kombinerad_wltp": "8.7 l/100km",
+      "tankkapacitet_liter": 90,
+      "utslappsstandard": "Euro 6"
+    },
+    "skatt": {
+      "arlig_fordonsskatt": "6 337 kr/år",
+      "malus": "22 929 kr/år"
+    },
+    "matt_och_vikt": {
+      "totalvikt_kg": 3500,
+      "tjanstevikt_kg": 2135,
+      "max_lastkapacitet_kg": 1365,
+      "total_langd_cm": 599,
+      "total_bredd_cm": 205,
+      "total_hojd_cm": 252
+    },
+    "utrustning": [
+      "LM-Fälgar 16\"",
+      "Varselljus LED",
+      "Strålkastare LED",
+      "Automatiskt helljus",
+      "Dimljus fram",
+      "Ljussensor",
+      "Regnsensor",
+      "Centrallås (fjärrstyrt)",
+      "Nyckelfritt lås och tändningssystem",
+      "Sidobackspeglar eljusterbara",
+      "Elinfällbara sidospeglar",
+      "Eluppvärmda sidospeglar",
+      "Vindruta eluppvärmd",
+      "Parkeringssensorer",
+      "Luftkonditionering automatisk (AAC)",
+      "Sätesvärme",
+      "Uppfällbart bord i mittsäte",
+      "Sidodörrar skjutbara 2 st"
+    ],
+    "sakerhet": [],
+    "beskrivning": "Toyota ProAce Max Van 35 är en skåpbil med framhjulsdrift och 8-stegad automat växellåda. Motorn lämnar 180 hk.",
+    "bilder": [
+      "https://cdn.wayke.se/cfit/v3/cf5fae4acd444a2f80d93fa3cab25aff/65d3f07de0a645f6a20ca88464f2de39?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/a8c49a46eab34063976e739c53b9ba91/b2e775328e6b4fbc84957363264f4795?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/0d92d5bfe3374918b73da9504978eb37/04f29ea763854ca5a17d491feaa11de3?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/7da7ba98cf8b4f6b8ee0b99aee25f62b/99c407d032e646cc82e8badd2e0cfa9a?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/c323a579855b4aa198c7ba3737f0a123/0c77170504a64f208e801407ad4799cf?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/83281b7ff9ea45a28633bffeeaf46f91/1753e6ff67a443d399e02b0b50479126?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/236fb8d03ada433789a2e18819451c0d/e8648b88b115433c80968132a69945ec?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/86b03eebb6814cab8b5df0d1074b6f61/4ccbf23752a548df922d28af66f98262?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/13cc5aeab53241f184ac55e9a1f2aba5/1dc916887a7f4059aa908c4783f01835?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/0eb432c069704129beda1dfcf929c2ce/879a8fb9d1484ef69dc6ca42113ea7f2?format=jpeg&w=840"
+    ],
+    "saljare": {
+      "namn": "Simling Bil",
+      "ort": "Strängnäs",
+      "adress": "Harvstigen 2, Strängnäs",
+      "oppettider": {
+        "mandag_torsdag": "09:00 - 18:00",
+        "fredag": "09:00 - 17:00",
+        "lordag": "10:00 - 14:00",
+        "sondag": "Stängt"
+      }
+    }
+  },
+  {
     "id": "toyota-proace-unw77p",
     "modell": "Toyota Proace",
     "version": "LONG 2,0 120 HK COMFORT",
@@ -4339,7 +4666,7 @@
     "modell": "Toyota Yaris Cross Hybrid",
     "version": "HSD 1,5 ACTIVE TAKRELING Drag, Vinterhjul",
     "pris": 249900,
-    "miltal": 2500,
+    "miltal": 2670,
     "arsmodell": 2022,
     "tillverkningsar": 2022,
     "lagerstatus": "I lager",
@@ -4689,6 +5016,120 @@
     }
   },
   {
+    "id": "toyota-yaris-hybrid-130-chd49p",
+    "modell": "Toyota Yaris Hybrid 130",
+    "version": "1,5 5D STYLE JBL PANORAMATAK",
+    "pris": 299900,
+    "miltal": 425,
+    "arsmodell": 2025,
+    "tillverkningsar": 2025,
+    "lagerstatus": "I lager",
+    "drivmedel": "Bensin+El",
+    "vaxellada": "Automat",
+    "drivning": "Framhjulsdrift",
+    "farg": "Vit",
+    "kaross": "Halvkombi",
+    "segment": "Liten Familjebil",
+    "registreringsnummer": "CHD49P",
+    "antal_dorrar": 5,
+    "antal_saten": 5,
+    "vin": "VNKKFAF370A018446",
+    "prestanda": {
+      "acceleration_0_100": "9.2 s",
+      "topphastighet_kmh": 175,
+      "hastkrafter": 130,
+      "motorvridmoment_nm": 120,
+      "motorvolym_cc": 1490,
+      "motorcylindrar": "3 Cyl. (Radmotor)"
+    },
+    "bransle": {
+      "forbrukning_kombinerad_wltp": "3.9 l/100km",
+      "tankkapacitet_liter": 36,
+      "utslappsstandard": "Euro 6"
+    },
+    "skatt": {
+      "arlig_fordonsskatt": "360 kr/år",
+      "malus": "2 607 kr/år"
+    },
+    "matt_och_vikt": {
+      "totalvikt_kg": 1615,
+      "tjanstevikt_kg": 1140,
+      "max_lastkapacitet_kg": 475,
+      "total_langd_cm": 394,
+      "total_bredd_cm": 175,
+      "total_hojd_cm": 150,
+      "hjulbas_cm": 256
+    },
+    "bagageutrymme": {
+      "volym_liter": 286,
+      "djup_mm": 630,
+      "bredd_mm": 1004
+    },
+    "utrustning": [
+      "ABS-bromsar",
+      "ACC",
+      "Airbag förare",
+      "Airbag passagerare fram",
+      "Akustikrutor",
+      "Antisladd",
+      "Autobroms",
+      "Avstängningsbar airbag passagerare",
+      "Backkamera",
+      "Backstartshjälp",
+      "Bagagerumsmatta",
+      "Barnlås",
+      "Bluetooth (handsfree)",
+      "Centrallås (fjärrstyrt)",
+      "Delbart baksäte",
+      "Digitalradio (DAB)",
+      "Digitalt mätarhus",
+      "Dimljus fram"
+    ],
+    "sakerhet": [
+      "Låsningsfritt bromssystem (ABS)",
+      "Autonom nödbromsning (AEB)",
+      "Krockkudde avstängningsbrytare",
+      "Krockkudde front förare",
+      "Krockkudde front",
+      "Krockkudde front passagerare",
+      "Krockkudde sido-bröst",
+      "Döda vinkel-övervakning (BLIS)",
+      "Centrallåsning",
+      "Barnsäkerhetslås",
+      "Barnstol ISOFIX bak",
+      "Krockkudde gardin",
+      "Nödsamtal (eCall)",
+      "Filhållningsassistent (LKA)",
+      "Regnsensorer",
+      "Trafikskyltskanning",
+      "Stabilitetskontrollsystem (TCS)"
+    ],
+    "beskrivning": "Toyota Yaris Hybrid 130 är en liten familjebil med framhjulsdrift och automat växellåda. Motorn lämnar 130 hk och tar bilen från 0-100 km/h på 9.2 s.",
+    "bilder": [
+      "https://cdn.wayke.se/cfit/v3/229407a7e7cc45439502ea76e55989d2/1d83dadf827a4e81a9d71f0c80d1c695?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/db7f4614d258432481c38cf598e74db0/e05034b3fbe043619cbb0f0695fd379c?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/13285b9c34c04a21b35cee3a89f96f97/9845c7e683ef44a182f20f09867436f4?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/ccc4ec3e95354aa39f9b4cbbc07f91a9/befe09da2d754f828128fd27a6be4e91?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/3fa523ed84d84722a9013dc3dc4507a9/42191e821e0041348182bc1b48d52e82?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/6a22a9f436234259a24a9a4d2aa1637f/d8da9ced74f84ff795749aeec7ea9f28?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/bfabc4b874984596986a72259bd8ddd5/02b76fe8fba14599871098fc0cb05feb?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/fd613ab4528a42cdbcef038631bb45d7/94d1d0c985fb4e04b4b5129ce91b8872?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/aff991ef47ca469d81dc28cc4a739ad0/c9c1a5fef48b4392920e3b09ebac872a?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/1f92a872173840a3ba1e30fdc9f89367/61af351a03cc48b39a42c1a87b8b95c6?format=jpeg&w=840"
+    ],
+    "saljare": {
+      "namn": "Simling Bil",
+      "ort": "Strängnäs",
+      "adress": "Harvstigen 2, Strängnäs",
+      "oppettider": {
+        "mandag_torsdag": "09:00 - 18:00",
+        "fredag": "09:00 - 17:00",
+        "lordag": "10:00 - 14:00",
+        "sondag": "Stängt"
+      }
+    }
+  },
+  {
     "id": "toyota-yaris-hybrid-130-jbk59z",
     "modell": "Toyota Yaris Hybrid 130",
     "version": "1,5 Style Bi-tone JBL / Vinterhjul",
@@ -4768,6 +5209,127 @@
       "https://cdn.wayke.se/cfit/d3db9b22-275a-47dd-958f-689040373af0/c8d415ea-3b96-4510-807c-b70f8c2d1fcb?format=jpeg&w=840",
       "https://cdn.wayke.se/cfit/19eb39de-b1d0-4a3a-ba8e-059b54a6a7b9/4247a860-6d07-4a04-940d-26646183e8d4?format=jpeg&w=840",
       "https://cdn.wayke.se/cfit/edaba6a1-2657-4ac2-99cb-7ace252e78c9/b415309f-01e7-4c98-8b99-3fa5fbc8ccb3?format=jpeg&w=840"
+    ],
+    "saljare": {
+      "namn": "Simling Bil",
+      "ort": "Strängnäs",
+      "adress": "Harvstigen 2, Strängnäs",
+      "oppettider": {
+        "mandag_torsdag": "09:00 - 18:00",
+        "fredag": "09:00 - 17:00",
+        "lordag": "10:00 - 14:00",
+        "sondag": "Stängt"
+      }
+    }
+  },
+  {
+    "id": "toyota-bz4x-jcm52p",
+    "modell": "Toyota bZ4X",
+    "version": "71.4 kWh AWD Executive / 20\" Fälgar / Panorama / Drag / Vinterhjul",
+    "pris": 319900,
+    "miltal": 11368,
+    "arsmodell": 2023,
+    "tillverkningsar": 2023,
+    "lagerstatus": "I lager",
+    "drivmedel": "El",
+    "vaxellada": "Automat",
+    "drivning": "Fyrhjulsdrift",
+    "farg": "Blå",
+    "kaross": "SUV",
+    "segment": "Mellanstor SUV",
+    "registreringsnummer": "JCM52P",
+    "pris_exkl_moms": 255920,
+    "antal_dorrar": 5,
+    "antal_saten": 5,
+    "vin": "JTMABBBA60A020442",
+    "prestanda": {
+      "acceleration_0_100": "6.9 s",
+      "topphastighet_kmh": 160,
+      "hastkrafter": 217,
+      "motorvridmoment_nm": 336
+    },
+    "bransle": {
+      "elforbrukning_wltp": "16.2 kWh/100km",
+      "elrackvidd_wltp": "415 km",
+      "batterikapacitet_kwh": 71,
+      "co2_utslapp": "0 g/km"
+    },
+    "skatt": {
+      "arlig_fordonsskatt": "360 kr/år"
+    },
+    "matt_och_vikt": {
+      "totalvikt_kg": 2550,
+      "tjanstevikt_kg": 2085,
+      "max_lastkapacitet_kg": 465,
+      "total_langd_cm": 469,
+      "total_bredd_cm": 186,
+      "total_hojd_cm": 165,
+      "hjulbas_cm": 285,
+      "markfrigang_cm": 18
+    },
+    "bagageutrymme": {
+      "volym_liter": 452
+    },
+    "utrustning": [
+      "LM-Fälgar 20\"",
+      "Adaptiva LED Strålkastare",
+      "Varselljus LED",
+      "Kombinationsljus bak LED",
+      "Automatiskt helljus (AHB)",
+      "LED Blinkers",
+      "Strålkastarrengörare",
+      "Nyckelfritt lås/tändningssystem",
+      "Sidobackspeglar eluppvärmda",
+      "Sidobackspeglar eljusterbara",
+      "Backspegel auto avbländande",
+      "Mörktonade rutor bak",
+      "Panoramaglastak",
+      "Baklucka fjärrstyrd",
+      "Baklucka elmanövrerad",
+      "Vindrutetorkare med regnsensor",
+      "P-sensorer fram och bak",
+      "Teammate Advanced Park"
+    ],
+    "sakerhet": [
+      "Låsningsfritt bromssystem (ABS)",
+      "Autonom nödbromsning (AEB)",
+      "Krockkudde avstängningsbrytare",
+      "Krockkudde front förare",
+      "Krockkudde front",
+      "Krockkudde sido-huvud",
+      "Krockkudde knä",
+      "Krockkudde front passagerare",
+      "Krockkudde sido-bröst",
+      "Krockkudde sido-bäcken",
+      "Larm antistöld",
+      "Döda vinkel-övervakning (BLIS)",
+      "Elektronisk bromsassistans",
+      "Centrallåsning",
+      "Barnsäkerhetslås",
+      "Barnstol ISOFIX bak",
+      "Krockkudde gardin",
+      "Föraruppmärksamhetsvarning (DAW)",
+      "Filhållningsassistent (LKA)",
+      "Parkeringsassistans",
+      "Parkeringssensorer fram",
+      "Parkeringssensorer bak",
+      "Regnsensorer",
+      "Trafikskyltskanning",
+      "Stabilitetskontrollsystem (TCS)",
+      "Euro NCAP: 5 stjärnor (2022)"
+    ],
+    "beskrivning": "Toyota bZ4X är en mellanstor suv med fyrhjulsdrift och automat växellåda. Motorn lämnar 217 hk och tar bilen från 0-100 km/h på 6.9 s.",
+    "bilder": [
+      "https://cdn.wayke.se/cfit/v3/0c61ea989bc64ec69315d74cd25071b3/408b8997a5de4d069478badef418752b?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/d893959142774587aea261c5d96029f0/fd8c8ca599af4b0cb1e3234725a6a13c?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/e227b1a2239d4760bbad5385934c2d7f/2f83927c96dd401b8315f03e42338bc8?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/02e49dc01f344cef9fef902d5f51c138/10fd3d7f4f62456aaea3393e8a4813c1?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/6c6ea44ff93845bd9cb0481b73d006d5/c388a613538e40758a8455b7c6978799?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/f4a8e628bca44d8ea800ee9c14c82f88/75ac169584e541aa86d046c1040c8e23?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/0fa0d4d42cea481aa8cb95a38b04359e/0d41b18048004fd6b415c033e584f9d4?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/4d1abe34349b4180b746376f22db248b/f178fedcb7f44328bcebd82cf235760b?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/86ef2ab9079340799173d5afc0ed68d1/2f4f4366466243d3a74d3185040ebaa2?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/aa894790d1434f2994afb30bd0536eb3/04813fbb11a14a35a53654c284ffc591?format=jpeg&w=840"
     ],
     "saljare": {
       "namn": "Simling Bil",
