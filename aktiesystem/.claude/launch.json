@@ -2,19 +2,13 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "dev",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "port": 3000
-    },
-    {
       "name": "aktiesystem-dashboard",
-      "runtimeExecutable": "aktiesystem/.venv/bin/python",
+      "runtimeExecutable": ".venv/bin/python",
       "runtimeArgs": [
         "-m",
         "streamlit",
         "run",
-        "aktiesystem/dashboard/app.py",
+        "dashboard/app.py",
         "--server.headless",
         "true",
         "--server.port",

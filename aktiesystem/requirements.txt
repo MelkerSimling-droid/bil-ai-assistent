@@ -1,0 +1,20 @@
+# Kärnberoenden
+pandas>=2.2
+numpy>=1.26
+yfinance>=0.2.40
+scipy>=1.12
+PyYAML>=6.0
+python-dotenv>=1.0
+requests>=2.31
+
+# Sentiment (lexikonbaserad, engelska)
+vaderSentiment>=3.3.2
+
+# Dashboard
+streamlit>=1.35
+plotly>=5.20
+
+# Test och kodkvalitet
+pytest>=8.0
+black>=24.0
+ruff>=0.4

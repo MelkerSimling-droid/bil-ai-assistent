@@ -1,0 +1,24 @@
+# Hemligheter — får ALDRIG checkas in
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Data och loggar (reproducerbar cache, ingen källkod)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+logs/*
+!logs/.gitkeep
+
+# Notebooks-checkpoints
+notebooks/.ipynb_checkpoints/
+
+# OS
+.DS_Store

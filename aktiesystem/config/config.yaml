@@ -1,0 +1,67 @@
+# Central konfiguration för aktiesystemet.
+# API-nycklar läggs ALDRIG här — de hör hemma i .env (se config/.env.example).
+
+# Bevakningslista: tickers i Yahoo Finance-format.
+# Svenska aktier har suffixet .ST (Stockholmsbörsen).
+watchlist:
+  - VOLV-B.ST
+  - INVE-B.ST
+  - ERIC-B.ST
+  - HM-B.ST
+  - AAPL
+  - MSFT
+
+# Mina innehav: ticker -> antal aktier. Används av översiktssidan.
+# Lämna tomt ({}) om du inte vill lägga in din portfölj.
+holdings:
+  VOLV-B.ST: 50
+  INVE-B.ST: 30
+  AAPL: 10
+
+# Basvaluta: alla innehav i översikten räknas om till denna valuta
+# med senaste växelkurs från Yahoo (t.ex. USDSEK=X).
+base_currency: "SEK"
+
+# Jämförelseindex för backtester (Yahoo-format).
+# ^OMX = OMX Stockholm 30. Byt till ^GSPC (S&P 500) för USA-fokus.
+benchmark: "^OMX"
+
+data:
+  # Var cachead rådata lagras (SQLite-fil, skapas automatiskt).
+  cache_db: "data/raw/market_data.sqlite"
+  # Hur många dagar historik som hämtas vid första synk.
+  history_period: "10y"
+  # Anses cachen färsk om den uppdaterats inom så här många timmar.
+  max_cache_age_hours: 12
+  # Retry-inställningar för nätverksanrop.
+  max_retries: 4
+  backoff_base_seconds: 2.0
+
+risk:
+  # Riskbelopp per position som andel av portföljvärdet (0.01 = 1 %).
+  risk_per_trade: 0.01
+  # Konfidensnivå för Value at Risk (0.95 = 95 %).
+  var_confidence: 0.95
+  # Årlig riskfri ränta som decimal, används i Sharpe/Sortino.
+  risk_free_rate: 0.02
+
+backtest:
+  start_capital: 100000        # SEK
+  courtage_fixed: 0.0          # fast avgift per affär (SEK)
+  courtage_percent: 0.00069    # 0.069 % ≈ Avanza/Nordnet "Mini"-klass
+  courtage_min: 1.0            # minimicourtage per affär (SEK)
+  slippage_percent: 0.0005     # 0.05 % prisförsämring per affär
+
+portfolio:
+  # Antal punkter på efficient frontier.
+  frontier_points: 40
+  # Tillåt blankning i optimeringen? (false = endast långa positioner)
+  allow_short: false
+
+sentiment:
+  # Max antal nyhetsrubriker per ticker och hämtning.
+  max_headlines: 25
+
+logging:
+  level: "INFO"
+  directory: "logs"
