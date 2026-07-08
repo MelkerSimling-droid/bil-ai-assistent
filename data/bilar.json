@@ -233,116 +233,6 @@
     }
   },
   {
-    "id": "citroen-berlingo-szh57f",
-    "modell": "Citroën Berlingo",
-    "version": "1.2 Multispace PureTech Aut 130 / Vinterhjul",
-    "pris": 249900,
-    "miltal": 3243,
-    "arsmodell": 2020,
-    "tillverkningsar": 2020,
-    "lagerstatus": "I lager",
-    "drivmedel": "Bensin",
-    "vaxellada": "Automat",
-    "drivning": "Framhjulsdrift",
-    "farg": "Vit",
-    "kaross": "Skåpbil",
-    "segment": "Minibuss",
-    "registreringsnummer": "SZH57F",
-    "antal_dorrar": 4,
-    "antal_saten": 5,
-    "vin": "VR7ERHNS3LJ606543",
-    "prestanda": {
-      "acceleration_0_100": "12.3 s",
-      "topphastighet_kmh": 186,
-      "hastkrafter": 131,
-      "motorvridmoment_nm": 230,
-      "motorvolym_cc": 1199,
-      "motorcylindrar": "3 Cyl. (Radmotor)"
-    },
-    "bransle": {
-      "forbrukning_kombinerad_wltp": "7 l/100km",
-      "forbrukning_kombinerad_nedc": "5.4 l/100km",
-      "forbrukning_stad": "6.2 l/100km",
-      "forbrukning_motorvag": "4.9 l/100km",
-      "co2_utslapp": "123 g/km",
-      "tankkapacitet_liter": 60,
-      "utslappsstandard": "Euro 6"
-    },
-    "skatt": {
-      "arlig_fordonsskatt": "1 394 kr/år"
-    },
-    "matt_och_vikt": {
-      "totalvikt_kg": 2090,
-      "tjanstevikt_kg": 1485,
-      "max_lastkapacitet_kg": 459,
-      "total_langd_cm": 440,
-      "total_bredd_cm": 185,
-      "total_hojd_cm": 184,
-      "hjulbas_cm": 279
-    },
-    "utrustning": [
-      "Dimljus fram",
-      "Regnsensor",
-      "Ljussensor",
-      "Tonade rutor",
-      "Elhissar (fram och bak)",
-      "Elinfällbara sidospeglar",
-      "Eluppvärmda sidospeglar",
-      "Avbländande innerbackspegel",
-      "Centrallås (fjärrstyrt) Rails",
-      "AC",
-      "Sätesvärme (fram)",
-      "Delbart baksäte",
-      "Fällbara baksäten",
-      "Läslampa",
-      "Multifunktionsratt",
-      "Farthållare",
-      "Fartbegränsare",
-      "Färddator"
-    ],
-    "sakerhet": [
-      "Låsningsfritt bromssystem (ABS)",
-      "Autonom nödbromsning (AEB)",
-      "Krockkudde avstängningsbrytare",
-      "Krockkudde front förare",
-      "Krockkudde front",
-      "Krockkudde sido-huvud",
-      "Krockkudde front passagerare",
-      "Krockkudde sido-bröst",
-      "Krockkudde sido-bäcken",
-      "Centrallåsning",
-      "Barnstol ISOFIX bak",
-      "Krockkudde gardin",
-      "Föraruppmärksamhetsvarning (DAW)",
-      "Parkeringssensorer bak",
-      "Regnsensorer",
-      "Trafikskyltskanning",
-      "Stabilitetskontrollsystem (TCS)"
-    ],
-    "beskrivning": "Citroën Berlingo är en minibuss med framhjulsdrift och automat växellåda. Motorn lämnar 131 hk och tar bilen från 0-100 km/h på 12.3 s.",
-    "bilder": [
-      "https://cdn.wayke.se/cfit/7efde79a-be15-4345-99db-2ca4d805dc1f/a0dcc1ef-4fd0-49dc-a914-adf16178ad5b?format=jpeg&w=840",
-      "https://cdn.wayke.se/cfit/539fe72e-b75c-4947-bd25-2a5f57bc6331/a307863b-809c-48a7-91e1-d055c9f3dd96?format=jpeg&w=840",
-      "https://cdn.wayke.se/cfit/1dabe699-9521-433f-9b1e-35c0f850f912/b448300a-6d0e-48b3-9b3a-6a381f7ab3a1?format=jpeg&w=840",
-      "https://cdn.wayke.se/cfit/0142ae64-6263-4a76-86c6-6b33d430fdb4/d669bf0b-eff8-4e31-9f9a-8c0f95586a54?format=jpeg&w=840",
-      "https://cdn.wayke.se/cfit/cd223712-0d3d-474c-9f2a-8f7bcd835b3c/15096ee6-2f37-4fed-b7a7-c69cdad5e677?format=jpeg&w=840",
-      "https://cdn.wayke.se/cfit/b6398483-de1a-4b00-adaf-75a840901b89/0ce4dad4-302e-4746-b272-003fee9adb04?format=jpeg&w=840",
-      "https://cdn.wayke.se/cfit/a6a802c4-dee8-4da9-9e7a-290b5295bd4e/ab88aedb-9973-4a0a-a880-89bc05bc4a79?format=jpeg&w=840",
-      "https://cdn.wayke.se/cfit/4a1fc2cf-f384-4ee4-8d3d-85813adaf90a/04039ad2-6e69-4ae9-867b-d9cba0c443c5?format=jpeg&w=840"
-    ],
-    "saljare": {
-      "namn": "Simling Bil",
-      "ort": "Strängnäs",
-      "adress": "Harvstigen 2, Strängnäs",
-      "oppettider": {
-        "mandag_torsdag": "09:00 - 18:00",
-        "fredag": "09:00 - 17:00",
-        "lordag": "10:00 - 14:00",
-        "sondag": "Stängt"
-      }
-    }
-  },
-  {
     "id": "kia-rio-nng439",
     "modell": "Kia Rio",
     "version": "1,2 GLS / Vinterhjul",
@@ -3559,6 +3449,112 @@
     }
   },
   {
+    "id": "toyota-proace-city-electric-jca18a",
+    "modell": "Toyota ProAce City Electric",
+    "version": "Long 50 kWh Professional",
+    "pris": 399900,
+    "miltal": 1,
+    "arsmodell": 2024,
+    "tillverkningsar": 2025,
+    "lagerstatus": "I lager",
+    "drivmedel": "El",
+    "vaxellada": "Automat",
+    "drivning": "Framhjulsdrift",
+    "farg": "Vit",
+    "kaross": "Skåpbil",
+    "segment": "Skåpbil",
+    "registreringsnummer": "JCA18A",
+    "pris_exkl_moms": 319920,
+    "antal_dorrar": 5,
+    "antal_saten": 3,
+    "vin": "YARENZKUZRJ082283",
+    "prestanda": {
+      "topphastighet_kmh": 135,
+      "hastkrafter": 136,
+      "motorvridmoment_nm": 260
+    },
+    "bransle": {
+      "elforbrukning_wltp": "18.5 kWh/100km",
+      "elrackvidd_wltp": "331 km",
+      "batterikapacitet_kwh": 50,
+      "co2_utslapp": "0 g/km"
+    },
+    "skatt": {
+      "arlig_fordonsskatt": "360 kr/år"
+    },
+    "matt_och_vikt": {
+      "totalvikt_kg": 2390,
+      "tjanstevikt_kg": 1590,
+      "max_lastkapacitet_kg": 573,
+      "total_langd_cm": 440,
+      "total_bredd_cm": 185,
+      "total_hojd_cm": 180,
+      "hjulbas_cm": 279,
+      "markfrigang_cm": 15
+    },
+    "utrustning": [
+      "LM-fälgar 16\"",
+      "LED Strålkastare",
+      "Dimljus fram",
+      "Varselljus",
+      "Automatiskt helljus (AHB)",
+      "Nyckelfritt lås och tändsystem",
+      "Smart Entry/Start",
+      "Fjärrstyrt centrallås",
+      "Vindruta uppvärmningsbar (de-icer)",
+      "Vindrutetorkare med regnsensor",
+      "Skymningsrelä",
+      "Elhissar fram",
+      "Sidobackspeglar blanksvarta",
+      "Sidobackspeglar el-infällbara",
+      "Sidobackspeglar el-justerbara",
+      "Sidobackspeglar eluppvärmda",
+      "Parkeringssensorer",
+      "Digital innerbackspegel"
+    ],
+    "sakerhet": [
+      "Låsningsfritt bromssystem (ABS)",
+      "Autonom nödbromsning (AEB)",
+      "Krockkudde avstängningsbrytare",
+      "Krockkudde front förare",
+      "Krockkudde front",
+      "Krockkudde sido-huvud",
+      "Krockkudde front passagerare",
+      "Krockkudde sido-bröst",
+      "Centrallåsning",
+      "Krockkudde gardin",
+      "Föraruppmärksamhetsvarning (DAW)",
+      "Nödsamtal (eCall)",
+      "Filhållningsassistent (LKA)",
+      "Parkeringssensorer bak",
+      "Trafikskyltskanning"
+    ],
+    "beskrivning": "Toyota ProAce City Electric är en skåpbil med framhjulsdrift och automat växellåda. Motorn lämnar 136 hk.",
+    "bilder": [
+      "https://cdn.wayke.se/cfit/v3/68fa108169dd49508a608c26b7561eb0/78ae2323211e4094a30c9eff431826f4?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/f1d1fd6aa59f442bbcfaa7893e839376/22506b3b08354d36b485a9cb3f3e72dc?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/b9d9476ae2f04337838213b27ce48be4/2d41855b25a24a5086f26678c099401c?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/8a3d40fe07434e9daa83497541c96ee7/3882317bce4345629064f33c7d176160?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/beb86448ea044098a467ee09ecb64e16/150c7e25dcb045f8b61e79d4c6216aa0?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/e4f2d4c2d2604f1a94a57818e48dec8b/b635b562eb854eba9a93929cbe6d9b50?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/f8abf75023b04632ae77d964a491bb56/c90bdf0b798f42c48a2463d3de4389ea?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/63d6bc472e504eca9ae4fd37a5139341/02b64e3705d9487dbfdd416149d1ab26?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/66643c038c8a41b4915a73718c14cea1/f1984f27b8a24bb68e3190e863b488da?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/042690df1f484afbb4545a69c727633c/37fd7c641599400ab92fef66cbd94016?format=jpeg&w=840"
+    ],
+    "saljare": {
+      "namn": "Simling Bil",
+      "ort": "Strängnäs",
+      "adress": "Harvstigen 2, Strängnäs",
+      "oppettider": {
+        "mandag_torsdag": "09:00 - 18:00",
+        "fredag": "09:00 - 17:00",
+        "lordag": "10:00 - 14:00",
+        "sondag": "Stängt"
+      }
+    }
+  },
+  {
     "id": "toyota-proace-city-electric-uaa26j",
     "modell": "Toyota ProAce City Electric",
     "version": "LONG PROFESSIONAL / Vinterhjul / Dragkrok",
@@ -5541,6 +5537,123 @@
       "https://cdn.wayke.se/cfit/b11f5c5a-f11f-460c-9808-7a90e058b247/0f31336c-0ddd-4f80-a806-614f7e5dbb76?format=jpeg&w=840",
       "https://cdn.wayke.se/cfit/0f342e32-4e3a-41a3-a06b-cdf008ee4487/5a2ea641-0388-4a58-bab8-f69bf6ee8321?format=jpeg&w=840",
       "https://cdn.wayke.se/cfit/817d98ff-49cb-4fed-b065-f72a4f6a52ef/a14680fd-db6c-426a-bb95-c7e3a6aeec73?format=jpeg&w=840"
+    ],
+    "saljare": {
+      "namn": "Simling Bil",
+      "ort": "Strängnäs",
+      "adress": "Harvstigen 2, Strängnäs",
+      "oppettider": {
+        "mandag_torsdag": "09:00 - 18:00",
+        "fredag": "09:00 - 17:00",
+        "lordag": "10:00 - 14:00",
+        "sondag": "Stängt"
+      }
+    }
+  },
+  {
+    "id": "volkswagen-golf-grc023",
+    "modell": "Volkswagen Golf",
+    "version": "5-dörrar 1.2 TSI BMT / Vinterhjul",
+    "pris": 134900,
+    "miltal": 6962,
+    "arsmodell": 2016,
+    "tillverkningsar": 2016,
+    "lagerstatus": "I lager",
+    "drivmedel": "Bensin",
+    "vaxellada": "Manuell",
+    "drivning": "Framhjulsdrift",
+    "farg": "Blå",
+    "kaross": "Halvkombi",
+    "segment": "Mellanstor Familjebil",
+    "registreringsnummer": "GRC023",
+    "antal_dorrar": 5,
+    "antal_saten": 5,
+    "vin": "WVWZZZAUZGP103059",
+    "prestanda": {
+      "acceleration_0_100": "9.9 s",
+      "topphastighet_kmh": 195,
+      "hastkrafter": 110,
+      "motorvridmoment_nm": 175,
+      "motorvolym_cc": 1197,
+      "motorcylindrar": "4 Cyl. (Radmotor)"
+    },
+    "bransle": {
+      "forbrukning_kombinerad_nedc": "4.9 l/100km",
+      "forbrukning_stad": "6.1 l/100km",
+      "forbrukning_motorvag": "4.2 l/100km",
+      "co2_utslapp": "114 g/km",
+      "tankkapacitet_liter": 50,
+      "utslappsstandard": "Euro 6"
+    },
+    "skatt": {
+      "arlig_fordonsskatt": "426 kr/år"
+    },
+    "matt_och_vikt": {
+      "totalvikt_kg": 1760,
+      "tjanstevikt_kg": 1235,
+      "max_lastkapacitet_kg": 420,
+      "total_langd_cm": 426,
+      "total_bredd_cm": 180,
+      "total_hojd_cm": 145,
+      "hjulbas_cm": 264,
+      "markfrigang_cm": 14
+    },
+    "bagageutrymme": {
+      "volym_liter": 380,
+      "djup_mm": 839,
+      "bredd_mm": 1272
+    },
+    "utrustning": [
+      "ABS-bromsar",
+      "AC",
+      "Airbag förare",
+      "Airbag passagerare fram",
+      "Antisladd",
+      "Autobroms",
+      "AUX-ingång",
+      "Avstängningsbar airbag passagerare",
+      "Backstartshjälp",
+      "Broms-assistans",
+      "Centrallås (fjärrstyrt)",
+      "Delbart baksäte",
+      "Elhissar (fram och bak)",
+      "Eluppvärmda sidospeglar",
+      "Euro 6",
+      "Euro NCAP 5",
+      "Fartbegränsare",
+      "Farthållare"
+    ],
+    "sakerhet": [
+      "Låsningsfritt bromssystem (ABS)",
+      "Autonom nödbromsning (AEB)",
+      "Krockkudde avstängningsbrytare",
+      "Krockkudde front förare",
+      "Krockkudde front",
+      "Krockkudde sido-huvud",
+      "Krockkudde knä",
+      "Krockkudde front passagerare",
+      "Krockkudde sido-bröst",
+      "Elektronisk bromsassistans",
+      "Centrallåsning",
+      "Barnsäkerhetslås",
+      "Barnstol ISOFIX bak",
+      "Krockkudde gardin",
+      "Föraruppmärksamhetsvarning (DAW)",
+      "Stabilitetskontrollsystem (TCS)",
+      "Euro NCAP: 5 stjärnor (2012)"
+    ],
+    "beskrivning": "Volkswagen Golf är en mellanstor familjebil med framhjulsdrift och manuell växellåda. Motorn lämnar 110 hk och tar bilen från 0-100 km/h på 9.9 s.",
+    "bilder": [
+      "https://cdn.wayke.se/cfit/v3/5043b785ab07498ca55d630a449ee1db/b631e80071b540f6b133a15bf7b0134c?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/d14d3d7f632e46b5927a102c14ea8739/2b5c61703c2c41fdb6c948eee1faa65c?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/d47520cb85304c4b9af49ac4044fd040/3cf3c294e33346fc8af7e378db5d877d?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/9af34be7638c4c26a50e46c54bfb1815/5af73efc13b24fcd8e27d1e0356e2853?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/ff698861570e4b51971deb0fc49d3b04/7b4ac15fd5154b9b886c85df0374e855?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/d6b0e33512984e88bd535533643f37b7/542de89fdf6741f1b95edfd064949b38?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/b02bfaef6ab24dd7bbcc39981d1616bb/5b41e1881b9840bf9477a3b35da65b3d?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/fada01cb4d3b45fdbf870d3bddf77a2b/05d5decb853243afa576ac4d66e342dd?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/12b8eb7b78204943bf02dcab509b29c2/86cfcd86cefd4a53a0b48541eae7927a?format=jpeg&w=840",
+      "https://cdn.wayke.se/cfit/v3/92355f390eea42a491bb2816f71d3450/8e14a556560c4d37a349a5a235456bd7?format=jpeg&w=840"
     ],
     "saljare": {
       "namn": "Simling Bil",
