@@ -140,7 +140,7 @@ def render(config: dict[str, Any]) -> None:
         "(kolumnen Växelkurs). Värdering till senast tillgängliga stängningskurs per "
         "innehav (kolumnen Kursdatum)."
     )
-    st.dataframe(table, hide_index=True, use_container_width=True)
+    st.dataframe(table, hide_index=True, width="stretch")
     st.divider()
     _render_risk_section(table, price_data, config)
     st.divider()
@@ -167,4 +167,4 @@ def _render_alerts_section(config: dict[str, Any]) -> None:
     if history.empty:
         st.info("Inga larm har utlösts hittills.")
         return
-    st.dataframe(history, hide_index=True, use_container_width=True)
+    st.dataframe(history, hide_index=True, width="stretch")

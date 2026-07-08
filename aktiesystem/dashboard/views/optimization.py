@@ -87,7 +87,7 @@ def render(config: dict[str, Any]) -> None:
     st.caption(
         f"Baserat på {len(returns)} dagars överlappande historik för {len(tickers)} tillgångar."
     )
-    st.plotly_chart(_frontier_chart(result), use_container_width=True)
+    st.plotly_chart(_frontier_chart(result), width="stretch")
 
     st.subheader("Referensportföljernas vikter")
     st.caption("Två punkter på kurvan — inte rekommendationer. Vikter under 0,5 % visas som 0.")
@@ -119,7 +119,7 @@ def render(config: dict[str, Any]) -> None:
             styled[column] = styled[column].map("{:.1%}".format)
         for column in ["nuvarande_varde", "malvarde", "handla_for"]:
             styled[column] = styled[column].map("{:,.0f}".format)
-        st.dataframe(styled, hide_index=True, use_container_width=True)
+        st.dataframe(styled, hide_index=True, width="stretch")
         st.caption("Positivt belopp i 'handla_for' = köp, negativt = sälj.")
     except ValueError as exc:
         st.warning(str(exc))

@@ -88,7 +88,7 @@ def render(config: dict[str, Any]) -> None:
     col1.metric("Träffar", len(result.matches))
     col2.metric("Uppfyller ej", len(result.rejected))
     col3.metric("Saknar data", len(result.missing_data))
-    st.dataframe(result.table, hide_index=True, use_container_width=True)
+    st.dataframe(result.table, hide_index=True, width="stretch")
     if result.missing_data:
         st.caption(
             "Bolag under 'data saknas' har inte poängsatts: att ett nyckeltal saknas "

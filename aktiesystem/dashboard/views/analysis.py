@@ -78,7 +78,7 @@ def _render_technical(ticker: str) -> None:
     except ValueError as exc:
         st.error(f"Kunde inte beräkna indikatorer: {exc}")
         return
-    st.plotly_chart(_price_chart(ticker, indicators), use_container_width=True)
+    st.plotly_chart(_price_chart(ticker, indicators), width="stretch")
     last = indicators.iloc[-1]
     st.caption(
         f"Senaste stängning {last['close']:.2f} ({indicators.index[-1].date()}). "
@@ -145,7 +145,7 @@ def _render_intraday(ticker: str) -> None:
     fig.add_trace(go.Bar(x=selected.index, y=selected["volume"], name="Volym"), 2, 1)
     fig.update_layout(height=550, legend={"orientation": "h"})
     fig.update_xaxes(rangebreaks=[{"pattern": "hour", "bounds": [18, 9]}])
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     last = selected.iloc[-1]
     last_vwap = (

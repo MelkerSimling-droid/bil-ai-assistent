@@ -75,7 +75,7 @@ def _result_charts(result: BacktestResult) -> None:
             )
         )
     fig.update_layout(title="Equity-kurva", height=400, legend={"orientation": "h"})
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     dd = go.Figure(
         go.Scatter(
@@ -83,7 +83,7 @@ def _result_charts(result: BacktestResult) -> None:
         )
     )
     dd.update_layout(title="Drawdown", height=250, yaxis_tickformat=".0%")
-    st.plotly_chart(dd, use_container_width=True)
+    st.plotly_chart(dd, width="stretch")
 
 
 def _metrics_row(metrics: dict[str, float]) -> None:
@@ -332,13 +332,13 @@ def _run_comparison(
         "bästa strategin här vinner beror delvis på just denna period (se "
         "robusthetsutvärderingarna innan slutsatser dras)."
     )
-    st.dataframe(pd.DataFrame(rows), hide_index=True, use_container_width=True)
+    st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
 
     fig = go.Figure()
     for name, curve in curves.items():
         fig.add_trace(go.Scatter(x=curve.index, y=curve, name=name))
     fig.update_layout(title="Equity-kurvor", height=450, legend={"orientation": "h"})
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 
 def _run_rolling(
@@ -393,7 +393,7 @@ def _run_rolling(
             for w in windows
         ]
     )
-    st.dataframe(table, hide_index=True, use_container_width=True)
+    st.dataframe(table, hide_index=True, width="stretch")
     with st.expander("Equity-kurvor per delperiod"):
         for window in windows:
             st.markdown(f"**{window.start.date()} – {window.end.date()}**")
@@ -410,7 +410,7 @@ def _render_result(result: BacktestResult) -> None:
         if result.trades.empty:
             st.write("Inga affärer genomfördes.")
         else:
-            st.dataframe(result.trades, hide_index=True, use_container_width=True)
+            st.dataframe(result.trades, hide_index=True, width="stretch")
 
 
 def _run_split(

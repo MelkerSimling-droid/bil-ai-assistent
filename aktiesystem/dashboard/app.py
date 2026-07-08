@@ -20,6 +20,7 @@ import streamlit as st  # noqa: E402
 from dashboard.views import (  # noqa: E402
     analysis,
     backtest,
+    morning,
     optimization,
     overview,
     screening,
@@ -38,6 +39,7 @@ DISCLAIMER = (
 
 _PAGES = {
     "Översikt": overview.render,
+    "Morgonkoll": morning.render,
     "Aktieanalys": analysis.render,
     "Screening": screening.render,
     "Backtesting": backtest.render,
