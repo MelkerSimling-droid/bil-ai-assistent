@@ -1,35 +1,45 @@
 import type { Bil, ChattMeddelande, Lead } from "@/lib/types";
 import { bilAssistentPrompt, leadSammanfattningPrompt } from "@/lib/prompts";
 import { hamtaModellInfo } from "@/lib/modellinfo";
+import { alaBilarSammanfattade } from "@/lib/bilar";
 
 const MODELL = "gpt-5.4-mini";
 
-async function anropaOpenAI(systemPrompt: string, anvandarText: string): Promise<string | null> {
+type OpenAIRoll = "system" | "user" | "assistant";
+interface OpenAIMeddelande {
+  role: OpenAIRoll;
+  content: string;
+}
+
+async function anropaOpenAI(meddelanden: OpenAIMeddelande[]): Promise<string | null> {
   if (!process.env.OPENAI_API_KEY) {
     return null;
   }
 
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-    },
-    body: JSON.stringify({
-      model: MODELL,
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: anvandarText },
-      ],
-    }),
-  });
+  try {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: MODELL,
+        messages: meddelanden,
+      }),
+    });
 
-  if (!response.ok) {
+    if (!response.ok) {
+      console.error("OpenAI-anrop misslyckades:", response.status, await response.text());
+      return null;
+    }
+
+    const data = await response.json();
+    return data.choices?.[0]?.message?.content ?? null;
+  } catch (e) {
+    console.error("OpenAI-anrop kastade fel:", e);
     return null;
   }
-
-  const data = await response.json();
-  return data.choices?.[0]?.message?.content ?? null;
 }
 
 /**
@@ -38,10 +48,29 @@ async function anropaOpenAI(systemPrompt: string, anvandarText: string): Promise
  * Utan OPENAI_API_KEY används en enkel mock som fortfarande bara svarar
  * utifrån bildatan (aldrig påhittat), så gränssnittet fungerar i en demo
  * innan en riktig nyckel finns.
+ *
+ * `historik` är tidigare svängar i SAMMA konversation (utan den aktuella
+ * frågan) - det ger Buster minne inom konversationen istället för att
+ * varje fråga besvaras isolerat.
  */
-export async function fragaOmBilen(fraga: string, bil: Bil): Promise<string> {
+export async function fragaOmBilen(
+  fraga: string,
+  bil: Bil,
+  historik: ChattMeddelande[] = []
+): Promise<string> {
   const modellinfo = hamtaModellInfo(bil.modell);
-  const svar = await anropaOpenAI(bilAssistentPrompt(bil, modellinfo), fraga);
+  const ovrigaBilar = alaBilarSammanfattade(bil.id);
+
+  const meddelanden: OpenAIMeddelande[] = [
+    { role: "system", content: bilAssistentPrompt(bil, modellinfo, ovrigaBilar) },
+    ...historik.map((m) => ({
+      role: (m.roll === "kund" ? "user" : "assistant") as OpenAIRoll,
+      content: m.text,
+    })),
+    { role: "user", content: fraga },
+  ];
+
+  const svar = await anropaOpenAI(meddelanden);
   if (svar) return svar;
 
   return mockSvar(fraga, bil, modellinfo);
@@ -96,7 +125,10 @@ export async function sammanfattaLead(
     .map((m) => `${m.roll === "kund" ? "Kund" : "Buster"}: ${m.text}`)
     .join("\n");
 
-  const svar = await anropaOpenAI(leadSammanfattningPrompt(), konversation);
+  const svar = await anropaOpenAI([
+    { role: "system", content: leadSammanfattningPrompt() },
+    { role: "user", content: konversation },
+  ]);
   if (!svar) return undefined;
 
   try {

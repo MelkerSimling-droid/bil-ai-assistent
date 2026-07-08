@@ -901,5 +901,110 @@
         "url": "https://www.nyteknik.se/elbilar/test-superb-det-smartaste-kombivalet/548430"
       }
     ]
+  },
+  "Audi A4 allroad quattro": {
+    "korupplevelse": "Den 190-hästiga 2.0 TDI-motorn i kombination med Audis dubbelkopplade S tronic-låda gör allroaden förvånansvärt spänstig - motorn drar iväg snabbt och växlingarna sker sömlöst. Quattro-fyrhjulsdriften ger en stabil, balanserad känsla även vid snabbare kurvtagning, och bilen känns trygg på blandade underlag. Stolarna ger god komfort även för långväxta förare, och instrument/reglage är fysiska och lätta att hitta utan att titta bort från vägen.",
+    "vem_den_passar": "Passar dig som kör mycket i blandade väglag (snö, grus, landsväg) och vill ha en rymlig, lastvänlig kombi med en mer premiumkänsla och tryggare fyrhjulsdrift än en vanlig kombimodell - t.ex. pendlare med långa resvägar eller familjer med fritidsintressen som kräver last kapacitet.",
+    "styrkor": [
+      "Trygg och stabil quattro-fyrhjulsdrift på blandade underlag",
+      "Stark, smidig dieselmotor med snabb och exakt S tronic-växellåda",
+      "Bekväma stolar och god ergonomi med fysiska reglage",
+      "Balanserad väghållning även vid snabbare körning"
+    ],
+    "att_tanka_pa": [
+      "Som effektstark dieselbil kan årlig skatt och drivmedelskostnad vara högre än för en mindre motoriserad variant",
+      "Allroad-utförandet är dyrare vid nyköp än en vanlig A4 Avant med samma motor"
+    ],
+    "kallor": [
+      {
+        "titel": "Audi A4 allroad - stenhård i asfaltsdjungeln",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/biltester/provkorning/audi-a4-allroad-stenhard-i-asfaltsdjungeln-2888"
+      },
+      {
+        "titel": "Provkörning: Audi A4 Allroad (2016)",
+        "utgivare": "Vi Bilägare",
+        "url": "https://www.vibilagare.se/test/biltester/provkorning/provkorning-audi-a4-allroad-2016"
+      }
+    ]
+  },
+  "Toyota C-HR PHEV": {
+    "korupplevelse": "Laddhybridsystemet (2,0-liters bensinmotor + elmotor, ca 220 hk totalt) ger en smidig och tyst körning i stadstrafik där elmotorn gör det mesta av jobbet, med pigg respons direkt från start. Fjädringen är väl avvägd och bilen känns nästpetig och stabil i de flesta situationer, men den bjuder inte på stort engagemang i snabba svängar - styrningen ger begränsad återkoppling och karossen kan kännas mjuk vid mer entusiastisk körning. Vid hård acceleration blir bensinmotorn hörbar eftersom den steglösa växellådan (CVT) tillåter höga varvtal.",
+    "vem_den_passar": "Passar dig som mest kör i stad och förort och vill kunna köra eldrivet till vardags utan att gå hela vägen till en renodlad elbil - t.ex. pendlare eller tjänstebilsförare som kan ladda regelbundet och vill ha låg bränsleförbrukning i blandad körning.",
+    "styrkor": [
+      "Tyst och smidig eldriven körning i stad, med pigg respons",
+      "Väl avvägd fjädringskomfort i de flesta miljöer",
+      "Låg bränsleförbrukning tack vare elräckvidden vid regelbunden laddning",
+      "Stilren, uppmärksammad design"
+    ],
+    "att_tanka_pa": [
+      "Motorn blir hörbar och kärv vid kraftig acceleration på grund av den steglösa CVT-växellådan",
+      "Trångt och mörkt baksäte, och mindre bagageutrymme (ca 310 liter) än på den vanliga hybridversionen på grund av batteriet",
+      "Verklig elräckvidd (uppskattningsvis 5-6 mil) hamnar ofta lägre än det angivna WLTP-värdet, särskilt i kallt väder"
+    ],
+    "kallor": [
+      {
+        "titel": "Toyota C-HR review",
+        "utgivare": "What Car?",
+        "url": "https://www.whatcar.com/toyota/c-hr/hatchback/review/n112"
+      },
+      {
+        "titel": "Toyota C-HR Plug-in Hybrid review",
+        "utgivare": "Electrifying.com",
+        "url": "https://www.electrifying.com/reviews/toyota-reviews/c-hr-plug-in-hybrid/review"
+      }
+    ]
+  },
+  "Toyota ProAce Max Van 35": {
+    "korupplevelse": "Proace Max hör till de bättre bilarna i klassen stora transportbilar, tillsammans med systermodellerna från Stellantis (Opel Movano, Peugeot Boxer, Citroën Jumper) och konkurrenter som Ford, Renault och Mercedes-Benz. 180-hästarsdieseln med 8-stegad automatlåda ger stabil, trygg acceleration även vid omkörning på landsväg, och bilen beskrivs ge en körkomfort nära den man får i en vanlig personbil trots storleken. Bakdörrarna kan öppnas hela 270 grader vilket underlättar lastning i trånga utrymmen.",
+    "vem_den_passar": "Passar hantverkare, åkerier och företag som behöver en stor, pålitlig skåpbil med gott om lastutrymme (ca 10-17 kubikmeter beroende på karossvariant) och en lastvikt på uppemot 1 350 kg, och som vill ha automatlåda och moderna förarstödsystem även i en tung transportbil.",
+    "styrkor": [
+      "Stort lastutrymme och hög lastvikt för klassen",
+      "180-hästarsdieseln med 8-stegad automat ger trygg, stabil acceleration även med tung last",
+      "Bakdörrar som öppnas 270 grader underlättar lastning i trånga utrymmen",
+      "Moderna förarstödsystem som adaptiv farthållare, filhållningsassistans och nödbromsassistans"
+    ],
+    "att_tanka_pa": [
+      "Stor extern bredd/längd (beroende på karossvariant) gör bilen mindre lätthanterlig i trånga stadsmiljöer och parkeringshus jämfört med en mindre skåpbil",
+      "Som tung dieseldriven transportbil blir drivmedelskostnad och årlig skatt högre än för en mindre transportbil"
+    ],
+    "kallor": [
+      {
+        "titel": "Provkört: Toyota Proace Max",
+        "utgivare": "Transportbilsdagen",
+        "url": "https://www.transportbilsdagen.se/provkort-toyota-proace-max-electric/"
+      },
+      {
+        "titel": "Rejäl uppdatering av Toyota Proace Max",
+        "utgivare": "Byggvärlden",
+        "url": "https://www.byggvarlden.se/rejal-uppdatering-av-toyota-proace-max/"
+      }
+    ]
+  },
+  "Volkswagen Golf": {
+    "korupplevelse": "1.2 TSI-motorn ger lättillgänglig och jämn kraft med progressiva, mjuka bromsar - en okomplicerad och smidig bil att köra i vardagen, utan att kännas underdimensionerad. Golfen av den här generationen (Mk7) är känd för sin balanserade, mogna chassikänsla och tysta kupé, som länge satte måttstocken i kompaktklassen.",
+    "vem_den_passar": "Passar dig som vill ha en pålitlig, lättkörd och välbyggd kompaktbil för vardagspendling utan krav på extra prestanda - en trygg allroundbil för student, pendlare eller mindre familj.",
+    "styrkor": [
+      "Lättillgänglig, jämn motorkraft och mjuka, progressiva bromsar",
+      "Mogen och balanserad chassikänsla, tyst kupé för klassen",
+      "Välbyggd, funktionell interiör med god körställning"
+    ],
+    "att_tanka_pa": [
+      "1.2 TSI-motorn (direktinsprutning utan portinsprutning) kan drabbas av sotavlagringar på insugsventilerna över tid, vilket kan kräva rengöring (s.k. walnut-blasting) hos en specialist",
+      "På exemplar med DSG-automatlåda (7-stegad våt/torr-koppling, DQ200 - gäller alltså inte manuella växellådor) förekommer rapporterade fall av tveksam, ryckig gång i tät stadstrafik på tidiga exemplar. Kontrollera att mjukvaruuppdateringar är gjorda om bilen har DSG.",
+      "Fönsterhissarnas plastdetaljer kan spricka med åren och orsaka knakande ljud eller att rutan tappar grepp"
+    ],
+    "kallor": [
+      {
+        "titel": "Is the Volkswagen Golf Reliable? Common Problems & Used Buyer's Guide",
+        "utgivare": "Carsa",
+        "url": "https://www.carsa.co.uk/blog/is-the-volkswagen-golf-reliable-used-buyer-guide"
+      },
+      {
+        "titel": "Used Volkswagen Golf (Mk7/7.5) review",
+        "utgivare": "ReDriven",
+        "url": "https://redriven.com/reviews/volkswagen/golf/used-volkswagen-golf-mk7-7-5-review/"
+      }
+    ]
   }
 }

@@ -67,6 +67,7 @@ export default function Chatt({
     if (!fraga.trim()) return;
 
     const nyKundFraga: ChattMeddelande = { roll: "kund", text: fraga };
+    const historik = meddelanden;
     setMeddelanden((tidigare) => [...tidigare, nyKundFraga]);
     setFraga("");
     setLaddar(true);
@@ -74,7 +75,7 @@ export default function Chatt({
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fraga, bilId }),
+      body: JSON.stringify({ fraga, bilId, historik }),
     });
 
     const data = await response.json();

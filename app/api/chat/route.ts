@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { hittaBil } from "@/lib/bilar";
 import { fragaOmBilen } from "@/lib/ai";
+import type { ChattMeddelande } from "@/lib/types";
 
 const MAX_FRAGA_LANGD = 1000;
+const MAX_HISTORIK_RADER = 30;
 
 export async function POST(req: NextRequest) {
-  let body: { fraga?: unknown; bilId?: unknown };
+  let body: { fraga?: unknown; bilId?: unknown; historik?: unknown };
   try {
     body = await req.json();
   } catch {
@@ -22,11 +24,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ svar: "Ingen bil angiven." }, { status: 400 });
   }
 
+  const historik: ChattMeddelande[] = Array.isArray(body.historik)
+    ? body.historik
+        .slice(-MAX_HISTORIK_RADER)
+        .filter(
+          (m): m is ChattMeddelande =>
+            !!m && (m.roll === "kund" || m.roll === "ai") && typeof m.text === "string"
+        )
+        .map((m) => ({ roll: m.roll, text: m.text.slice(0, MAX_FRAGA_LANGD) }))
+    : [];
+
   const bil = hittaBil(bilId);
   if (!bil) {
     return NextResponse.json({ svar: "Kunde inte hitta bilen." }, { status: 404 });
   }
 
-  const svar = await fragaOmBilen(fraga, bil);
+  const svar = await fragaOmBilen(fraga, bil, historik);
   return NextResponse.json({ svar });
 }

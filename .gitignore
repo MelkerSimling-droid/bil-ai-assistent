@@ -40,6 +40,10 @@ yarn-error.log*
 # leaddata innehåller personuppgifter - ska aldrig committas
 /data/leads.json
 
+# lokal PDF-baserad prototyp för intern pitch - ska ALDRIG committas eller
+# deployas (se app/prototyp/[id]/page.tsx för bakgrund)
+/app/prototyp
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

@@ -1,0 +1,9 @@
+# Vercel CLI uploads the local working tree, not just git-tracked files -
+# so untracked local-only files must be excluded here too, not just in
+# .gitignore, or they end up live in production.
+
+# Lokal PDF-baserad prototyp för intern pitch - ska ALDRIG deployas.
+app/prototyp
+
+# Aktiesystem-mappen (separat, orelaterat Python-projekt på samma repo-rot)
+aktiesystem
