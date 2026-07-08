@@ -1,21 +1,28 @@
 import { promises as fs } from "fs";
 import path from "path";
+import os from "os";
 import type { ChattMeddelande, Lead, LeadIntresse, KontaktSatt } from "@/lib/types";
 import { sammanfattaLead } from "@/lib/ai";
 
 /**
  * Leadlagring.
  *
- * OBS: sparar just nu till data/leads.json på disk. Det fungerar utmärkt
- * lokalt (npm run dev) men INTE tillförlitligt i produktion på Vercel,
- * eftersom serverless-funktioner har ett skrivskyddat/tillfälligt
- * filsystem och inte delar state mellan anrop. Innan skarp lansering:
- * byt ut läs/skriv-funktionerna nedan mot en riktig databas (t.ex.
- * Postgres/Supabase) - resten av appen (api/leads, admin-vyn) behöver
- * inte ändras eftersom de bara pratar med sparaLead()/hamtaLeads().
+ * VIKTIGT: Vercels serverless-funktioner har ett SKRIVSKYDDAT filsystem
+ * förutom /tmp (som är tillfälligt och inte delas mellan instanser).
+ * Att skriva till project.cwd()/data/leads.json - som fungerar lokalt -
+ * kraschar därför (EROFS) i produktion. Vi skriver till /tmp på Vercel
+ * istället så att leadformuläret aldrig kraschar för kunden, men detta
+ * är fortfarande INTE beständig lagring: /tmp kan tömmas närsomhelst och
+ * delas inte mellan olika serverless-instanser. Innan skarp lansering
+ * med riktiga kunddata: byt ut läs/skriv-funktionerna nedan mot en
+ * riktig databas (t.ex. Postgres/Supabase) - resten av appen (api/leads,
+ * admin-vyn) behöver inte ändras eftersom de bara pratar med
+ * sparaLead()/hamtaLeads().
  */
 
-const LEADS_FIL = path.join(process.cwd(), "data", "leads.json");
+const LEADS_FIL = process.env.VERCEL
+  ? path.join(os.tmpdir(), "leads.json")
+  : path.join(process.cwd(), "data", "leads.json");
 
 async function lasLeads(): Promise<Lead[]> {
   try {
@@ -27,7 +34,13 @@ async function lasLeads(): Promise<Lead[]> {
 }
 
 async function skrivLeads(leads: Lead[]): Promise<void> {
-  await fs.writeFile(LEADS_FIL, JSON.stringify(leads, null, 2) + "\n", "utf-8");
+  try {
+    await fs.writeFile(LEADS_FIL, JSON.stringify(leads, null, 2) + "\n", "utf-8");
+  } catch (e) {
+    // Kraschar aldrig kundens formulär även om lagringen skulle misslyckas -
+    // men syns i serverloggarna så det går att upptäcka.
+    console.error("Kunde inte spara leads.json:", e);
+  }
 }
 
 export interface NyttLeadInput {

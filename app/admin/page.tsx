@@ -52,8 +52,9 @@ export default async function AdminSida() {
         )}
 
         <p className="text-xs text-gray-400 mt-10">
-          Denna vy är inte lösenordsskyddad och läser leads från en lokal fil (data/leads.json).
-          Innan skarp drift: lägg till autentisering och en riktig databas (se kommentar i lib/leads.ts).
+          Denna vy är lösenordsskyddad men läser fortfarande leads från en fil, inte en riktig
+          databas. Innan skarp drift med stora volymer: byt ut lagringen mot en riktig databas
+          (se kommentar i lib/leads.ts).
         </p>
       </div>
     </main>
