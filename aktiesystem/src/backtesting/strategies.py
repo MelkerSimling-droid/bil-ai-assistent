@@ -117,9 +117,55 @@ class BollingerReversionStrategy(Strategy):
         return signals
 
 
+class TimeSeriesMomentumStrategy(Strategy):
+    """Tidsseriemomentum: äg när avkastningen senaste N barer är positiv.
+
+    Klassiskt "trend following" — den mest väldokumenterade långsiktiga
+    faktorn i finanslitteraturen (Moskowitz/Ooi/Pedersen 2012 m.fl.).
+    Standard 252/21 motsvarar akademiska "12-1": tolv månaders avkastning
+    exklusive senaste månaden (som ofta mean-reverterar på kort sikt).
+
+    Att faktorn är väldokumenterad historiskt är ingen garanti för att den
+    fortsätter fungera — som allt annat här är detta en referens, inget råd.
+    """
+
+    def __init__(self, lookback_bars: int = 252, skip_bars: int = 21) -> None:
+        """Skapar strategin.
+
+        Args:
+            lookback_bars: Mätperiodens längd i barer (252 ≈ 12 månader
+                på dagsdata).
+            skip_bars: Antal senaste barer som exkluderas ur mätningen
+                (21 ≈ 1 månad). 0 = mät ända fram till idag.
+        """
+        if skip_bars < 0 or lookback_bars <= skip_bars:
+            raise ValueError(
+                f"lookback_bars ({lookback_bars}) måste vara större än skip_bars ({skip_bars}) >= 0."
+            )
+        self._lookback = lookback_bars
+        self._skip = skip_bars
+        self.name = f"Tidsseriemomentum ({lookback_bars}/{skip_bars})"
+        # Behöver exakt lookback + 1 barer — mer historik ändrar inget.
+        self.max_lookback = lookback_bars + 5
+
+    def generate_signals(self, history: dict[str, pd.DataFrame]) -> dict[str, int]:
+        """Se :meth:`Strategy.generate_signals`."""
+        signals: dict[str, int] = {}
+        for ticker, frame in history.items():
+            close = frame["close"]
+            if len(close) < self._lookback + 1:
+                signals[ticker] = 0
+                continue
+            end = float(close.iloc[-1 - self._skip]) if self._skip else float(close.iloc[-1])
+            start = float(close.iloc[-1 - self._lookback])
+            signals[ticker] = 1 if start > 0 and end / start - 1.0 > 0 else 0
+        return signals
+
+
 #: Strategier som dashboarden erbjuder (namn -> fabrik med standardparametrar).
 AVAILABLE_STRATEGIES = {
     "SMA-korsning": SmaCrossoverStrategy,
     "RSI mean reversion": RsiMeanReversionStrategy,
     "Bollinger-reversion": BollingerReversionStrategy,
+    "Tidsseriemomentum": TimeSeriesMomentumStrategy,
 }

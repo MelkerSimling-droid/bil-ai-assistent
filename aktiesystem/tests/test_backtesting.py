@@ -22,6 +22,7 @@ from src.backtesting.strategies import (
     BollingerReversionStrategy,
     RsiMeanReversionStrategy,
     SmaCrossoverStrategy,
+    TimeSeriesMomentumStrategy,
 )
 from src.backtesting.strategy import Strategy
 
@@ -234,6 +235,38 @@ class TestExampleStrategies:
             SmaCrossoverStrategy(fast=200, slow=50)
         with pytest.raises(ValueError):
             RsiMeanReversionStrategy(buy_below=60, exit_above=50)
+
+
+class TestTimeSeriesMomentum:
+    def test_uptrend_gives_long_signal(self) -> None:
+        closes = [100.0 + i for i in range(60)]
+        strategy = TimeSeriesMomentumStrategy(lookback_bars=40, skip_bars=5)
+        assert strategy.generate_signals({"A": _prices(closes)})["A"] == 1
+
+    def test_downtrend_gives_flat_signal(self) -> None:
+        closes = [200.0 - i for i in range(60)]
+        strategy = TimeSeriesMomentumStrategy(lookback_bars=40, skip_bars=5)
+        assert strategy.generate_signals({"A": _prices(closes)})["A"] == 0
+
+    def test_skip_window_excludes_recent_bars(self) -> None:
+        # Stigande i 50 barer, kraschar de sista 5: med skip=5 mäts bara
+        # den stigande delen -> fortfarande signal 1.
+        closes = [100.0 + i for i in range(50)] + [50.0] * 5
+        strategy = TimeSeriesMomentumStrategy(lookback_bars=40, skip_bars=5)
+        assert strategy.generate_signals({"A": _prices(closes)})["A"] == 1
+        # Utan skip ingår kraschen -> mätningen slutar på 50 < start -> 0.
+        no_skip = TimeSeriesMomentumStrategy(lookback_bars=40, skip_bars=0)
+        assert no_skip.generate_signals({"A": _prices(closes)})["A"] == 0
+
+    def test_too_short_history_gives_flat(self) -> None:
+        strategy = TimeSeriesMomentumStrategy(lookback_bars=252, skip_bars=21)
+        assert strategy.generate_signals({"A": _prices([100.0] * 50)})["A"] == 0
+
+    def test_invalid_parameters_rejected(self) -> None:
+        with pytest.raises(ValueError):
+            TimeSeriesMomentumStrategy(lookback_bars=20, skip_bars=20)
+        with pytest.raises(ValueError):
+            TimeSeriesMomentumStrategy(lookback_bars=20, skip_bars=-1)
 
 
 class TestMaxLookback:

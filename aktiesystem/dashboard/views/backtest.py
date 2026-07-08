@@ -17,6 +17,7 @@ from src.backtesting.strategies import (
     BollingerReversionStrategy,
     RsiMeanReversionStrategy,
     SmaCrossoverStrategy,
+    TimeSeriesMomentumStrategy,
 )
 from src.backtesting.strategy import Strategy
 from src.backtesting.validation import rolling_window_evaluation, run_split_backtest
@@ -32,7 +33,10 @@ OVERFITTING_WARNING = (
 
 def _build_strategy() -> Strategy | None:
     """Strategival + parameterinmatning. None tills valet är komplett."""
-    kind = st.selectbox("Strategi", ["SMA-korsning", "RSI mean reversion", "Bollinger-reversion"])
+    kind = st.selectbox(
+        "Strategi",
+        ["SMA-korsning", "RSI mean reversion", "Bollinger-reversion", "Tidsseriemomentum"],
+    )
     try:
         if kind == "SMA-korsning":
             col1, col2 = st.columns(2)
@@ -45,6 +49,11 @@ def _build_strategy() -> Strategy | None:
             buy = float(col2.number_input("Köp under RSI", 5.0, 50.0, 30.0))
             exit_lvl = float(col3.number_input("Sälj över RSI", 30.0, 95.0, 55.0))
             return RsiMeanReversionStrategy(period, buy, exit_lvl)
+        if kind == "Tidsseriemomentum":
+            col1, col2 = st.columns(2)
+            lookback = int(col1.number_input("Mätperiod (barer)", 10, 500, 252))
+            skip = int(col2.number_input("Exkludera senaste (barer)", 0, 100, 21))
+            return TimeSeriesMomentumStrategy(lookback, skip)
         col1, col2 = st.columns(2)
         period = int(col1.number_input("Bollinger-period", 5, 100, 20))
         std = float(col2.number_input("Antal standardavvikelser", 0.5, 4.0, 2.0))
@@ -156,7 +165,17 @@ def render(config: dict[str, Any]) -> None:
         ),
     )
 
-    if not tickers or strategy is None or not st.button("Kör backtest", type="primary"):
+    col_run, col_compare = st.columns([1, 2])
+    run_single = col_run.button("Kör backtest", type="primary")
+    run_comparison = col_compare.button(
+        "Jämför alla strategier (standardparametrar)",
+        help=(
+            "Kör alla fyra strategierna med standardparametrar plus köp-och-behåll "
+            "på samma data och kostnadsmodell — en snabb överblick över vilka "
+            "angreppssätt som historiskt fungerat på just dessa tickers."
+        ),
+    )
+    if not tickers or strategy is None or not (run_single or run_comparison):
         return
 
     prices: dict[str, pd.DataFrame] = {}
@@ -183,6 +202,9 @@ def render(config: dict[str, Any]) -> None:
 
     risk_free = float(config["risk"].get("risk_free_rate", 0.02))
     periods = PERIODS_PER_YEAR[interval]
+    if run_comparison:
+        _run_comparison(prices, start_capital, cost_model, benchmark_close, risk_free, periods)
+        return
     if mode.startswith("In-/out"):
         _run_split(prices, strategy, start_capital, cost_model, benchmark_close, risk_free, periods)
         return
@@ -231,6 +253,92 @@ def _offer_saved_run(
         file_name="backtest.json",
         mime="application/json",
     )
+
+
+class _BuyAndHold(Strategy):
+    """Referens: alltid investerad (lika vikt), samma kostnadsmodell."""
+
+    name = "Köp & behåll (lika vikt)"
+
+    def generate_signals(self, history: dict[str, pd.DataFrame]) -> dict[str, int]:
+        return {ticker: 1 for ticker in history}
+
+
+def _run_comparison(
+    prices: dict[str, pd.DataFrame],
+    start_capital: float,
+    cost_model: CostModel,
+    benchmark_close: pd.Series | None,
+    risk_free: float,
+    periods_per_year: float,
+) -> None:
+    """Kör alla strategier (standardparametrar) på samma data och jämför."""
+    strategies: list[Strategy] = [
+        _BuyAndHold(),
+        SmaCrossoverStrategy(),
+        RsiMeanReversionStrategy(),
+        BollingerReversionStrategy(),
+        TimeSeriesMomentumStrategy(),
+    ]
+    rows = []
+    curves: dict[str, pd.Series] = {}
+    progress = st.progress(0.0, "Kör strategier ...")
+    for i, strategy in enumerate(strategies):
+        try:
+            result = BacktestEngine(
+                prices,
+                strategy,
+                start_capital,
+                cost_model,
+                benchmark_close,
+                risk_free_rate=risk_free,
+                periods_per_year=periods_per_year,
+            ).run()
+        except (ValueError, RuntimeError) as exc:
+            st.warning(f"{strategy.name}: kunde inte köras ({exc}).")
+            continue
+        m = result.metrics
+
+        def fmt(key: str, pct: bool = True, metrics: dict[str, float] = m) -> str:
+            value = metrics.get(key)
+            if value is None or value != value:
+                return "–"
+            return f"{value:.1%}" if pct else f"{value:.2f}"
+
+        rows.append(
+            {
+                "Strategi": strategy.name,
+                "Avkastning": fmt("total_avkastning"),
+                "CAGR": fmt("cagr"),
+                "Sharpe": fmt("sharpe", pct=False),
+                "Max drawdown": fmt("max_drawdown"),
+                "Win rate": fmt("win_rate"),
+                "Exponering": fmt("exponering"),
+                "Affärer": int(m.get("antal_affarer", 0)),
+            }
+        )
+        curves[strategy.name] = result.equity_curve
+        progress.progress((i + 1) / len(strategies), f"Kört {strategy.name}")
+    progress.empty()
+    if not rows:
+        st.error("Ingen strategi kunde köras på den valda datan.")
+        return
+
+    st.subheader("Strategijämförelse (standardparametrar)")
+    st.caption(
+        "Samma data, samma startkapital, samma kostnadsmodell. Köp & behåll är "
+        "referensen att slå — en strategi som ligger under den har historiskt inte "
+        "motiverat sitt krångel. Historiskt resultat är ingen prognos, och att den "
+        "bästa strategin här vinner beror delvis på just denna period (se "
+        "robusthetsutvärderingarna innan slutsatser dras)."
+    )
+    st.dataframe(pd.DataFrame(rows), hide_index=True, use_container_width=True)
+
+    fig = go.Figure()
+    for name, curve in curves.items():
+        fig.add_trace(go.Scatter(x=curve.index, y=curve, name=name))
+    fig.update_layout(title="Equity-kurvor", height=450, legend={"orientation": "h"})
+    st.plotly_chart(fig, use_container_width=True)
 
 
 def _run_rolling(
