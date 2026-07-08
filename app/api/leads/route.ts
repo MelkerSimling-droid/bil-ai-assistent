@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sparaLead, type NyttLeadInput } from "@/lib/leads";
 import type { LeadIntresse } from "@/lib/types";
+import { rateLimitOk, klientIp } from "@/lib/rateLimit";
 
 const GILTIGA_INTRESSEN: LeadIntresse[] = [
   "provkorning",
@@ -13,6 +14,8 @@ const GILTIGA_INTRESSEN: LeadIntresse[] = [
 const MAX_KORT = 200;
 const MAX_LANGT = 2000;
 const MAX_CHATTRADER = 50;
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_FONSTER_MS = 60 * 60 * 1000; // 1 timme
 
 function stad(varde: unknown, maxLangd: number): string | undefined {
   if (typeof varde !== "string") return undefined;
@@ -21,6 +24,13 @@ function stad(varde: unknown, maxLangd: number): string | undefined {
 }
 
 export async function POST(req: NextRequest) {
+  if (!rateLimitOk(`leads:${klientIp(req)}`, RATE_LIMIT_MAX, RATE_LIMIT_FONSTER_MS)) {
+    return NextResponse.json(
+      { fel: "För många förfrågningar på kort tid - vänta en stund och försök igen." },
+      { status: 429 }
+    );
+  }
+
   let body: Partial<NyttLeadInput>;
   try {
     body = (await req.json()) as Partial<NyttLeadInput>;

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { Bil } from "@/lib/types";
 
 type SortOrdning = "relevans" | "pris_stigande" | "pris_fallande" | "arsmodell_nyast" | "miltal_lagst";
@@ -14,6 +15,8 @@ const SORT_LABEL: Record<SortOrdning, string> = {
   miltal_lagst: "Miltal: lägst först",
 };
 
+const MAX_JAMFORELSE = 4;
+
 function vaxelladaTyp(vaxellada?: string): "Automat" | "Manuell" | undefined {
   if (!vaxellada) return undefined;
   if (vaxellada.includes("Automat")) return "Automat";
@@ -22,12 +25,14 @@ function vaxelladaTyp(vaxellada?: string): "Automat" | "Manuell" | undefined {
 }
 
 export default function BilFilter({ bilar }: { bilar: Bil[] }) {
+  const router = useRouter();
   const [sok, setSok] = useState("");
   const [drivmedel, setDrivmedel] = useState("");
   const [vaxel, setVaxel] = useState("");
   const [kaross, setKaross] = useState("");
   const [prisMax, setPrisMax] = useState("");
   const [sortering, setSortering] = useState<SortOrdning>("relevans");
+  const [jamforelse, setJamforelse] = useState<string[]>([]);
 
   const alternativDrivmedel = useMemo(
     () => Array.from(new Set(bilar.map((b) => b.drivmedel).filter((v): v is string => !!v))).sort(),
@@ -82,6 +87,19 @@ export default function BilFilter({ bilar }: { bilar: Bil[] }) {
     setKaross("");
     setPrisMax("");
     setSortering("relevans");
+  }
+
+  function vaxlaJamforelse(id: string) {
+    setJamforelse((tidigare) => {
+      if (tidigare.includes(id)) return tidigare.filter((v) => v !== id);
+      if (tidigare.length >= MAX_JAMFORELSE) return tidigare;
+      return [...tidigare, id];
+    });
+  }
+
+  function oppnaJamforelse() {
+    if (jamforelse.length < 2) return;
+    router.push(`/jamfor?ids=${jamforelse.join(",")}`);
   }
 
   return (
@@ -170,9 +188,16 @@ export default function BilFilter({ bilar }: { bilar: Bil[] }) {
         </div>
       </div>
 
-      <p className="text-gray-500 text-sm mb-4">
-        Visar {filtrerade.length} av {bilar.length} bilar
-      </p>
+      <div className="flex items-center justify-between mb-4">
+        <p className="text-gray-500 text-sm">
+          Visar {filtrerade.length} av {bilar.length} bilar
+        </p>
+        {jamforelse.length > 0 && (
+          <p className="text-sm text-gray-500">
+            {jamforelse.length}/{MAX_JAMFORELSE} valda för jämförelse
+          </p>
+        )}
+      </div>
 
       {filtrerade.length === 0 ? (
         <div className="text-center py-16 text-gray-400">
@@ -182,58 +207,106 @@ export default function BilFilter({ bilar }: { bilar: Bil[] }) {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {filtrerade.map((bil) => (
-            <Link
-              key={bil.id}
-              href={`/bilar/${bil.id}`}
-              className="group border border-gray-200 rounded-lg overflow-hidden bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all"
-            >
-              <div className="aspect-[16/10] bg-gray-100 overflow-hidden">
-                {bil.bilder[0] ? (
-                  <img
-                    src={bil.bilder[0]}
-                    alt={bil.modell}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+          {filtrerade.map((bil) => {
+            const vald = jamforelse.includes(bil.id);
+            return (
+              <div
+                key={bil.id}
+                className={`group relative border rounded-lg overflow-hidden bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all ${
+                  vald ? "border-red-600 ring-1 ring-red-600" : "border-gray-200"
+                }`}
+              >
+                <label
+                  className="absolute top-2 left-2 z-10 flex items-center gap-1.5 bg-white/95 backdrop-blur-sm rounded-full pl-2 pr-2.5 py-1 text-xs font-medium text-gray-700 shadow-sm cursor-pointer select-none"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <input
+                    type="checkbox"
+                    checked={vald}
+                    onChange={() => vaxlaJamforelse(bil.id)}
+                    disabled={!vald && jamforelse.length >= MAX_JAMFORELSE}
+                    className="accent-red-600"
+                    aria-label={`Jämför ${bil.modell}`}
                   />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
-                    Ingen bild tillgänglig
+                  Jämför
+                </label>
+
+                <Link href={`/bilar/${bil.id}`}>
+                  <div className="aspect-[16/10] bg-gray-100 overflow-hidden">
+                    {bil.bilder[0] ? (
+                      <img
+                        src={bil.bilder[0]}
+                        alt={bil.modell}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                        Ingen bild tillgänglig
+                      </div>
+                    )}
                   </div>
-                )}
+
+                  <div className="p-4">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span
+                        className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                          bil.lagerstatus === "I lager"
+                            ? "bg-green-100 text-green-700"
+                            : "bg-gray-200 text-gray-700"
+                        }`}
+                      >
+                        {bil.lagerstatus ?? "I lager"}
+                      </span>
+                    </div>
+
+                    <h2 className="font-semibold text-gray-900 group-hover:text-red-600 transition-colors">
+                      {bil.modell}
+                    </h2>
+                    <p className="text-sm text-gray-500 truncate">{bil.version}</p>
+
+                    <p className="text-xl font-bold text-gray-900 mt-2">
+                      {bil.pris.toLocaleString("sv-SE")} kr
+                    </p>
+
+                    <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 mt-2">
+                      <span>{bil.arsmodell}</span>
+                      <span>{bil.miltal} mil</span>
+                      {bil.vaxellada && <span>{bil.vaxellada}</span>}
+                      {bil.drivmedel && <span>{bil.drivmedel}</span>}
+                    </div>
+                  </div>
+                </Link>
               </div>
+            );
+          })}
+        </div>
+      )}
 
-              <div className="p-4">
-                <div className="flex items-center gap-2 mb-1">
-                  <span
-                    className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
-                      bil.lagerstatus === "I lager"
-                        ? "bg-green-100 text-green-700"
-                        : "bg-gray-200 text-gray-700"
-                    }`}
-                  >
-                    {bil.lagerstatus ?? "I lager"}
-                  </span>
-                </div>
-
-                <h2 className="font-semibold text-gray-900 group-hover:text-red-600 transition-colors">
-                  {bil.modell}
-                </h2>
-                <p className="text-sm text-gray-500 truncate">{bil.version}</p>
-
-                <p className="text-xl font-bold text-gray-900 mt-2">
-                  {bil.pris.toLocaleString("sv-SE")} kr
-                </p>
-
-                <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 mt-2">
-                  <span>{bil.arsmodell}</span>
-                  <span>{bil.miltal} mil</span>
-                  {bil.vaxellada && <span>{bil.vaxellada}</span>}
-                  {bil.drivmedel && <span>{bil.drivmedel}</span>}
-                </div>
-              </div>
-            </Link>
-          ))}
+      {jamforelse.length > 0 && (
+        <div className="fixed bottom-0 inset-x-0 z-30 bg-gray-900 text-white shadow-lg">
+          <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+            <p className="text-sm">
+              <span className="font-semibold">{jamforelse.length}</span>{" "}
+              {jamforelse.length === 1 ? "bil vald" : "bilar valda"} för jämförelse
+              {jamforelse.length === 1 && " - välj minst en till"}
+            </p>
+            <div className="flex items-center gap-4 shrink-0">
+              <button
+                onClick={() => setJamforelse([])}
+                className="text-sm text-gray-300 hover:text-white transition-colors"
+              >
+                Rensa
+              </button>
+              <button
+                onClick={oppnaJamforelse}
+                disabled={jamforelse.length < 2}
+                className="bg-red-600 hover:bg-red-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+              >
+                Jämför bilar
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

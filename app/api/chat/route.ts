@@ -2,11 +2,21 @@ import { NextRequest, NextResponse } from "next/server";
 import { hittaBil } from "@/lib/bilar";
 import { fragaOmBilen } from "@/lib/ai";
 import type { ChattMeddelande } from "@/lib/types";
+import { rateLimitOk, klientIp } from "@/lib/rateLimit";
 
 const MAX_FRAGA_LANGD = 1000;
 const MAX_HISTORIK_RADER = 30;
+const RATE_LIMIT_MAX = 20;
+const RATE_LIMIT_FONSTER_MS = 5 * 60 * 1000; // 5 minuter
 
 export async function POST(req: NextRequest) {
+  if (!rateLimitOk(`chat:${klientIp(req)}`, RATE_LIMIT_MAX, RATE_LIMIT_FONSTER_MS)) {
+    return NextResponse.json(
+      { svar: "För många frågor på kort tid - vänta en liten stund och försök igen." },
+      { status: 429 }
+    );
+  }
+
   let body: { fraga?: unknown; bilId?: unknown; historik?: unknown };
   try {
     body = await req.json();
