@@ -25,6 +25,8 @@ class SmaCrossoverStrategy(Strategy):
         self._fast = fast
         self._slow = slow
         self.name = f"SMA-korsning {fast}/{slow}"
+        # SMA behöver exakt `slow` barer — mer historik ändrar inget.
+        self.max_lookback = slow + 5
 
     def generate_signals(self, history: dict[str, pd.DataFrame]) -> dict[str, int]:
         """Se :meth:`Strategy.generate_signals`."""
@@ -46,6 +48,13 @@ class RsiMeanReversionStrategy(Strategy):
     Signalen har hysteres: köpläge inleds när RSI < ``buy_below`` och
     varar tills RSI > ``exit_above``. Tillståndet härleds deterministiskt
     ur historiken vid varje anrop (ingen intern mutation).
+
+    Av prestandaskäl beräknas tillstånd och RSI över ett rullande fönster
+    om ``max_lookback`` barer (minst 20× perioden) i stället för hela
+    historiken — Wilders utjämning gör att äldre data har försumbar vikt,
+    men i sällsynta fall (en position som hållits öppen längre än hela
+    fönstret utan att RSI passerat säljnivån) kan tillståndet skilja sig
+    från en full-historik-beräkning. Se ANTAGANDEN.md.
     """
 
     def __init__(self, period: int = 14, buy_below: float = 30.0, exit_above: float = 55.0) -> None:
@@ -55,6 +64,7 @@ class RsiMeanReversionStrategy(Strategy):
         self._buy_below = buy_below
         self._exit_above = exit_above
         self.name = f"RSI mean reversion ({period}, {buy_below:.0f}/{exit_above:.0f})"
+        self.max_lookback = max(20 * period, 300)
 
     def generate_signals(self, history: dict[str, pd.DataFrame]) -> dict[str, int]:
         """Se :meth:`Strategy.generate_signals`."""
@@ -82,6 +92,9 @@ class BollingerReversionStrategy(Strategy):
         self._period = period
         self._num_std = num_std
         self.name = f"Bollinger-reversion ({period}, {num_std}σ)"
+        # Rullande fönster av prestandaskäl — samma resonemang och
+        # begränsning som för RSI-strategin (se dess docstring).
+        self.max_lookback = max(20 * period, 300)
 
     def generate_signals(self, history: dict[str, pd.DataFrame]) -> dict[str, int]:
         """Se :meth:`Strategy.generate_signals`."""

@@ -53,25 +53,35 @@ class YFinanceAdapter(MarketDataAdapter):
         self._max_retries = max_retries
         self._backoff = backoff_base_seconds
 
-    def fetch_price_history(self, ticker: str, period: str = "10y") -> pd.DataFrame:
-        """Se :meth:`MarketDataAdapter.fetch_price_history`."""
+    def fetch_price_history(
+        self, ticker: str, period: str = "10y", interval: str = "1d"
+    ) -> pd.DataFrame:
+        """Se :meth:`MarketDataAdapter.fetch_price_history`.
+
+        Yahoo begränsar intradagshistorik: interval "1h" ≈ 2 år bakåt,
+        "15m"/"5m" ≈ 60 dagar. Begär inte längre period än så.
+        """
 
         def _download() -> pd.DataFrame:
-            frame = yf.Ticker(ticker).history(period=period, interval="1d", auto_adjust=True)
+            frame = yf.Ticker(ticker).history(period=period, interval=interval, auto_adjust=True)
             if frame is None or frame.empty:
-                raise DataSourceError(f"Yahoo returnerade ingen kurshistorik för {ticker!r}.")
+                raise DataSourceError(
+                    f"Yahoo returnerade ingen kurshistorik för {ticker!r} ({interval})."
+                )
             return frame
 
         try:
-            raw = with_retries(_download, f"OHLCV {ticker}", self._max_retries, self._backoff)
+            raw = with_retries(
+                _download, f"OHLCV {ticker} {interval}", self._max_retries, self._backoff
+            )
         except DataSourceError:
             raise
         except Exception as exc:
             raise DataSourceError(f"Kunde inte hämta kurser för {ticker!r}: {exc}") from exc
-        return self._normalize_ohlcv(raw, ticker)
+        return self._normalize_ohlcv(raw, ticker, interval)
 
     @staticmethod
-    def _normalize_ohlcv(raw: pd.DataFrame, ticker: str) -> pd.DataFrame:
+    def _normalize_ohlcv(raw: pd.DataFrame, ticker: str, interval: str = "1d") -> pd.DataFrame:
         """Normaliserar Yahoos svar till open/high/low/close/volume.
 
         Raises:
@@ -82,8 +92,10 @@ class YFinanceAdapter(MarketDataAdapter):
         if missing:
             raise DataSourceError(f"Kolumner saknas för {ticker!r}: {missing}")
         frame = frame[_EXPECTED_COLUMNS].copy()
-        # Normalisera till tidszons-naiva datum (dagsupplösning räcker).
-        frame.index = pd.to_datetime(frame.index).tz_localize(None).normalize()
+        # Tidszons-naiv index; dagsdata normaliseras till midnatt, intradag
+        # behåller klockslagen (i börsens lokala tid).
+        index = pd.to_datetime(frame.index).tz_localize(None)
+        frame.index = index.normalize() if interval == "1d" else index
         frame.index.name = "date"
         frame = frame[~frame.index.duplicated(keep="last")].sort_index()
         # Rader där close saknas är oanvändbara — logga och släng dem öppet.

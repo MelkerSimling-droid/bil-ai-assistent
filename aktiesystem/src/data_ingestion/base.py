@@ -66,12 +66,16 @@ class MarketDataAdapter(ABC):
     source_name: str = "abstract"
 
     @abstractmethod
-    def fetch_price_history(self, ticker: str, period: str = "10y") -> pd.DataFrame:
-        """Hämtar daglig OHLCV-historik.
+    def fetch_price_history(
+        self, ticker: str, period: str = "10y", interval: str = "1d"
+    ) -> pd.DataFrame:
+        """Hämtar OHLCV-historik.
 
         Args:
             ticker: Ticker i källans format (Yahoo: "VOLV-B.ST").
             period: Historiklängd, t.ex. "1y", "10y", "max".
+            interval: Barlängd: "1d" (dagsdata), "1h" eller "15m" (intradag).
+                Intradagshistorik är typiskt begränsad hos källan.
 
         Returns:
             DataFrame med DatetimeIndex (stigande) och kolumnerna

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import math
 
+import numpy as np
 import pandas as pd
 import pytest
 
@@ -233,6 +234,44 @@ class TestExampleStrategies:
             SmaCrossoverStrategy(fast=200, slow=50)
         with pytest.raises(ValueError):
             RsiMeanReversionStrategy(buy_below=60, exit_above=50)
+
+
+class TestMaxLookback:
+    def test_engine_passes_only_tail_when_lookback_set(self) -> None:
+        class TailSpy(Strategy):
+            name = "svansspion (test)"
+            max_lookback = 5
+
+            def __init__(self) -> None:
+                self.seen_lengths: list[int] = []
+                self.last_dates: list[pd.Timestamp] = []
+
+            def generate_signals(self, history: dict[str, pd.DataFrame]) -> dict[str, int]:
+                frame = history["A"]
+                self.seen_lengths.append(len(frame))
+                self.last_dates.append(frame.index.max())
+                return {"A": 0}
+
+        prices = {"A": _prices([100.0 + i for i in range(20)])}
+        spy = TailSpy()
+        BacktestEngine(prices, spy, cost_model=ZERO_COSTS).run()
+        assert max(spy.seen_lengths) == 5  # aldrig mer än lookback
+        # Sista baren i slicen är fortfarande "idag" — inget lookahead.
+        assert spy.last_dates == list(prices["A"].index)
+
+    def test_sma_strategy_identical_with_and_without_lookback(self) -> None:
+        closes = [100.0 + np.sin(i / 7) * 10 + i * 0.05 for i in range(120)]
+        prices = {"A": _prices(closes)}
+
+        limited = SmaCrossoverStrategy(fast=5, slow=20)
+        unlimited = SmaCrossoverStrategy(fast=5, slow=20)
+        unlimited.max_lookback = None
+
+        result_limited = BacktestEngine(prices, limited, 10_000, ZERO_COSTS).run()
+        result_unlimited = BacktestEngine(prices, unlimited, 10_000, ZERO_COSTS).run()
+        # SMA behöver bara `slow` barer: resultaten ska vara identiska.
+        pd.testing.assert_series_equal(result_limited.equity_curve, result_unlimited.equity_curve)
+        assert len(result_limited.trades) == len(result_unlimited.trades)
 
 
 class TestEngineValidation:

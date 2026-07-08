@@ -37,6 +37,15 @@ def load_fundamentals_dict(ticker: str) -> dict[str, Any] | None:
         return None
 
 
+@st.cache_data(ttl=1800, show_spinner="Hämtar intradagsdata ...")
+def load_intraday(ticker: str, interval: str) -> pd.DataFrame | None:
+    """Hämtar intradagshistorik; None vid fel (UI visar 'data saknas')."""
+    try:
+        return get_service().get_intraday_history(ticker, interval)
+    except (DataSourceError, ValueError):
+        return None
+
+
 @st.cache_data(ttl=3600, show_spinner="Hämtar växelkurs ...")
 def load_fx_rate(from_currency: str, to_currency: str) -> tuple[float, str] | None:
     """Senaste växelkurs (kurs, kursdatum); None om den inte kunde hämtas."""

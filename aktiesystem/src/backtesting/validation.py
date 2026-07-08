@@ -75,6 +75,7 @@ def run_split_backtest(
     benchmark_close: pd.Series | None = None,
     risk_free_rate: float = 0.02,
     in_sample_fraction: float = 0.7,
+    periods_per_year: float = 252.0,
 ) -> SplitBacktestResult:
     """Kör samma strategi på in-sample- och out-of-sample-perioden separat.
 
@@ -95,10 +96,22 @@ def run_split_backtest(
         return benchmark_close.loc[calendar[0] : calendar[-1]]
 
     result_in = BacktestEngine(
-        early, strategy, start_capital, cost_model, bench_slice(early), risk_free_rate
+        early,
+        strategy,
+        start_capital,
+        cost_model,
+        bench_slice(early),
+        risk_free_rate,
+        periods_per_year=periods_per_year,
     ).run()
     result_out = BacktestEngine(
-        late, strategy, start_capital, cost_model, bench_slice(late), risk_free_rate
+        late,
+        strategy,
+        start_capital,
+        cost_model,
+        bench_slice(late),
+        risk_free_rate,
+        periods_per_year=periods_per_year,
     ).run()
 
     warnings = _compare(result_in, result_out)
@@ -121,6 +134,7 @@ def rolling_window_evaluation(
     cost_model: CostModel,
     risk_free_rate: float = 0.02,
     n_windows: int = 4,
+    periods_per_year: float = 252.0,
 ) -> tuple[list[WindowResult], list[str]]:
     """Kör strategin separat på N lika långa, icke överlappande delperioder.
 
@@ -158,7 +172,13 @@ def rolling_window_evaluation(
         end = calendar[boundaries[i + 1] - 1]
         sliced = {ticker: frame.loc[start:end] for ticker, frame in prices.items()}
         result = BacktestEngine(
-            sliced, strategy, start_capital, cost_model, None, risk_free_rate
+            sliced,
+            strategy,
+            start_capital,
+            cost_model,
+            None,
+            risk_free_rate,
+            periods_per_year=periods_per_year,
         ).run()
         windows.append(WindowResult(start, end, result))
     return windows, _consistency_warnings(windows)

@@ -55,8 +55,14 @@ class BacktestEngine:
         cost_model: CostModel | None = None,
         benchmark_close: pd.Series | None = None,
         risk_free_rate: float = 0.02,
+        periods_per_year: float = 252.0,
     ) -> None:
         """Skapar motorn.
+
+        Motorn är bar-agnostisk: den fungerar lika bra på dagsdata som på
+        intradagsbarer (1h/15m) — "dag T+1:s öppning" betyder då "nästa
+        bars öppning". Ange rätt ``periods_per_year`` för intradagsdata,
+        annars blir Sharpe/Sortino/CAGR systematiskt fel.
 
         Args:
             prices: Per ticker: OHLCV-frame med DatetimeIndex (stigande).
@@ -65,6 +71,8 @@ class BacktestEngine:
             cost_model: Courtage-/slippagemodell (standard: CostModel()).
             benchmark_close: Stängningskurser för jämförelseindex (valfritt).
             risk_free_rate: Årlig riskfri ränta för Sharpe/Sortino.
+            periods_per_year: Barer per år för annualisering (252 för
+                dagsdata; se metrics.PERIODS_PER_YEAR för intradag).
         """
         if not prices:
             raise ValueError("Minst en ticker med prisdata krävs.")
@@ -82,6 +90,7 @@ class BacktestEngine:
         self._costs = cost_model or CostModel()
         self._benchmark_close = benchmark_close
         self._risk_free_rate = risk_free_rate
+        self._periods_per_year = periods_per_year
         # Handelskalender = union av alla tickers datum.
         self._calendar = sorted(set().union(*(frame.index for frame in prices.values())))
         # Senast kända stängningskurs per ticker och kalenderdag (för värdering).
@@ -133,8 +142,18 @@ class BacktestEngine:
         return self._build_result(equity_points, trades, closed_pnls, exposure)
 
     def _history_up_to(self, today: pd.Timestamp) -> dict[str, pd.DataFrame]:
-        """Historik t.o.m. idag — det enda strategin någonsin får se."""
-        return {ticker: frame.loc[:today] for ticker, frame in self._prices.items()}
+        """Historik t.o.m. idag — det enda strategin någonsin får se.
+
+        Om strategin deklarerar ``max_lookback`` skickas bara de senaste
+        så många barerna (fortfarande enbart data t.o.m. idag) — det gör
+        långa intradagsbacktester dramatiskt snabbare utan lookahead-risk.
+        """
+        lookback = self._strategy.max_lookback
+        history = {}
+        for ticker, frame in self._prices.items():
+            sliced = frame.loc[:today]
+            history[ticker] = sliced.tail(lookback) if lookback else sliced
+        return history
 
     def _mark_price(self, ticker: str, date: pd.Timestamp) -> float:
         """Senast kända stängningskurs t.o.m. ett datum (för värdering)."""
@@ -236,7 +255,11 @@ class BacktestEngine:
             if len(bench) >= 2:
                 benchmark_equity = (bench / bench.iloc[0] * self._start_capital).rename("benchmark")
         metrics, warnings = compute_metrics(
-            equity, closed_pnls, self._risk_free_rate, benchmark_equity
+            equity,
+            closed_pnls,
+            self._risk_free_rate,
+            benchmark_equity,
+            periods_per_year=self._periods_per_year,
         )
         # Andel handelsdagar med minst en öppen position — utan detta är
         # avkastningsjämförelser mot ett alltid-investerat index missvisande.

@@ -27,8 +27,16 @@ Beslut jag fattat där specifikationen lämnade utrymme. Allt här går att
    strategin. Byt benchmark i `config.yaml` om du vill ha annan bas.
 6. **Cachens färskhet:** 12 timmar (konfigurerbart). Vid API-fel används cachad
    data med tydlig loggvarning; utan cache visas "data saknas" i UI.
-7. **Endast dagsdata.** Intradagsdata från Yahoo är opålitlig/begränsad gratis
-   och utelämnades medvetet.
+7. **Intradagsdata** stöds för intervallen 1h (ca 2 års historik hos Yahoo)
+   och 15m (ca 60 dagar). Datat är fördröjt (inte realtid), cachas i en egen
+   tabell med 1 timmes färskhet, och tidsstämplarna är i börsens lokala tid.
+   Yahoo-index på intradagsnivå är opålitliga, så intradagsbacktester görs
+   utan indexjämförelse. Prestanda: strategier deklarerar `max_lookback` så
+   motorn bara skickar den historiksvans indikatorn behöver (exakt för SMA;
+   för RSI/Bollinger med hysteres ett 20×period-fönster, vilket i sällsynta
+   fall — position öppen längre än hela fönstret utan att säljnivån nåtts —
+   kan ge annat tillstånd än full historik). Verifierat: 6 432 timbarer på
+   ~16 s med identiskt resultat som full-historik-körningen.
 8. **Standardbevakningslista:** 4 svenska + 2 amerikanska aktier som exempel —
    byt fritt under Inställningar.
 

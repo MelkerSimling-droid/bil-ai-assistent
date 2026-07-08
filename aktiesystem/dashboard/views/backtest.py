@@ -8,9 +8,10 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-from dashboard.views.common import load_prices, show_missing
+from dashboard.views.common import load_intraday, load_prices, show_missing
 from src.backtesting.costs import CostModel
 from src.backtesting.engine import BacktestEngine, BacktestResult
+from src.backtesting.metrics import PERIODS_PER_YEAR
 from src.backtesting.persistence import run_to_dict, save_backtest_run
 from src.backtesting.strategies import (
     BollingerReversionStrategy,
@@ -111,6 +112,18 @@ def render(config: dict[str, Any]) -> None:
 
     watchlist: list[str] = config.get("watchlist", [])
     tickers = st.multiselect("Tickers", watchlist, default=watchlist[:2])
+    data_source = st.selectbox(
+        "Datakälla",
+        ["Dagsdata (upp till 10 år)", "Intradag 1h (ca 2 år)", "Intradag 15m (ca 60 dagar)"],
+        help=(
+            "Intradagsbarer testar strategin på timmes-/kvartsnivå (för dagshandel). "
+            "Obs: kortare historik ger färre affärer och lägre statistiskt värde, och "
+            "signalen på bar T exekveras på nästa bars öppning — precis som för dagsdata."
+        ),
+    )
+    interval = {"Dagsdata": "1d", "Intradag 1h": "1h", "Intradag 15m": "15m"}[
+        data_source.split(" (")[0]
+    ]
     strategy = _build_strategy()
     bt_cfg = config["backtest"]
     with st.expander("Kapital & kostnader (från config.yaml)"):
@@ -148,15 +161,20 @@ def render(config: dict[str, Any]) -> None:
 
     prices: dict[str, pd.DataFrame] = {}
     for ticker in tickers:
-        frame = load_prices(ticker)
+        frame = load_prices(ticker) if interval == "1d" else load_intraday(ticker, interval)
         if frame is None:
-            show_missing("kursdata", ticker)
+            show_missing(f"kursdata ({interval})", ticker)
             return
         prices[ticker] = frame
 
     benchmark_ticker = str(config.get("benchmark", ""))
     benchmark_close = None
-    if benchmark_ticker:
+    if interval != "1d":
+        st.caption(
+            "Indexjämförelse görs inte för intradagsbacktester (indexdata på "
+            "intradagsnivå är opålitlig hos källan)."
+        )
+    elif benchmark_ticker:
         bench = load_prices(benchmark_ticker)
         if bench is not None:
             benchmark_close = bench["close"]
@@ -164,14 +182,15 @@ def render(config: dict[str, Any]) -> None:
             st.warning(f"Benchmarkdata ({benchmark_ticker}) kunde inte hämtas — jämförelsen utgår.")
 
     risk_free = float(config["risk"].get("risk_free_rate", 0.02))
+    periods = PERIODS_PER_YEAR[interval]
     if mode.startswith("In-/out"):
-        _run_split(prices, strategy, start_capital, cost_model, benchmark_close, risk_free)
+        _run_split(prices, strategy, start_capital, cost_model, benchmark_close, risk_free, periods)
         return
     if mode.startswith("Rullande"):
-        _run_rolling(prices, strategy, start_capital, cost_model, risk_free)
+        _run_rolling(prices, strategy, start_capital, cost_model, risk_free, periods)
         return
 
-    with st.spinner("Kör backtest (event-driven, dag för dag) ..."):
+    with st.spinner("Kör backtest (event-driven, bar för bar) ..."):
         try:
             result = BacktestEngine(
                 prices,
@@ -180,6 +199,7 @@ def render(config: dict[str, Any]) -> None:
                 cost_model,
                 benchmark_close,
                 risk_free_rate=risk_free,
+                periods_per_year=periods,
             ).run()
         except (ValueError, RuntimeError) as exc:
             st.error(f"Backtestet kunde inte genomföras: {exc}")
@@ -219,12 +239,19 @@ def _run_rolling(
     start_capital: float,
     cost_model: CostModel,
     risk_free: float,
+    periods_per_year: float,
 ) -> None:
     """Kör och redovisar rullande fönster-utvärderingen."""
     with st.spinner("Kör backtest på fyra delperioder ..."):
         try:
             windows, warnings = rolling_window_evaluation(
-                prices, strategy, start_capital, cost_model, risk_free, n_windows=4
+                prices,
+                strategy,
+                start_capital,
+                cost_model,
+                risk_free,
+                n_windows=4,
+                periods_per_year=periods_per_year,
             )
         except (ValueError, RuntimeError) as exc:
             st.error(f"Utvärderingen kunde inte genomföras: {exc}")
@@ -285,12 +312,19 @@ def _run_split(
     cost_model: CostModel,
     benchmark_close: pd.Series | None,
     risk_free: float,
+    periods_per_year: float,
 ) -> None:
     """Kör och redovisar det tudelade backtestet (in-/out-of-sample)."""
     with st.spinner("Kör backtest på båda perioderna ..."):
         try:
             split = run_split_backtest(
-                prices, strategy, start_capital, cost_model, benchmark_close, risk_free
+                prices,
+                strategy,
+                start_capital,
+                cost_model,
+                benchmark_close,
+                risk_free,
+                periods_per_year=periods_per_year,
             )
         except (ValueError, RuntimeError) as exc:
             st.error(f"Out-of-sample-utvärderingen kunde inte genomföras: {exc}")

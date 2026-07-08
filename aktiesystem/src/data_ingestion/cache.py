@@ -28,6 +28,13 @@ CREATE TABLE IF NOT EXISTS prices (
     open   REAL, high REAL, low REAL, close REAL, volume REAL,
     PRIMARY KEY (ticker, date)
 );
+CREATE TABLE IF NOT EXISTS intraday_prices (
+    ticker   TEXT NOT NULL,
+    interval TEXT NOT NULL,
+    ts       TEXT NOT NULL,
+    open   REAL, high REAL, low REAL, close REAL, volume REAL,
+    PRIMARY KEY (ticker, interval, ts)
+);
 CREATE TABLE IF NOT EXISTS fundamentals (
     ticker     TEXT PRIMARY KEY,
     fetched_at TEXT NOT NULL,
@@ -109,6 +116,62 @@ class MarketDataCache:
                 " WHERE ticker = ? ORDER BY date",
                 conn,
                 params=(ticker,),
+                parse_dates=["date"],
+                index_col="date",
+            )
+        return None if frame.empty else frame
+
+    def store_intraday(
+        self, ticker: str, interval: str, frame: pd.DataFrame, source: str, params: str
+    ) -> None:
+        """Sparar intradags-OHLCV (tidsstämplar med klockslag) + sync-logg.
+
+        Args:
+            ticker: Tickern datan gäller.
+            interval: Barlängd, t.ex. "1h" eller "15m".
+            frame: DataFrame med DatetimeIndex och open/high/low/close/volume.
+            source: Datakällans namn.
+            params: Hämtningsparametrar (period/interval) för spårbarhet.
+        """
+        rows = [
+            (
+                ticker,
+                interval,
+                index.strftime("%Y-%m-%d %H:%M:%S"),
+                None if pd.isna(row["open"]) else float(row["open"]),
+                None if pd.isna(row["high"]) else float(row["high"]),
+                None if pd.isna(row["low"]) else float(row["low"]),
+                None if pd.isna(row["close"]) else float(row["close"]),
+                None if pd.isna(row["volume"]) else float(row["volume"]),
+            )
+            for index, row in frame.iterrows()
+        ]
+        now = datetime.now(UTC).isoformat()
+        with self._connect() as conn:
+            conn.executemany(
+                "INSERT OR REPLACE INTO intraday_prices VALUES (?, ?, ?, ?, ?, ?, ?, ?)", rows
+            )
+            conn.execute(
+                "INSERT INTO sync_log (ticker, data_type, source, params, fetched_at, row_count)"
+                " VALUES (?, ?, ?, ?, ?, ?)",
+                (ticker, f"prices_{interval}", source, params, now, len(rows)),
+            )
+        logger.info(
+            "Cachade %d intradagsrader (%s) för %s (källa: %s).",
+            len(rows),
+            interval,
+            ticker,
+            source,
+        )
+
+    def load_intraday(self, ticker: str, interval: str) -> pd.DataFrame | None:
+        """Läser cachad intradagshistorik för ett intervall, eller None."""
+        with self._connect() as conn:
+            frame = pd.read_sql_query(
+                "SELECT ts AS date, open, high, low, close, volume FROM intraday_prices"
+                " WHERE ticker = ? AND interval = ? ORDER BY ts",
+                conn,
+                params=(ticker, interval),
                 parse_dates=["date"],
                 index_col="date",
             )

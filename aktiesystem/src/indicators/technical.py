@@ -179,6 +179,34 @@ def obv(close: pd.Series, volume: pd.Series) -> pd.Series:
     return (direction * volume.astype(float)).cumsum().rename("obv")
 
 
+def vwap(high: pd.Series, low: pd.Series, close: pd.Series, volume: pd.Series) -> pd.Series:
+    """Volume Weighted Average Price, återställd per handelsdag.
+
+    Standardreferens i intradagshandel: kumulativt volymvägt snitt av
+    typiskt pris (H+L+C)/3 sedan dagens öppning. Kräver intradagsdata
+    med klockslag i indexet — på dagsdata blir VWAP = typiskt pris.
+
+    Args:
+        high: Högsta pris per bar.
+        low: Lägsta pris per bar.
+        close: Stängningskurs per bar.
+        volume: Volym per bar.
+
+    Returns:
+        VWAP-serie alignad med indata. Barer med noll ackumulerad volym
+        (t.ex. index) ger NaN — aldrig ett gissat värde.
+    """
+    if not len(high) == len(low) == len(close) == len(volume):
+        raise ValueError("VWAP: alla serier måste ha samma längd.")
+    if len(close) == 0:
+        raise ValueError("VWAP: tomma serier.")
+    typical_price = (high + low + close) / 3.0
+    session = close.index.normalize()
+    weighted = (typical_price * volume).groupby(session).cumsum()
+    cumulative_volume = volume.groupby(session).cumsum()
+    return (weighted / cumulative_volume.replace(0.0, float("nan"))).rename("vwap")
+
+
 def compute_all(prices: pd.DataFrame) -> pd.DataFrame:
     """Beräknar en standarduppsättning indikatorer för en OHLCV-frame.
 

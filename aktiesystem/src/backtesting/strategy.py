@@ -23,6 +23,14 @@ class Strategy(ABC):
     #: Namn som visas i UI och resultat.
     name: str = "abstrakt strategi"
 
+    #: Max antal barer historik strategin behöver se. None = hela historiken.
+    #: Att sätta detta gör backtester på lång intradagshistorik dramatiskt
+    #: snabbare (motorn slipper skicka växande dataslices). Sätt det till
+    #: minst indikatorns period + tillräcklig uppvärmning; för indikatorer
+    #: med exponentiell utjämning (RSI/EMA) ger ~20× perioden numeriskt
+    #: försumbar avvikelse mot full historik.
+    max_lookback: int | None = None
+
     @abstractmethod
     def generate_signals(self, history: dict[str, pd.DataFrame]) -> dict[str, int]:
         """Beräknar målsignaler givet historik till och med idag.

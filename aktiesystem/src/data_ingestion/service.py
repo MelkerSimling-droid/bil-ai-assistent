@@ -86,6 +86,57 @@ class MarketDataService:
         self._cache.store_prices(ticker, frame, self._adapter.source_name, f"period={self._period}")
         return frame
 
+    #: Maxperiod per intradagsintervall (Yahoos gränser, med marginal).
+    INTRADAY_PERIODS = {"1h": "730d", "15m": "60d"}
+
+    def get_intraday_history(
+        self, ticker: str, interval: str = "1h", force_refresh: bool = False
+    ) -> pd.DataFrame:
+        """Hämtar intradagshistorik (cache-först, 1 timmes färskhet).
+
+        Args:
+            ticker: Ticker i Yahoo-format.
+            interval: "1h" (~2 års historik) eller "15m" (~60 dagar).
+            force_refresh: Hoppa över färskhetskontrollen.
+
+        Raises:
+            ValueError: Vid intervall som inte stöds.
+            DataSourceError: Om varken API eller cache kan leverera data.
+        """
+        if interval not in self.INTRADAY_PERIODS:
+            raise ValueError(
+                f"Intervall {interval!r} stöds inte. Välj bland {sorted(self.INTRADAY_PERIODS)}."
+            )
+        period = self.INTRADAY_PERIODS[interval]
+        data_type = f"prices_{interval}"
+        # Intradagsdata åldras snabbt — färskhet 1 timme oavsett dagsinställningen.
+        if not force_refresh and self._cache.is_fresh(ticker, data_type, max_age_hours=1.0):
+            cached = self._cache.load_intraday(ticker, interval)
+            if cached is not None:
+                return cached
+        try:
+            frame = self._adapter.fetch_price_history(ticker, period=period, interval=interval)
+        except DataSourceError as exc:
+            cached = self._cache.load_intraday(ticker, interval)
+            if cached is not None:
+                logger.warning(
+                    "API-fel för %s %s (%s) — använder cachad intradagsdata, senast synkad %s.",
+                    ticker,
+                    interval,
+                    exc,
+                    self._cache.last_synced_at(ticker, data_type),
+                )
+                return cached
+            raise
+        self._cache.store_intraday(
+            ticker,
+            interval,
+            frame,
+            self._adapter.source_name,
+            f"period={period},interval={interval}",
+        )
+        return frame
+
     def get_fundamentals(self, ticker: str, force_refresh: bool = False) -> FundamentalData:
         """Hämtar fundamenta med samma cache-först-strategi som kurser.
 

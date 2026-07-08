@@ -44,9 +44,9 @@ yfinance. `.env` är gitignorad och nycklar hårdkodas aldrig i koden.
 | Sida | Innehåll |
 |---|---|
 | Översikt | Portföljvärde i basvalutan (automatisk växelkursomräkning), dagens förändring, volatilitet, max drawdown, VaR, korrelationer |
-| Aktieanalys | Kursgraf med SMA/Bollinger/RSI/MACD, nyckeltal, DCF med känslighetstabell, sentiment, position sizing |
+| Aktieanalys | Kursgraf med SMA/Bollinger/RSI/MACD, intradagsvy (1h/15m) med VWAP och volym, nyckeltal, DCF med känslighetstabell, sentiment, position sizing |
 | Screening | Filtrera bevakningslistan på P/E, skuldsättning m.m. — saknad data redovisas separat |
-| Backtesting | Kör SMA-korsning / RSI mean reversion / Bollinger-reversion med courtage & slippage; robusthetsutvärdering via 70/30-delning eller rullande fönster; exponeringsmått; varje körning sparas som JSON för spårbarhet |
+| Backtesting | Kör SMA-korsning / RSI mean reversion / Bollinger-reversion på dagsdata eller intradagsbarer (1h/15m) med courtage & slippage; robusthetsutvärdering via 70/30-delning eller rullande fönster; exponeringsmått; varje körning sparas som JSON för spårbarhet |
 | Portföljoptimering | Efficient frontier, referensportföljer, rebalanseringsförslag |
 | Inställningar | Bevakningslista, datasynk, riskparametrar, API-nyckelstatus |
 

@@ -4,15 +4,22 @@ from __future__ import annotations
 
 from typing import Any
 
+import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 from plotly.subplots import make_subplots
 
-from dashboard.views.common import get_service, load_fundamentals_dict, load_prices, show_missing
+from dashboard.views.common import (
+    get_service,
+    load_fundamentals_dict,
+    load_intraday,
+    load_prices,
+    show_missing,
+)
 from src.data_ingestion.base import DataSourceError, FundamentalData
 from src.fundamentals.dcf import DCFAssumptions, dcf_valuation, sensitivity_table
 from src.fundamentals.metrics import metrics_table, net_debt
-from src.indicators.technical import compute_all
+from src.indicators.technical import compute_all, vwap
 from src.risk.risk import position_size_fixed_risk
 from src.sentiment.news_sentiment import DISCLAIMER as SENTIMENT_DISCLAIMER
 from src.sentiment.news_sentiment import aggregate_sentiment, score_headlines
@@ -110,6 +117,48 @@ def _render_position_sizing(price: float, atr_value: float | None) -> None:
             st.warning(str(exc))
 
 
+def _render_intraday(ticker: str) -> None:
+    """Intradagsvy: kurs + VWAP + volym för dagshandel."""
+    st.caption(
+        "Intradagsdata från Yahoo: 1h-barer ca 2 år bakåt, 15m-barer ca 60 dagar. "
+        "Data är fördröjd (inte realtid) och cachas i upp till 1 timme. VWAP "
+        "(volymvägt snittpris, återställs varje handelsdag) är intradagshandelns "
+        "vanligaste referensnivå — en beskrivning av dagens handel, inget råd."
+    )
+    interval = st.radio("Barlängd", ["1h", "15m"], horizontal=True)
+    frame = load_intraday(ticker, interval)
+    if frame is None or len(frame) < 2:
+        show_missing(f"intradagsdata ({interval})", ticker)
+        return
+    days = sorted({index.date() for index in frame.index}, reverse=True)
+    shown_days = st.slider("Antal handelsdagar att visa", 1, min(len(days), 20), min(5, len(days)))
+    selected = frame[frame.index.normalize().isin([pd.Timestamp(d) for d in days[:shown_days]])]
+    vwap_series = vwap(selected["high"], selected["low"], selected["close"], selected["volume"])
+
+    fig = make_subplots(
+        rows=2, cols=1, shared_xaxes=True, row_heights=[0.75, 0.25], vertical_spacing=0.05
+    )
+    fig.add_trace(go.Scatter(x=selected.index, y=selected["close"], name="Kurs"), 1, 1)
+    fig.add_trace(
+        go.Scatter(x=selected.index, y=vwap_series, name="VWAP", line={"dash": "dot"}), 1, 1
+    )
+    fig.add_trace(go.Bar(x=selected.index, y=selected["volume"], name="Volym"), 2, 1)
+    fig.update_layout(height=550, legend={"orientation": "h"})
+    fig.update_xaxes(rangebreaks=[{"pattern": "hour", "bounds": [18, 9]}])
+    st.plotly_chart(fig, use_container_width=True)
+
+    last = selected.iloc[-1]
+    last_vwap = (
+        float(vwap_series.iloc[-1]) if vwap_series.iloc[-1] == vwap_series.iloc[-1] else None
+    )
+    if last_vwap:
+        relation = "över" if float(last["close"]) > last_vwap else "under"
+        st.caption(
+            f"Senaste bar ({selected.index[-1]:%Y-%m-%d %H:%M}): kurs {last['close']:.2f}, "
+            f"{relation} dagens VWAP {last_vwap:.2f}."
+        )
+
+
 def _render_fundamentals(ticker: str) -> None:
     raw = load_fundamentals_dict(ticker)
     if raw is None:
@@ -196,9 +245,13 @@ def render(config: dict[str, Any]) -> None:
         st.info("Välj eller ange en ticker för att börja.")
         return
 
-    tab_ta, tab_fund, tab_news = st.tabs(["Teknisk analys", "Fundamenta & DCF", "Sentiment"])
+    tab_ta, tab_intra, tab_fund, tab_news = st.tabs(
+        ["Teknisk analys", "Intradag", "Fundamenta & DCF", "Sentiment"]
+    )
     with tab_ta:
         _render_technical(ticker)
+    with tab_intra:
+        _render_intraday(ticker)
     with tab_fund:
         _render_fundamentals(ticker)
     with tab_news:
