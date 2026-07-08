@@ -79,3 +79,11 @@ Beslut jag fattat där specifikationen lämnade utrymme. Allt här går att
 22. **Portföljinnehav** anges i `config.yaml` under `holdings:` (exempelvärden
     inlagda) — det finns ingen transaktionshistorik/databas för egna affärer i v1.
 23. **Dashboardporten** är 8503 (vald för att inte krocka med annat på datorn).
+24. **Marknadsbevakningen** skickar notiser om indikatorhändelser — ALDRIG
+    "köp"/"sälj" (spec-princip 2). Reglerna triggar bara på nya korsningar/
+    händelser i senaste baren, och varje larm-id (ticker + regel + dag)
+    notifieras max en gång (SQLite-dubblettskydd). Notiskanal: macOS via
+    osascript; fler kanaler kan pluggas in via Notifier-interfacet.
+    Sentimentlarm kräver minst 3 rubriker. Schemaläggningen (LaunchAgent,
+    var 30:e minut) installeras medvetet INTE automatiskt — den kräver två
+    manuella kommandon (se README) eftersom det är en beständig systemändring.

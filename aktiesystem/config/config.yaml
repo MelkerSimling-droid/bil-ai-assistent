@@ -62,6 +62,19 @@ sentiment:
   # Max antal nyhetsrubriker per ticker och hämtning.
   max_headlines: 25
 
+# Marknadsbevakning: kör `python -m src.monitoring.monitor` (manuellt eller
+# schemalagt) så notifieras du när ett villkor inträffar för en ticker i
+# bevakningslistan. Larmen är indikatorobservationer — ALDRIG köp/säljråd.
+# Sätt ett värde till null för att stänga av regeln.
+monitoring:
+  rules:
+    rsi_oversold: 30         # notis när RSI 14 korsar ned under nivån
+    rsi_overbought: 70       # notis när RSI 14 korsar upp över nivån
+    sma_cross: true          # notis när kursen korsar SMA 200 (upp/ned)
+    day_move_percent: 4.0    # notis vid dagsrörelse större än ±4 %
+    sentiment_threshold: 0.4 # notis när snittsentimentet är under -0.4 eller över +0.4
+  state_db: "data/processed/alerts.sqlite"
+
 logging:
   level: "INFO"
   directory: "logs"

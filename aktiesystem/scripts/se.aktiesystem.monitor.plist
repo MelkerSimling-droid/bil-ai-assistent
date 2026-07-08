@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  LaunchAgent som kör marknadsbevakningen var 30:e minut.
+
+  Installera:  cp scripts/se.aktiesystem.monitor.plist ~/Library/LaunchAgents/
+               launchctl load ~/Library/LaunchAgents/se.aktiesystem.monitor.plist
+  Avinstallera: launchctl unload ~/Library/LaunchAgents/se.aktiesystem.monitor.plist
+               rm ~/Library/LaunchAgents/se.aktiesystem.monitor.plist
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>se.aktiesystem.monitor</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/melkersimling/Desktop/bil-ai-assistent/aktiesystem/.venv/bin/python</string>
+    <string>-m</string>
+    <string>src.monitoring.monitor</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/melkersimling/Desktop/bil-ai-assistent/aktiesystem</string>
+  <key>StartInterval</key>
+  <integer>1800</integer>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/Users/melkersimling/Desktop/bil-ai-assistent/aktiesystem/logs/monitor.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/melkersimling/Desktop/bil-ai-assistent/aktiesystem/logs/monitor.err.log</string>
+</dict>
+</plist>

@@ -50,6 +50,34 @@ yfinance. `.env` är gitignorad och nycklar hårdkodas aldrig i koden.
 | Portföljoptimering | Efficient frontier, referensportföljer, rebalanseringsförslag |
 | Inställningar | Bevakningslista, datasynk, riskparametrar, API-nyckelstatus |
 
+## Marknadsbevakning med notiser
+
+Systemet kan bevaka din bevakningslista och skicka **macOS-notiser** när ett
+villkor inträffar — t.ex. RSI korsar under 30, kursen korsar SMA 200, en
+dagsrörelse större än ±4 %, eller starkt negativt/positivt nyhetssentiment.
+
+> **Viktigt:** ett larm är en *indikatorobservation* ("RSI gick under 30"),
+> aldrig en köp- eller säljrekommendation. Systemet vet inte vad som händer
+> imorgon — beslutet är alltid ditt.
+
+```bash
+# Kör en bevakningsrunda manuellt:
+.venv/bin/python -m src.monitoring.monitor
+```
+
+Regler och nivåer ställs in under `monitoring:` i `config/config.yaml`.
+Varje larm notifieras bara en gång (dubblettskydd i SQLite) och hela
+historiken visas på dashboardens översiktssida.
+
+**Schemalägg var 30:e minut** (macOS LaunchAgent, kräver ditt godkännande):
+
+```bash
+cp scripts/se.aktiesystem.monitor.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/se.aktiesystem.monitor.plist
+```
+
+Stäng av med `launchctl unload ~/Library/LaunchAgents/se.aktiesystem.monitor.plist`.
+
 ## Konfiguration
 
 Allt styrs från [`config/config.yaml`](config/config.yaml): bevakningslista,

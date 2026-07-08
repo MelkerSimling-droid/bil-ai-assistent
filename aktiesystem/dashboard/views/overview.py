@@ -143,3 +143,28 @@ def render(config: dict[str, Any]) -> None:
     st.dataframe(table, hide_index=True, use_container_width=True)
     st.divider()
     _render_risk_section(table, price_data, config)
+    st.divider()
+    _render_alerts_section(config)
+
+
+def _render_alerts_section(config: dict[str, Any]) -> None:
+    """Senaste bevakningslarmen (indikatorobservationer, aldrig råd)."""
+    from src.monitoring.monitor import AlertState
+    from src.utils.config import resolve_path
+
+    st.subheader("Bevakningslarm")
+    st.caption(
+        "Larm från marknadsbevakningen (`python -m src.monitoring.monitor`). "
+        "Varje larm beskriver en indikatorhändelse — vad du gör med den är ditt beslut. "
+        "Regler och nivåer ställs in under `monitoring:` i config.yaml."
+    )
+    monitoring = config.get("monitoring") or {}
+    db_path = resolve_path(monitoring.get("state_db", "data/processed/alerts.sqlite"))
+    if not db_path.exists():
+        st.info("Inga larm ännu — bevakningen har inte körts.")
+        return
+    history = AlertState(db_path).recent(limit=30)
+    if history.empty:
+        st.info("Inga larm har utlösts hittills.")
+        return
+    st.dataframe(history, hide_index=True, use_container_width=True)
