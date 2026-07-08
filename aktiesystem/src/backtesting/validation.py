@@ -105,6 +105,90 @@ def run_split_backtest(
     return SplitBacktestResult(result_in, result_out, split_date, warnings)
 
 
+@dataclass
+class WindowResult:
+    """Resultatet av en delperiod i den rullande utvärderingen."""
+
+    start: pd.Timestamp
+    end: pd.Timestamp
+    result: BacktestResult
+
+
+def rolling_window_evaluation(
+    prices: dict[str, pd.DataFrame],
+    strategy: Strategy,
+    start_capital: float,
+    cost_model: CostModel,
+    risk_free_rate: float = 0.02,
+    n_windows: int = 4,
+) -> tuple[list[WindowResult], list[str]]:
+    """Kör strategin separat på N lika långa, icke överlappande delperioder.
+
+    Starkare robusthetstest än en enda delning: en strategi vars resultat
+    kommer från en enda lyckad period avslöjas när delperioderna jämförs.
+    Varje fönster startar med samma kapital så nyckeltalen är jämförbara.
+
+    Args:
+        prices: Per ticker: OHLCV-frame med DatetimeIndex.
+        strategy: Strategin som utvärderas (samma parametrar i alla fönster).
+        start_capital: Startkapital per fönster.
+        cost_model: Courtage-/slippagemodell.
+        risk_free_rate: Årlig riskfri ränta för Sharpe/Sortino.
+        n_windows: Antal delperioder (2–8).
+
+    Returns:
+        (fönsterresultat i kronologisk ordning, varningar om konsekvens).
+
+    Raises:
+        ValueError: Vid ogiltigt antal fönster eller för kort historik
+            (minst 60 handelsdagar per fönster krävs).
+    """
+    if not 2 <= n_windows <= 8:
+        raise ValueError(f"n_windows ska vara mellan 2 och 8, fick {n_windows}.")
+    calendar = sorted(set().union(*(frame.index for frame in prices.values())))
+    if len(calendar) < 60 * n_windows:
+        raise ValueError(
+            f"Minst {60 * n_windows} handelsdagar krävs för {n_windows} fönster, "
+            f"fick {len(calendar)}."
+        )
+    boundaries = [int(len(calendar) * i / n_windows) for i in range(n_windows + 1)]
+    windows: list[WindowResult] = []
+    for i in range(n_windows):
+        start = calendar[boundaries[i]]
+        end = calendar[boundaries[i + 1] - 1]
+        sliced = {ticker: frame.loc[start:end] for ticker, frame in prices.items()}
+        result = BacktestEngine(
+            sliced, strategy, start_capital, cost_model, None, risk_free_rate
+        ).run()
+        windows.append(WindowResult(start, end, result))
+    return windows, _consistency_warnings(windows)
+
+
+def _consistency_warnings(windows: list[WindowResult]) -> list[str]:
+    """Varningar när resultatet inte håller över delperioderna."""
+    returns = [w.result.metrics.get("total_avkastning", 0.0) for w in windows]
+    positive = sum(1 for value in returns if value > 0)
+    warnings: list[str] = []
+    if positive <= len(windows) / 2:
+        warnings.append(
+            f"Endast {positive} av {len(windows)} delperioder gav positiv avkastning "
+            "— resultatet är inte konsekvent över tid och kan bero på en enskild "
+            "gynnsam period."
+        )
+    best = max(returns)
+    if best > 0 and sum(returns) > 0 and best / max(sum(returns), 1e-9) > 0.8 and len(windows) >= 3:
+        warnings.append(
+            "En enda delperiod står för merparten av totalresultatet — var skeptisk "
+            "till att strategin fungerar generellt."
+        )
+    if not warnings:
+        warnings.append(
+            f"{positive} av {len(windows)} delperioder gav positiv avkastning. "
+            "Konsekvens över delperioder är ett gott tecken, men ingen garanti."
+        )
+    return warnings
+
+
 def _compare(result_in: BacktestResult, result_out: BacktestResult) -> list[str]:
     """Varningar när out-of-sample tydligt underpresterar in-sample."""
     warnings: list[str] = []

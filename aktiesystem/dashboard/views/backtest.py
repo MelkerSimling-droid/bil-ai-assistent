@@ -11,13 +11,15 @@ import streamlit as st
 from dashboard.views.common import load_prices, show_missing
 from src.backtesting.costs import CostModel
 from src.backtesting.engine import BacktestEngine, BacktestResult
+from src.backtesting.persistence import run_to_dict, save_backtest_run
 from src.backtesting.strategies import (
     BollingerReversionStrategy,
     RsiMeanReversionStrategy,
     SmaCrossoverStrategy,
 )
 from src.backtesting.strategy import Strategy
-from src.backtesting.validation import run_split_backtest
+from src.backtesting.validation import rolling_window_evaluation, run_split_backtest
+from src.utils.config import PROJECT_ROOT
 
 OVERFITTING_WARNING = (
     "**Overfittingrisk:** när du justerar parametrar tills historiken ser bra ut "
@@ -81,13 +83,14 @@ def _metrics_row(metrics: dict[str, float]) -> None:
             return "–"
         return f"{value:.1%}" if pct else f"{value:.2f}"
 
-    cols = st.columns(6)
+    cols = st.columns(7)
     cols[0].metric("Total avkastning", fmt("total_avkastning", pct=True))
     cols[1].metric("CAGR", fmt("cagr", pct=True))
     cols[2].metric("Sharpe", fmt("sharpe"))
     cols[3].metric("Sortino", fmt("sortino"))
     cols[4].metric("Max drawdown", fmt("max_drawdown", pct=True))
     cols[5].metric("Win rate", fmt("win_rate", pct=True))
+    cols[6].metric("Exponering", fmt("exponering", pct=True))
     if "benchmark_avkastning" in metrics:
         st.caption(
             f"Index (buy & hold) gav {metrics['benchmark_avkastning']:.1%} under samma period "
@@ -95,8 +98,9 @@ def _metrics_row(metrics: dict[str, float]) -> None:
         )
     st.caption(
         "Sharpe/Sortino: riskjusterad avkastning (högre är bättre; Sortino straffar bara "
-        "nedgångsdagar). Win rate: andel avslutade affärer med vinst. Alla siffror "
-        "inkluderar courtage och slippage."
+        "nedgångsdagar). Win rate: andel avslutade affärer med vinst. Exponering: andel "
+        "handelsdagar med öppen position — jämför inte rakt av med ett alltid-investerat "
+        "index om exponeringen är låg. Alla siffror inkluderar courtage och slippage."
     )
 
 
@@ -124,13 +128,18 @@ def render(config: dict[str, Any]) -> None:
             f"{cost_model.courtage_percent:.3%} × belopp), slippage {cost_model.slippage_percent:.3%}."
         )
 
-    out_of_sample = st.checkbox(
-        "Utvärdera robusthet out-of-sample (70/30-delning)",
-        value=False,
+    mode = st.selectbox(
+        "Robusthetsutvärdering",
+        [
+            "Ingen (en körning på hela perioden)",
+            "In-/out-of-sample (70/30)",
+            "Rullande fönster (4 delperioder)",
+        ],
         help=(
-            "Kör strategin separat på de första 70 % av historiken (in-sample) och "
-            "de sista 30 % (out-of-sample). Faller resultatet ihop i den senare "
-            "perioden är parametrarna sannolikt anpassade till brus."
+            "70/30: strategin körs separat på de första 70 % (in-sample) och de sista "
+            "30 % (out-of-sample) av historiken. Rullande fönster: fyra lika långa "
+            "delperioder körs var för sig — avslöjar strategier vars resultat kommer "
+            "från en enda gynnsam period."
         ),
     )
 
@@ -155,8 +164,11 @@ def render(config: dict[str, Any]) -> None:
             st.warning(f"Benchmarkdata ({benchmark_ticker}) kunde inte hämtas — jämförelsen utgår.")
 
     risk_free = float(config["risk"].get("risk_free_rate", 0.02))
-    if out_of_sample:
+    if mode.startswith("In-/out"):
         _run_split(prices, strategy, start_capital, cost_model, benchmark_close, risk_free)
+        return
+    if mode.startswith("Rullande"):
+        _run_rolling(prices, strategy, start_capital, cost_model, risk_free)
         return
 
     with st.spinner("Kör backtest (event-driven, dag för dag) ..."):
@@ -175,6 +187,82 @@ def render(config: dict[str, Any]) -> None:
 
     st.subheader(f"Resultat: {result.strategy_name}")
     _render_result(result)
+    _offer_saved_run(result, list(prices), start_capital, cost_model)
+
+
+def _offer_saved_run(
+    result: BacktestResult,
+    tickers: list[str],
+    start_capital: float,
+    cost_model: CostModel,
+) -> None:
+    """Sparar körningen till disk och erbjuder nedladdning (reproducerbarhet)."""
+    import json
+
+    payload = run_to_dict(result, tickers, start_capital, cost_model)
+    try:
+        path = save_backtest_run(result, tickers, start_capital, cost_model)
+        st.caption(f"Körningen sparades för spårbarhet: `{path.relative_to(PROJECT_ROOT)}`")
+    except OSError as exc:
+        st.warning(f"Körningen kunde inte sparas till disk: {exc}")
+    st.download_button(
+        "Ladda ner körningen (JSON)",
+        data=json.dumps(payload, ensure_ascii=False, indent=2),
+        file_name="backtest.json",
+        mime="application/json",
+    )
+
+
+def _run_rolling(
+    prices: dict[str, pd.DataFrame],
+    strategy: Strategy,
+    start_capital: float,
+    cost_model: CostModel,
+    risk_free: float,
+) -> None:
+    """Kör och redovisar rullande fönster-utvärderingen."""
+    with st.spinner("Kör backtest på fyra delperioder ..."):
+        try:
+            windows, warnings = rolling_window_evaluation(
+                prices, strategy, start_capital, cost_model, risk_free, n_windows=4
+            )
+        except (ValueError, RuntimeError) as exc:
+            st.error(f"Utvärderingen kunde inte genomföras: {exc}")
+            return
+
+    st.subheader(f"Rullande fönster: {strategy.name}")
+    st.caption(
+        "Historiken delades i fyra lika långa delperioder som körts var för sig med "
+        "samma startkapital. En robust strategi presterar hyggligt i de flesta "
+        "delperioder — inte bara i en."
+    )
+    for warning in warnings:
+        st.warning(warning)
+
+    def cell(metrics: dict[str, float], key: str, pct: bool = True) -> str:
+        value = metrics.get(key)
+        if value is None or value != value:
+            return "–"
+        return f"{value:.1%}" if pct else f"{value:.2f}"
+
+    table = pd.DataFrame(
+        [
+            {
+                "Period": f"{w.start.date()} – {w.end.date()}",
+                "Avkastning": cell(w.result.metrics, "total_avkastning"),
+                "Sharpe": cell(w.result.metrics, "sharpe", pct=False),
+                "Max drawdown": cell(w.result.metrics, "max_drawdown"),
+                "Exponering": cell(w.result.metrics, "exponering"),
+                "Affärer": int(w.result.metrics.get("antal_affarer", 0)),
+            }
+            for w in windows
+        ]
+    )
+    st.dataframe(table, hide_index=True, use_container_width=True)
+    with st.expander("Equity-kurvor per delperiod"):
+        for window in windows:
+            st.markdown(f"**{window.start.date()} – {window.end.date()}**")
+            st.line_chart(window.result.equity_curve)
 
 
 def _render_result(result: BacktestResult) -> None:

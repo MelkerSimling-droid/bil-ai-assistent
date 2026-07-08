@@ -105,6 +105,7 @@ class BacktestEngine:
         trades: list[Trade] = []
         closed_pnls: list[float] = []
 
+        days_in_market = 0
         for today in self._calendar:
             cash = self._execute_pending(
                 today, pending, positions, entry_costs, trades, closed_pnls, cash
@@ -115,6 +116,8 @@ class BacktestEngine:
                 if shares > 0
             )
             equity_points.append((today, equity))
+            if any(shares > 0 for shares in positions.values()):
+                days_in_market += 1
             signals = self._strategy.generate_signals(self._history_up_to(today))
             for ticker in self._prices:
                 target = int(signals.get(ticker, 0))
@@ -126,7 +129,8 @@ class BacktestEngine:
                 else:
                     pending.pop(ticker, None)
 
-        return self._build_result(equity_points, trades, closed_pnls)
+        exposure = days_in_market / len(self._calendar) if self._calendar else 0.0
+        return self._build_result(equity_points, trades, closed_pnls, exposure)
 
     def _history_up_to(self, today: pd.Timestamp) -> dict[str, pd.DataFrame]:
         """Historik t.o.m. idag — det enda strategin någonsin får se."""
@@ -218,6 +222,7 @@ class BacktestEngine:
         equity_points: list[tuple[pd.Timestamp, float]],
         trades: list[Trade],
         closed_pnls: list[float],
+        exposure: float,
     ) -> BacktestResult:
         """Sätter ihop resultatobjektet inklusive benchmark och varningar."""
         equity = pd.Series(
@@ -233,6 +238,9 @@ class BacktestEngine:
         metrics, warnings = compute_metrics(
             equity, closed_pnls, self._risk_free_rate, benchmark_equity
         )
+        # Andel handelsdagar med minst en öppen position — utan detta är
+        # avkastningsjämförelser mot ett alltid-investerat index missvisande.
+        metrics["exponering"] = exposure
         open_positions = sum(1 for t in trades if t.side == "köp") - len(closed_pnls)
         if open_positions > 0:
             warnings.append(

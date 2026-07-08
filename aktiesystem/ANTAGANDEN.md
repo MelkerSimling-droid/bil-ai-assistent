@@ -47,27 +47,35 @@ Beslut jag fattat där specifikationen lämnade utrymme. Allt här går att
     strategin körs separat på båda perioderna med samma startkapital.
     Tröskeln "Sharpe out-of-sample < 50 % av in-sample ⇒ varning" är en
     tumregel, inget statistiskt test. Delningen kräver minst 120 handelsdagar.
+    Alternativt finns rullande fönster: fyra lika långa delperioder körs var
+    för sig (minst 60 handelsdagar per fönster) med konsekvensvarningar.
+15. **Exponering** i nyckeltalen = andel handelsdagar med minst en öppen
+    position. Redovisas för att avkastning inte ska jämföras rakt av med ett
+    alltid-investerat index när strategin mest ligger i kassa.
+16. **Körningsloggning:** varje enskild backtestkörning i dashboarden sparas
+    automatiskt som JSON under `data/processed/backtests/` (tidsstämpel,
+    strategi, parametrar, nyckeltal, equity-kurva) för reproducerbarhet.
 
 ## Risk, DCF, sentiment
 
-15. **Riskfri ränta:** 2 % årligen som standard (Sharpe/Sortino/frontier).
-16. **VaR:** historisk simulering, kräver minst 30 observationer; ingen
+17. **Riskfri ränta:** 2 % årligen som standard (Sharpe/Sortino/frontier).
+18. **VaR:** historisk simulering, kräver minst 30 observationer; ingen
     parametrisk modell.
-17. **DCF:** tvåstegsmodell (prognosår + Gordon-terminal). Kräver positivt fritt
+19. **DCF:** tvåstegsmodell (prognosår + Gordon-terminal). Kräver positivt fritt
     kassaflöde; saknas nettoskuldsdata antas 0 **med synlig flaggning i UI**.
-18. **Sentiment:** VADER är engelskspråkigt — svenska rubriker poängsätts
+20. **Sentiment:** VADER är engelskspråkigt — svenska rubriker poängsätts
     opålitligt. Detta står som varning direkt i sentimentvyn. Nyheter hämtas
     via yfinance (ingen nyckel); rubriker utan datum grupperas som
     "okänt datum" i stället för att ges ett gissat datum.
 
 ## Övrigt
 
-19. **Valutakonvertering i översikten:** innehav räknas om till basvalutan
+21. **Valutakonvertering i översikten:** innehav räknas om till basvalutan
     (`base_currency` i config.yaml, standard SEK) med senaste växelkurs från
     Yahoo (t.ex. USDSEK=X); kursen redovisas i tabellen. Kan valuta eller
     växelkurs inte hämtas **exkluderas innehavet ur summorna** med en synlig
     varning — det gissas aldrig in. Riskmåtten (volatilitet/VaR/korrelation)
     beräknas på avkastningar i lokal valuta; valutarörelser ingår inte (står i UI).
-20. **Portföljinnehav** anges i `config.yaml` under `holdings:` (exempelvärden
+22. **Portföljinnehav** anges i `config.yaml` under `holdings:` (exempelvärden
     inlagda) — det finns ingen transaktionshistorik/databas för egna affärer i v1.
-21. **Dashboardporten** är 8503 (vald för att inte krocka med annat på datorn).
+23. **Dashboardporten** är 8503 (vald för att inte krocka med annat på datorn).
